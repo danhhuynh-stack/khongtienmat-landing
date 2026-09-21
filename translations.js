@@ -12,7 +12,7 @@ export const translations = {
     langSelectLabel: "Chọn ngôn ngữ",
 
     // Hero
-    heroTitle: "Giải pháp thanh toán hiện đại cho cửa hàng",
+    heroTitle: '<span class="block sm:inline whitespace-nowrap">Giải pháp thanh toán</span> <span class="whitespace-nowrap">hiện đại cho cửa hàng</span>',
     heroSubtitle: "Đơn giản hóa quy trình thu ngân, tiền chuyển thẳng về tài khoản, phục vụ chu đáo mọi khách hàng từ quét mã QR đến chạm thẻ.",
     heroCta: "Đăng ký miễn phí",
     heroSecondary: "Xem 4 sản phẩm",
@@ -118,7 +118,7 @@ export const translations = {
     langSelectLabel: "Select language",
 
     // Hero
-    heroTitle: "Modern Payment Solutions for Your Store",
+    heroTitle: '<span class="block md:inline">Modern Payment Solutions</span> <span class="whitespace-nowrap">for Your Store</span>',
     heroSubtitle: "Simplify counter checkout, receive funds directly into your bank account, and serve every customer from QR scans to card taps.",
     heroCta: "Register for Free",
     heroSecondary: "View 4 Products",
