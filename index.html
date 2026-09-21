@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>khongtienmat.vn | Giải Pháp Nhận Thanh Toán QR Cho Cửa Hàng</title>
+  <title>khongtienmat.vn | Giải Pháp Nhận Thanh Toán Toàn Diện Cho Cửa Hàng</title>
   
   <!-- SEO & Social Meta -->
-  <meta name="description" content="Nhận thanh toán QR thuận tiện cho cửa hàng. Hỗ trợ quét mã VietQR từ các ngân hàng tại Việt Nam và phục vụ khách du lịch quốc tế thuộc mạng lưới đối tác kết nối.">
-  <meta name="keywords" content="khongtienmat, không tiền mặt, vietqr, thanh toán qr, điểm bán, cửa hàng, thanh toán qua mã qr, promptpay, alipay, wechat pay, gln, nets">
-  <meta property="og:title" content="khongtienmat.vn | Nhận Thanh Toán QR Thuận Tiện Cho Cửa Hàng">
-  <meta property="og:description" content="Giải pháp hỗ trợ cửa hàng tối ưu quy trình thanh toán tại quầy qua mã QR nội địa và quốc tế.">
+  <meta name="description" content="Giải pháp nhận thanh toán hiện đại cho cửa hàng. Bảng mica VietQR Pay, Loa thông báo tiền về, Phần mềm bán hàng và Máy POS thanh toán. Đăng ký miễn phí.">
+  <meta name="keywords" content="khongtienmat, khong tien mat, vietqr pay, loa thong bao, phan mem ban hang, may pos, thanh toan qr, nexus digital">
+  <meta property="og:title" content="khongtienmat.vn | Giải Pháp Nhận Thanh Toán Cho Cửa Hàng">
+  <meta property="og:description" content="Nhiều hình ảnh, giải pháp trực quan, đăng ký miễn phí nhanh chóng cho chủ điểm bán.">
   <meta property="og:type" content="website">
 
   <!-- Tailwind CSS CDN -->
@@ -20,15 +20,13 @@
         extend: {
           colors: {
             brand: {
-              blue: '#005baa',
-              cyan: '#00a8e8',
-              navy: '#0f172a',
-              accent: '#ff5e00',
-              emerald: '#10b981'
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0284c7',
+              600: '#005baa',
+              700: '#004887',
+              900: '#0c2340'
             }
-          },
-          fontFamily: {
-            sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif']
           }
         }
       }
@@ -47,7 +45,7 @@
     }
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 5.5rem;
+      scroll-padding-top: 5rem;
     }
     html, body {
       overflow-x: hidden !important;
@@ -68,8 +66,11 @@
       border-bottom-color: rgba(51, 65, 85, 0.8) !important;
       box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3) !important;
     }
-    #mainNavbar.scrolled .nav-brand-text {
+    #mainNavbar.scrolled .nav-brand-prefix {
       color: #ffffff !important;
+    }
+    #mainNavbar.scrolled .nav-brand-suffix {
+      color: #38bdf8 !important;
     }
     #mainNavbar.scrolled .nav-link {
       color: #cbd5e1 !important;
@@ -103,45 +104,30 @@
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
     }
-    .fintech-card:hover {
-      box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.08);
-      border-color: #cbd5e1;
-    }
-    .hero-glow {
-      background: radial-gradient(circle at 50% 0%, rgba(0, 168, 232, 0.12) 0%, rgba(0, 91, 170, 0.06) 40%, transparent 70%);
-    }
   </style>
 </head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white pb-20 sm:pb-0">
 
-<body class="relative selection:bg-blue-600 selection:text-white bg-slate-50 text-slate-900">
-
-  <!-- Top Ambient Glow -->
-  <div class="absolute top-0 left-0 right-0 h-[550px] hero-glow pointer-events-none -z-10"></div>
-
-  <!-- STICKY NAVBAR -->
+  <!-- ==================== 1. COMPACT NAVBAR ==================== -->
   <nav id="mainNavbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 py-3 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm" aria-label="Thanh điều hướng chính">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg p-1" aria-label="khongtienmat.vn - Trang chủ">
+      <!-- Brand Logo (Semantic Grouping: 'khong' + 'tienmat' + '.vn') -->
+      <a href="#" class="flex items-center gap-1 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg p-1" aria-label="khongtienmat.vn - Trang chủ">
         <span class="nav-brand-text text-xl sm:text-2xl font-black tracking-tight text-slate-900 transition-colors">
-          khongtien<span class="text-blue-600">mat</span><span class="text-xs px-1.5 py-0.5 ml-1 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">.vn</span>
+          <span class="nav-brand-prefix">khong</span><span class="nav-brand-suffix text-blue-600">tienmat</span><span class="text-xs px-1.5 py-0.5 ml-1 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">.vn</span>
         </span>
       </a>
 
-      <!-- Desktop Nav Links (Streamlined, collapses on < xl (1280px) to prevent 1265px overlap) -->
-      <div class="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-600">
-        <a href="#features" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navFeatures">Tính năng</a>
-        <a href="#cross-border" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navGlobal">Khách quốc tế</a>
-        <a href="#posm" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navPosm">Bảng QR để bàn</a>
-        <a href="#comparison" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navCompare">So sánh</a>
-        <a href="#process" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navProcess">Quy trình</a>
-        <a href="#faq" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navFaq">Hỏi đáp</a>
+      <!-- Desktop Links: Concise 2 items -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+        <a href="#products" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navProducts">Sản phẩm</a>
+        <a href="#process" class="nav-link hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1" data-i18n="navProcess">Cách đăng ký</a>
       </div>
 
-      <!-- Right Controls: Language Switcher & Register CTA -->
+      <!-- Right Controls: Language Selector + Primary CTA Button -->
       <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-        <!-- Language Switcher Dropdown -->
+        <!-- Language Switcher -->
         <div class="relative flex items-center">
           <label for="langSelect" class="sr-only" data-i18n="langSelectLabel">Chọn ngôn ngữ</label>
           <div class="nav-lang-box flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:border-blue-500 transition text-sm shadow-sm">
@@ -156,1238 +142,442 @@
           </div>
         </div>
 
-        <!-- Primary CTA Button -->
-        <a href="#register" class="nav-cta-btn hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-sm transition whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600">
-          <span data-i18n="navRegister">Đăng ký tư vấn</span>
+        <!-- Primary CTA: "Đăng ký miễn phí" (on mobile, handled by fixed bottom bar) -->
+        <a href="#register" class="nav-cta-btn hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md transition whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600">
+          <span data-i18n="ctaRegisterFree">Đăng ký miễn phí</span>
           <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
         </a>
-
-        <!-- Mobile Menu Button with proper ARIA -->
-        <button id="mobileMenuBtn" type="button" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="mobileNavDrawer" class="xl:hidden p-2 rounded-lg bg-white border border-slate-300 text-slate-700 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 shrink-0">
-          <i data-lucide="menu" class="w-5 h-5" aria-hidden="true"></i>
-        </button>
       </div>
 
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div id="mobileNavDrawer" role="dialog" aria-label="Menu điều hướng di động" aria-modal="true" class="hidden xl:hidden mt-3 px-4 py-5 rounded-2xl bg-white border border-slate-200 space-y-4 shadow-xl">
-      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-        <span class="text-sm font-bold text-slate-800">Menu</span>
-        <button id="mobileNavCloseBtn" type="button" aria-label="Đóng menu" class="p-1 rounded-lg text-slate-500 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-          <i data-lucide="x" class="w-5 h-5" aria-hidden="true"></i>
-        </button>
-      </div>
-      <div class="flex flex-col space-y-2 text-base font-semibold text-slate-700">
-        <a href="#features" class="mobile-nav-link hover:text-blue-600 py-1.5 px-2 rounded-lg hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" data-i18n="navFeatures">Tính năng</a>
-        <a href="#cross-border" class="mobile-nav-link hover:text-blue-600 py-1.5 px-2 rounded-lg hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" data-i18n="navGlobal">Khách quốc tế</a>
-        <a href="#posm" class="mobile-nav-link hover:text-blue-600 py-1.5 px-2 rounded-lg hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" data-i18n="navPosm">Bảng QR để bàn</a>
-        <a href="#comparison" class="mobile-nav-link hover:text-blue-600 py-1.5 px-2 rounded-lg hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" data-i18n="navCompare">So sánh</a>
-        <a href="#process" class="mobile-nav-link hover:text-blue-600 py-1.5 px-2 rounded-lg hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" data-i18n="navProcess">Quy trình</a>
-        <a href="#faq" class="mobile-nav-link hover:text-blue-600 py-1.5 px-2 rounded-lg hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" data-i18n="navFaq">Hỏi đáp</a>
-      </div>
-      <div class="pt-3 border-t border-slate-200 flex items-center justify-between gap-3">
-        <select id="langSelectMobile" aria-label="Chọn ngôn ngữ di động" class="bg-slate-100 text-slate-800 border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm">
-          <option value="vi">🇻🇳 Tiếng Việt</option>
-          <option value="en">🇬🇧 English</option>
-          <option value="zh">🇨🇳 中文</option>
-          <option value="ko">🇰🇷 한국어</option>
-          <option value="th">🇹🇭 ไทย</option>
-        </select>
-        <a href="#register" class="mobile-nav-link inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 text-white font-bold text-sm shadow-sm">
-          <span data-i18n="navRegister">Đăng ký tư vấn</span>
-        </a>
-      </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <header class="pt-28 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-      
-      <!-- Left Column: Copy & Value Proposition -->
-      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-        
-        <!-- Category Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs sm:text-sm font-semibold shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-blue-600" aria-hidden="true"></span>
-          <span data-i18n="heroBadge">Giải pháp thanh toán QR cho điểm bán</span>
-        </div>
+  <!-- ==================== 2. SHORT HERO SECTION ==================== -->
+  <header class="pt-24 sm:pt-32 pb-8 sm:pb-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+    <!-- Main Headline -->
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4" data-i18n="heroTitle">
+      Giải pháp thanh toán hiện đại cho cửa hàng
+    </h1>
+    
+    <!-- One-sentence Description -->
+    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-6" data-i18n="heroSubtitle">
+      Đơn giản hóa quy trình thu ngân, tiền chuyển thẳng về tài khoản, phục vụ chu đáo mọi khách hàng từ quét mã QR đến chạm thẻ.
+    </p>
 
-        <!-- Main Headline (Merchant Benefit Focused) -->
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-slate-900">
-          <span data-i18n="heroTitle">Nhận thanh toán QR thuận tiện cho cửa hàng</span>
-        </h1>
-
-        <!-- Subtitle (Clear, Grounded Scope) -->
-        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal" data-i18n="heroSubtitle">
-          Hỗ trợ thanh toán nhanh từ các ngân hàng tại Việt Nam qua mã VietQR và mở rộng phục vụ du khách quốc tế thuộc mạng lưới đối tác được kết nối.
-        </p>
-
-        <!-- CTA Action Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
-          <a href="#register" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-md shadow-blue-500/20 transition transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600">
-            <i data-lucide="file-text" class="w-5 h-5" aria-hidden="true"></i>
-            <span data-i18n="heroCtaPrimary">Đăng ký tư vấn</span>
-          </a>
-          <a href="#features" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-semibold text-base transition shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-400">
-            <i data-lucide="compass" class="w-5 h-5 text-blue-600" aria-hidden="true"></i>
-            <span data-i18n="heroCtaSecondary">Xem cách hoạt động</span>
-          </a>
-        </div>
-
-        <!-- Factual Highlight Counters (Neutral & Grounded) -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200 text-left">
-          <div>
-            <div class="text-base sm:text-lg font-black text-blue-700" data-i18n="heroStat1">4 Ngân hàng đối tác</div>
-            <div class="text-xs text-slate-500 font-medium mt-0.5" data-i18n="heroStat1Desc">MB • Techcombank • VIB • VPBank</div>
-          </div>
-          <div>
-            <div class="text-base sm:text-lg font-black text-cyan-700" data-i18n="heroStat2">8 Mạng lưới quốc tế</div>
-            <div class="text-xs text-slate-500 font-medium mt-0.5" data-i18n="heroStat2Desc">PromptPay, KHQR, Alipay+, WeChat...</div>
-          </div>
-          <div>
-            <div class="text-base sm:text-lg font-black text-emerald-700" data-i18n="heroStat3">Chuyển tiền trực tiếp</div>
-            <div class="text-xs text-slate-500 font-medium mt-0.5" data-i18n="heroStat3Desc">Về tài khoản ngân hàng của cửa hàng</div>
-          </div>
-          <div>
-            <div class="text-base sm:text-lg font-black text-slate-800" data-i18n="heroStat4">Đặt tại quầy thu ngân</div>
-            <div class="text-xs text-slate-500 font-medium mt-0.5" data-i18n="heroStat4Desc">Gọn gàng, thuận tiện cho khách quét</div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Column: Standee Mockup & Simulation -->
-      <div class="lg:col-span-5 relative w-full">
-        <div class="relative mx-auto w-full max-w-sm rounded-3xl bg-white p-5 sm:p-6 border border-slate-200 shadow-xl">
-          
-          <!-- Mode Tabs -->
-          <div class="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 text-xs font-bold mb-4" role="tablist">
-            <button id="tabDomestic" role="tab" aria-selected="true" class="py-2 px-2 rounded-lg bg-blue-600 text-white transition text-center shadow-sm" data-i18n="demoDomesticTab">
-              🇻🇳 Khách nội địa (VietQR)
-            </button>
-            <button id="tabGlobal" role="tab" aria-selected="false" class="py-2 px-2 rounded-lg bg-transparent text-slate-600 hover:text-slate-900 transition text-center" data-i18n="demoGlobalTab">
-              🌏 Khách quốc tế (Mạng lưới đối tác)
-            </button>
-          </div>
-
-          <!-- Standee Mockup Container -->
-          <div class="bg-slate-50 text-slate-900 rounded-2xl p-4 border border-slate-200 text-center relative overflow-hidden shadow-sm">
-            <!-- Header on Mockup with Dynamic Brand Logo -->
-            <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
-              <div class="text-left flex items-center gap-1.5">
-                <img id="mockupBrandLogo" src="./assets/images/vietqr-pay.png" alt="VietQR Pay" class="h-4.5 w-auto object-contain">
-                <span class="text-[10px] font-bold text-slate-300">•</span>
-                <span class="text-[10px] font-bold text-slate-600">KHONGTIENMAT.VN</span>
-              </div>
-              <div class="flex items-center gap-1 text-[10px] font-semibold text-blue-800 bg-blue-100 px-2 py-0.5 rounded">
-                Mô hình mẫu
-              </div>
-            </div>
-
-            <!-- Realistic QR Code Vector -->
-            <div class="relative w-40 h-40 mx-auto my-1 p-2 bg-white rounded-xl border border-slate-300 flex items-center justify-center shadow-sm">
-              <svg viewBox="0 0 100 100" class="w-full h-full text-slate-900" aria-label="Hình minh họa mã QR">
-                <rect x="5" y="5" width="26" height="26" fill="currentColor" rx="3"/>
-                <rect x="8" y="8" width="20" height="20" fill="white" rx="2"/>
-                <rect x="12" y="12" width="12" height="12" fill="currentColor" rx="1"/>
-
-                <rect x="69" y="5" width="26" height="26" fill="currentColor" rx="3"/>
-                <rect x="72" y="8" width="20" height="20" fill="white" rx="2"/>
-                <rect x="76" y="12" width="12" height="12" fill="currentColor" rx="1"/>
-
-                <rect x="5" y="69" width="26" height="26" fill="currentColor" rx="3"/>
-                <rect x="8" y="72" width="20" height="20" fill="white" rx="2"/>
-                <rect x="12" y="76" width="12" height="12" fill="currentColor" rx="1"/>
-
-                <rect x="36" y="8" width="8" height="8" fill="currentColor"/>
-                <rect x="48" y="12" width="6" height="6" fill="currentColor"/>
-                <rect x="58" y="8" width="6" height="8" fill="currentColor"/>
-                <rect x="36" y="22" width="6" height="6" fill="currentColor"/>
-                <rect x="46" y="24" width="8" height="8" fill="currentColor"/>
-
-                <rect x="8" y="38" width="6" height="8" fill="currentColor"/>
-                <rect x="18" y="42" width="8" height="8" fill="currentColor"/>
-                <rect x="8" y="52" width="6" height="8" fill="currentColor"/>
-
-                <rect x="74" y="38" width="6" height="6" fill="currentColor"/>
-                <rect x="84" y="44" width="8" height="8" fill="currentColor"/>
-                <rect x="72" y="54" width="6" height="6" fill="currentColor"/>
-
-                <rect x="36" y="68" width="6" height="8" fill="currentColor"/>
-                <rect x="48" y="72" width="8" height="6" fill="currentColor"/>
-                <rect x="36" y="84" width="6" height="6" fill="currentColor"/>
-                <rect x="46" y="82" width="8" height="8" fill="currentColor"/>
-
-                <circle cx="50" cy="50" r="14" fill="white" stroke="#005baa" stroke-width="2"/>
-                <text x="50" y="53" font-size="7" font-weight="900" fill="#005baa" text-anchor="middle">VietQR</text>
-              </svg>
-            </div>
-
-            <!-- Prominent Non-transaction Disclaimer -->
-            <div class="mt-2 text-center text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-300 rounded-lg px-2.5 py-1" data-i18n="heroMockupNotice">
-              Mô phỏng — không dùng để thanh toán
-            </div>
-
-            <p id="demoPromptText" class="text-xs text-slate-600 mt-2 font-medium" data-i18n="demoPromptText">
-              Khách mở ứng dụng ngân hàng hoặc ví điện tử để quét mã thanh toán tại quầy.
-            </p>
-
-            <!-- Partner Brand Badges on Mockup -->
-            <div class="mt-3 pt-2.5 border-t border-slate-200 flex flex-wrap items-center justify-center gap-1 text-[9px] font-bold text-slate-600">
-              <span class="px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">MB</span>
-              <span class="px-1.5 py-0.5 rounded bg-red-50 text-red-700 border border-red-200">TECHCOMBANK</span>
-              <span class="px-1.5 py-0.5 rounded bg-blue-50 text-blue-900 border border-blue-200">VIB</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">VPBank</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-50 text-cyan-800 border border-cyan-200">+8 Mạng lưới quốc tế</span>
-            </div>
-          </div>
-
-          <!-- Simulation Action Button -->
-          <div class="mt-3.5 text-center">
-            <button id="simulatePaymentBtn" type="button" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm transition shadow-sm flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700">
-              <i data-lucide="play" class="w-4 h-4" aria-hidden="true"></i>
-              <span data-i18n="demoSimulateBtn">Xem thử quy trình quét mã</span>
-            </button>
-          </div>
-
-          <!-- Simulation Result Modal (Explicitly Demo Only) -->
-          <div id="paymentSuccessCard" class="hidden absolute inset-x-4 top-1/4 p-5 rounded-2xl bg-white border-2 border-blue-500 shadow-2xl text-center z-20" role="alert">
-            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-2">
-              <i data-lucide="check" class="w-6 h-6" aria-hidden="true"></i>
-            </div>
-            <div class="text-sm font-bold text-slate-900" data-i18n="demoSuccessTitle">Mô phỏng quét mã thành công</div>
-            <div class="text-xs text-slate-600 font-medium mt-1 leading-relaxed" data-i18n="demoSuccessDesc">
-              Lưu ý: Đây là màn hình minh họa giao diện thao tác, không phát sinh giao dịch thật.
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+    <!-- Quick CTAs -->
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a href="#register" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+        <span data-i18n="heroCta">Đăng ký miễn phí</span>
+        <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+      </a>
+      <a href="#products" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-300 hover:border-blue-500 hover:bg-slate-50 text-slate-700 font-semibold text-sm shadow-sm transition">
+        <span data-i18n="heroSecondary">Xem 4 sản phẩm</span>
+        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400" aria-hidden="true"></i>
+      </a>
     </div>
   </header>
 
-  <!-- MẠNG LƯỚI KẾT NỐI KHONGTIENMAT.VN (4 Domestic Banks & 8 International Partners) -->
-  <section id="network" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200 bg-white">
-    <div class="max-w-7xl mx-auto">
-      
-      <!-- Section Header matching the shirt -->
-      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-14 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider" data-i18n="networkBadge">
-          Mạng lưới kết nối
-        </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="networkSectionTitle">
-          Mạng lưới kết nối khongtienmat.vn
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="networkSectionSubtitle">
-          Hợp tác trực tiếp 4 ngân hàng trong nước và 8 mạng lưới thanh toán quốc tế, hỗ trợ thanh toán thông suốt cho điểm bán.
-        </p>
-      </div>
-
-      <!-- 1. GROUP: 4 NGÂN HÀNG ĐỐI TÁC TRONG NƯỚC -->
-      <div class="mb-12">
-        <div class="flex items-center justify-between gap-4 pb-3 mb-6 border-b border-slate-200">
-          <div class="flex items-center gap-2.5">
-            <span class="w-3 h-3 rounded-full bg-blue-600 ring-4 ring-blue-100"></span>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight" data-i18n="domesticGroupTitle">
-              4 Ngân hàng đối tác chiến lược trong nước
-            </h3>
-          </div>
-          <!-- VietQR Pay Official Brand Logo -->
-          <div class="inline-flex items-center px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-sm shrink-0 hover:border-blue-400 transition-all" title="VietQR Pay - Chuẩn thanh toán QR nội địa">
-            <img src="./assets/images/vietqr-pay.png" alt="VietQR Pay Logo" class="h-6 sm:h-7 w-auto object-contain">
-          </div>
-        </div>
-
-        <!-- 4 Bank Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          
-          <!-- MB Bank -->
-          <div class="p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all group flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <div class="h-10 flex items-center">
-                <svg viewBox="0 0 160 48" class="h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
-                  <g transform="translate(4, 4)">
-                    <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
-                    <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
-                    <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
-                  </g>
-                  <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
-                </svg>
-              </div>
-              <span class="text-[10px] font-bold text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded">Đối tác trực tiếp</span>
-            </div>
-            <div>
-              <div class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">MB Bank</div>
-              <div class="text-xs text-slate-500 mt-0.5">Ngân hàng TMCP Quân Đội</div>
-            </div>
-          </div>
-
-          <!-- Techcombank -->
-          <div class="p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-red-400 hover:shadow-md transition-all group flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <div class="h-10 flex items-center">
-                <svg viewBox="0 0 200 48" class="h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
-                  <g transform="translate(6, 12)">
-                    <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
-                    <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
-                    <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
-                    <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
-                  </g>
-                  <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
-                  <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
-                </svg>
-              </div>
-              <span class="text-[10px] font-bold text-red-700 bg-red-100/70 px-2 py-0.5 rounded">Đối tác trực tiếp</span>
-            </div>
-            <div>
-              <div class="text-sm font-bold text-slate-900 group-hover:text-red-600 transition-colors">Techcombank</div>
-              <div class="text-xs text-slate-500 mt-0.5">Ngân hàng TMCP Kỹ Thương</div>
-            </div>
-          </div>
-
-          <!-- VIB -->
-          <div class="p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-orange-400 hover:shadow-md transition-all group flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <div class="h-10 flex items-center">
-                <svg viewBox="0 0 160 48" class="h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
-                  <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
-                  <g transform="translate(66, 6)">
-                    <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
-                    <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
-                    <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
-                  </g>
-                </svg>
-              </div>
-              <span class="text-[10px] font-bold text-orange-700 bg-orange-100/70 px-2 py-0.5 rounded">Đối tác trực tiếp</span>
-            </div>
-            <div>
-              <div class="text-sm font-bold text-slate-900 group-hover:text-blue-900 transition-colors">VIB</div>
-              <div class="text-xs text-slate-500 mt-0.5">Ngân hàng TMCP Quốc Tế</div>
-            </div>
-          </div>
-
-          <!-- VPBank -->
-          <div class="p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <div class="h-10 flex items-center">
-                <svg viewBox="0 0 180 48" class="h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
-                  <g transform="translate(6, 8)">
-                    <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
-                    <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
-                    <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
-                  </g>
-                  <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
-                </svg>
-              </div>
-              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded">Đối tác trực tiếp</span>
-            </div>
-            <div>
-              <div class="text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">VPBank</div>
-              <div class="text-xs text-slate-500 mt-0.5">Ngân hàng TMCP VN Thịnh Vượng</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- 2. GROUP: 8 TỔ CHỨC & MẠNG LƯỚI THANH TOÁN QUỐC TẾ -->
-      <div>
-        <div class="flex items-center justify-between gap-4 pb-3 mb-6 border-b border-slate-200">
-          <div class="flex items-center gap-2.5">
-            <span class="w-3 h-3 rounded-full bg-cyan-600 ring-4 ring-cyan-100"></span>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight" data-i18n="internationalGroupTitle">
-              8 Đơn vị & Mạng lưới thanh toán quốc tế
-            </h3>
-          </div>
-          <!-- VietQR Global Official Brand Logo -->
-          <div class="inline-flex items-center px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-sm shrink-0 hover:border-cyan-400 transition-all" title="VietQR Global - Chuẩn thanh toán QR quốc tế">
-            <img src="./assets/images/vietqr-global.png" alt="VietQR Global Logo" class="h-6 sm:h-7 w-auto object-contain">
-          </div>
-        </div>
-
-        <!-- 8 International Logos Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-3 sm:gap-4">
-          
-          <!-- 1. PromptPay -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 140 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
-                <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
-                <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
-                <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
-                <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-slate-800 tracking-tight">PromptPay</div>
-              <div class="text-[10px] text-slate-500 font-medium">🇹🇭 Thái Lan</div>
-            </div>
-          </div>
-
-          <!-- 2. KHQR -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-red-400 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 130 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
-                <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
-                <g transform="translate(62, 7)">
-                  <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
-                  <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
-                  <circle cx="17" cy="18" r="6" fill="#004A99"/>
-                  <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
-                  <circle cx="17" cy="18" r="2" fill="#004A99"/>
-                </g>
-                <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-red-700 tracking-tight">KHQR</div>
-              <div class="text-[10px] text-slate-500 font-medium">🇰🇭 Campuchia</div>
-            </div>
-          </div>
-
-          <!-- 3. LaPNet -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 140 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LaPNet Logo">
-                <g transform="translate(4, 6)">
-                  <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
-                  <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
-                  <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
-                  <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
-                </g>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-blue-900 tracking-tight">LaPNet</div>
-              <div class="text-[10px] text-slate-500 font-medium">🇱🇦 Lào</div>
-            </div>
-          </div>
-
-          <!-- 4. NETS -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-red-400 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 130 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
-                <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-red-600 tracking-tight">NETS</div>
-              <div class="text-[10px] text-slate-500 font-medium">🇸🇬 Singapore</div>
-            </div>
-          </div>
-
-          <!-- 5. GLN -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-900 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 130 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
-                <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
-                <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
-                <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
-                <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-slate-900 tracking-tight">GLN</div>
-              <div class="text-[10px] text-slate-500 font-medium">🇰🇷 Hàn Quốc</div>
-            </div>
-          </div>
-
-          <!-- 6. Alipay+ -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 150 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alipay+ Logo">
-                <circle cx="18" cy="22" r="15" fill="#1677FF"/>
-                <path d="M12 15H24M18 12V18M11 20H25M14 20C14 23 13 26 10 28M17 21C19 24 22 27 25 28" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <line x1="38" y1="12" x2="38" y2="32" stroke="#CBD5E1" stroke-width="1.5"/>
-                <text x="44" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" fill="#1E293B">Alipay<tspan fill="#1677FF" font-weight="900">+</tspan></text>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-slate-900 tracking-tight">Alipay+</div>
-              <div class="text-[10px] text-slate-500 font-medium">🌏 Châu Á / Quốc tế</div>
-            </div>
-          </div>
-
-          <!-- 7. UnionPay 银联 -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-red-400 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 140 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
-                <g transform="translate(4, 4)">
-                  <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
-                  <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
-                  <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
-                  <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
-                  <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
-                </g>
-                <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
-                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-slate-900 tracking-tight">UnionPay 银联</div>
-              <div class="text-[10px] text-slate-500 font-medium">🌏 Toàn cầu</div>
-            </div>
-          </div>
-
-          <!-- 8. WeChat Pay -->
-          <div class="min-w-0 p-3.5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all flex flex-col items-center justify-between text-center gap-2 group">
-            <div class="h-9 flex items-center justify-center">
-              <svg viewBox="0 0 160 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WeChat Pay Logo">
-                <circle cx="20" cy="22" r="16" fill="#07C160"/>
-                <ellipse cx="17" cy="20" rx="7" ry="6" fill="#FFFFFF"/>
-                <circle cx="15" cy="19" r="1" fill="#07C160"/>
-                <circle cx="19" cy="19" r="1" fill="#07C160"/>
-                <ellipse cx="23" cy="24" rx="5.5" ry="4.5" fill="#FFFFFF"/>
-                <circle cx="22" cy="23.5" r="0.8" fill="#07C160"/>
-                <circle cx="25" cy="23.5" r="0.8" fill="#07C160"/>
-                <text x="44" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#1E293B">WeChat <tspan font-weight="900" fill="#07C160">Pay</tspan></text>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs font-bold text-emerald-800 tracking-tight">WeChat Pay</div>
-              <div class="text-[10px] text-slate-500 font-medium">🌏 Toàn cầu</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+  <!-- ==================== 3. 4 PRODUCTS SHOWCASE (ABOVE-THE-FOLD PRIORITY) ==================== -->
+  <section id="products" class="scroll-mt-20 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="productsHeading">
+        Trang bị thanh toán cho quầy thu ngân
+      </h2>
+      <p class="text-slate-500 text-sm sm:text-base mt-2" data-i18n="productsSubheading">
+        Lựa chọn công cụ phù hợp với quy mô và đặc thù kinh doanh của bạn
+      </p>
     </div>
-  </section>
 
-  <!-- FEATURES SECTION: PRACTICAL BENEFITS FOR MERCHANTS -->
-  <section id="features" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-    <div class="max-w-7xl mx-auto">
+    <!-- 4 Products Grid: 4 cols on desktop, 2 cols on tablet, 1 col on mobile -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider" data-i18n="payBadge">
-          Tiện ích cho điểm bán
-        </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900" data-i18n="payTitle">
-          Giải pháp hỗ trợ thanh toán tại quầy
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="paySubtitle">
-          Giúp cửa hàng tối ưu quy trình thu ngân, hạn chế bất tiện từ tiền mặt và theo dõi doanh thu thuận tiện.
-        </p>
-      </div>
-
-      <!-- Features Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Feat 1 -->
-        <div class="p-6 rounded-2xl fintech-card transition group hover:-translate-y-0.5">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-4">
-            <i data-lucide="arrow-down-right" class="w-6 h-6" aria-hidden="true"></i>
-          </div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 leading-snug" data-i18n="payFeat1Title">
-            Tiền chuyển thẳng về tài khoản ngân hàng
-          </h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal" data-i18n="payFeat1Desc">
-            Khoản thanh toán của khách được chuyển trực tiếp vào tài khoản ngân hàng bạn đăng ký, không qua ví trung gian giữ tiền.
-          </p>
-        </div>
-
-        <!-- Feat 2 -->
-        <div class="p-6 rounded-2xl fintech-card transition group hover:-translate-y-0.5">
-          <div class="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center mb-4">
-            <i data-lucide="volume-2" class="w-6 h-6" aria-hidden="true"></i>
-          </div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 leading-snug" data-i18n="payFeat2Title">
-            Theo dõi giao dịch qua ứng dụng hoặc loa (tùy chọn)
-          </h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal" data-i18n="payFeat2Desc">
-            Hỗ trợ theo dõi biến động số dư qua ứng dụng hoặc thiết bị loa phát âm thanh (tùy chọn trang bị thêm) để thu ngân biết ngay khi khách chuyển tiền.
-          </p>
-        </div>
-
-        <!-- Feat 3 -->
-        <div class="p-6 rounded-2xl fintech-card transition group hover:-translate-y-0.5">
-          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
-            <i data-lucide="shield-check" class="w-6 h-6" aria-hidden="true"></i>
-          </div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 leading-snug" data-i18n="payFeat3Title">
-            Phân quyền theo dõi đơn hàng an toàn
-          </h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal" data-i18n="payFeat3Desc">
-            Nhân viên thu ngân chỉ cần xác nhận trạng thái giao dịch theo từng đơn mà không cần xem số dư tổng hay lịch sử tài khoản của chủ cửa hàng.
-          </p>
-        </div>
-
-        <!-- Feat 4 -->
-        <div class="p-6 rounded-2xl fintech-card transition group hover:-translate-y-0.5">
-          <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-4">
-            <i data-lucide="banknote" class="w-6 h-6" aria-hidden="true"></i>
-          </div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 leading-snug" data-i18n="payFeat4Title">
-            Giảm phụ thuộc vào tiền mặt
-          </h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal" data-i18n="payFeat4Desc">
-            Hạn chế việc chuẩn bị tiền lẻ thối lại, tránh rủi ro tiền rách hoặc nhầm lẫn khi kiểm đếm doanh thu cuối ca.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- INTERNATIONAL PAYMENTS SECTION (Factual, disclaimer on fx rates) -->
-  <section id="cross-border" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
-    <div class="max-w-7xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-cyan-200 shadow-sm">
-          <img src="./assets/images/vietqr-global.png" alt="VietQR Global" class="h-4 w-auto object-contain">
-          <span class="text-cyan-900 text-xs font-bold uppercase tracking-wider border-l border-slate-200 pl-2" data-i18n="globalBadge">Khách du lịch quốc tế</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900" data-i18n="globalTitle">
-          Hỗ trợ khách quốc tế thanh toán qua mã QR
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="globalSubtitle">
-          Khách quốc tế từ các quốc gia thuộc mạng lưới đối tác có thể dùng ứng dụng thanh toán quen thuộc của họ để quét mã VietQR.
-        </p>
-      </div>
-
-      <!-- Country Tab Buttons -->
-      <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-10" role="tablist" aria-label="Danh sách quốc gia hỗ trợ">
-        <button class="country-tab-btn active px-3.5 sm:px-4 py-2 rounded-xl border border-blue-600 bg-blue-50 text-blue-700 text-xs sm:text-sm font-bold transition flex items-center gap-2 shadow-sm" data-country="th" role="tab" aria-selected="true">
-          <span>🇹🇭</span><span>Thái Lan (PromptPay)</span>
-        </button>
-        <button class="country-tab-btn px-3.5 sm:px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-blue-400 text-xs sm:text-sm font-bold transition flex items-center gap-2 shadow-sm" data-country="ko" role="tab" aria-selected="false">
-          <span>🇰🇷</span><span>Hàn Quốc (GLN)</span>
-        </button>
-        <button class="country-tab-btn px-3.5 sm:px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-blue-400 text-xs sm:text-sm font-bold transition flex items-center gap-2 shadow-sm" data-country="cn" role="tab" aria-selected="false">
-          <span>🇨🇳</span><span>Trung Quốc (Alipay+/WeChat)</span>
-        </button>
-        <button class="country-tab-btn px-3.5 sm:px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-blue-400 text-xs sm:text-sm font-bold transition flex items-center gap-2 shadow-sm" data-country="sg" role="tab" aria-selected="false">
-          <span>🇸🇬</span><span>Singapore (NETS)</span>
-        </button>
-        <button class="country-tab-btn px-3.5 sm:px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-blue-400 text-xs sm:text-sm font-bold transition flex items-center gap-2 shadow-sm" data-country="kh" role="tab" aria-selected="false">
-          <span>🇰🇭</span><span>Campuchia (KHQR)</span>
-        </button>
-        <button class="country-tab-btn px-3.5 sm:px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-blue-400 text-xs sm:text-sm font-bold transition flex items-center gap-2 shadow-sm" data-country="la" role="tab" aria-selected="false">
-          <span>🇱🇦</span><span>Lào (LAPNet)</span>
-        </button>
-      </div>
-
-      <!-- Country Details & FX Illustration Card -->
-      <div class="max-w-4xl mx-auto fintech-card p-6 sm:p-8 rounded-3xl shadow-md">
-        <div class="grid md:grid-cols-12 gap-8 items-center">
-          
-          <!-- Left: Country Info -->
-          <div class="md:col-span-7 space-y-4">
-            <div class="flex items-center gap-3">
-              <span id="countryDisplayFlag" class="text-4xl" aria-hidden="true">🇹🇭</span>
-              <div>
-                <h3 id="countryDisplayName" class="text-xl font-bold text-slate-900">Thái Lan (Thailand)</h3>
-                <p id="countryDisplayNetwork" class="text-xs text-blue-600 font-bold uppercase tracking-wide">PromptPay • ITMX</p>
-              </div>
-            </div>
-
-            <div class="space-y-1.5 pt-1">
-              <div class="text-xs text-slate-500 font-medium">Ứng dụng tiêu biểu khách sử dụng:</div>
-              <div id="countryDisplayApps" class="text-xs sm:text-sm font-semibold text-slate-800 p-3 rounded-xl bg-slate-100 border border-slate-200">
-                K PLUS, SCB EASY, Krungthai NEXT, Bangkok Bank
-              </div>
-            </div>
-
-            <div class="text-xs text-slate-500 pt-1 flex items-start gap-2">
-              <i data-lucide="info" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5" aria-hidden="true"></i>
-              <span id="countryDisplayFx" class="font-medium">1 THB ≈ 715 VND (Tỷ giá minh họa)</span>
-            </div>
-            <div class="text-[11px] text-slate-400 italic" data-i18n="globalFxNotice">
-              Tỷ giá minh họa (áp dụng theo quy định của mạng lưới thanh toán tại thời điểm giao dịch)
-            </div>
-          </div>
-
-          <!-- Right: Visual FX conversion demonstration -->
-          <div class="md:col-span-5 p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-3">
-            <div class="text-xs font-bold text-slate-600 uppercase tracking-wider">Cơ chế quét mã và nhận tiền</div>
-            
-            <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
-              <div class="text-[11px] text-slate-500">Khách thanh toán từ ứng dụng bản địa:</div>
-              <div id="countryDisplayForeign" class="text-lg font-black text-blue-600 mt-0.5">210 THB</div>
-            </div>
-
-            <div class="flex justify-center text-blue-600">
-              <i data-lucide="arrow-down" class="w-4 h-4" aria-hidden="true"></i>
-            </div>
-
-            <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 shadow-sm">
-              <div class="text-[11px] text-emerald-800">Cửa hàng nhận tiền chuyển khoản:</div>
-              <div id="countryDisplayVnd" class="text-xl font-black text-emerald-700 mt-0.5">150.000 VNĐ</div>
-            </div>
-
-            <div class="text-[11px] text-slate-500">Tiền được chuyển thẳng vào tài khoản ngân hàng của cửa hàng</div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- STANDEE / POSM SECTION: REFINED & REALISTIC -->
-  <section id="posm" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-6xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-14 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider" data-i18n="posmBadge">
-          Trang bị tại quầy
-        </div>
-        <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="posmTitle">
-          Bảng mã QR để bàn cho quầy thu ngân
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="posmSubtitle">
-          Bảng mica đặt tại quầy thanh toán giúp khách hàng dễ dàng quét mã bằng điện thoại, tạo sự chuyên nghiệp và thuận tiện cho thu ngân.
-        </p>
-      </div>
-
-      <!-- Spotlight Product Showcase Card -->
-      <div class="fintech-card rounded-3xl p-5 sm:p-8 lg:p-10 shadow-lg bg-white">
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          
-          <!-- Left Column: Authentic Mica Than Tai Standee Visual -->
-          <div class="lg:col-span-5 min-w-0 flex items-center justify-center">
+      <!-- PRODUCT 1: VietQR Pay (Authentic Transparent Mica Than Tai Standee) -->
+      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
+        <div>
+          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
             <img 
               src="./assets/images/standee-than-tai.png" 
-              alt="Bảng mã QR mica Thần Tài để bàn cho quầy thu ngân" 
-              class="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[360px] h-auto object-contain block mx-auto select-none pointer-events-none"
+              alt="VietQR Pay" 
+              class="max-h-full max-w-full object-contain select-none transition-transform group-hover:scale-105 duration-200"
+              loading="lazy"
             >
           </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-1" data-i18n="product1Title">VietQR Pay</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4" data-i18n="product1Benefit">
+            Nhận thanh toán quét mã QR nhanh chóng từ mọi ngân hàng và ví điện tử, không lo kẹt tiền.
+          </p>
+        </div>
+        <div>
+          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="vietqr-pay">
+            <span data-i18n="viewDetailBtn">Xem chi tiết</span>
+            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
 
-          <!-- Right Column: Practical Details -->
-          <div class="lg:col-span-7 min-w-0 space-y-5">
-            
-            <div class="space-y-2">
-              <h3 class="text-xl sm:text-2xl font-bold text-slate-900" data-i18n="posmStandeeHeading">
-                Bảng mã QR mica để bàn
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed" data-i18n="posmStandeeDesc">
-                Thiết kế nhỏ gọn, bề mặt mica trong suốt, in mã QR rõ nét, có chân đế vững chắc phù hợp đặt tại quầy thu ngân hoặc quầy pha chế.
-              </p>
-            </div>
-
-            <!-- 4 Key Points -->
-            <div class="space-y-3">
-              <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                  <i data-lucide="check" class="w-4 h-4" aria-hidden="true"></i>
-                </div>
-                <div class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed" data-i18n="posmBenefit1">
-                  Chất liệu mica bền đẹp, bề mặt trong suốt dễ lau chùi
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                  <i data-lucide="check" class="w-4 h-4" aria-hidden="true"></i>
-                </div>
-                <div class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed" data-i18n="posmBenefit2">
-                  Mã QR in rõ ràng, góc nghiêng thuận tiện cho camera điện thoại quét nhanh
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                  <i data-lucide="check" class="w-4 h-4" aria-hidden="true"></i>
-                </div>
-                <div class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed" data-i18n="posmBenefit3">
-                  Tích hợp nhận thanh toán từ ngân hàng nội địa và mạng lưới đối tác quốc tế
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                  <i data-lucide="check" class="w-4 h-4" aria-hidden="true"></i>
-                </div>
-                <div class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed" data-i18n="posmBenefit4">
-                  Được hỗ trợ hướng dẫn lắp đặt và hỗ trợ đổi bảng khi có thay đổi thông tin
-                </div>
-              </div>
-            </div>
-
-            <!-- CTA Button -->
-            <div class="pt-2">
-              <a href="#register" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-                <i data-lucide="file-plus" class="w-4 h-4" aria-hidden="true"></i>
-                <span data-i18n="posmCtaBtn">Đăng ký tư vấn bảng QR</span>
-              </a>
-            </div>
-
+      <!-- PRODUCT 2: Loa Thông Báo (Soundbox) -->
+      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
+        <div>
+          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
+            <img 
+              src="./assets/images/product-soundbox.jpg" 
+              alt="Loa thông báo" 
+              class="max-h-full max-w-full object-contain rounded-xl select-none transition-transform group-hover:scale-105 duration-200"
+              loading="lazy"
+            >
           </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-1" data-i18n="product2Title">Loa thông báo</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4" data-i18n="product2Benefit">
+            Phát âm thanh báo tiền về tài khoản tức thì, chống gian lận chuyển khoản vào giờ cao điểm.
+          </p>
+        </div>
+        <div>
+          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="soundbox">
+            <span data-i18n="viewDetailBtn">Xem chi tiết</span>
+            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
 
+      <!-- PRODUCT 3: Phần Mềm Bán Hàng (POS Software) -->
+      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
+        <div>
+          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
+            <img 
+              src="./assets/images/product-pos-app.jpg" 
+              alt="Phần mềm bán hàng" 
+              class="max-h-full max-w-full object-contain rounded-xl select-none transition-transform group-hover:scale-105 duration-200"
+              loading="lazy"
+            >
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-1" data-i18n="product3Title">Phần mềm bán hàng</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4" data-i18n="product3Benefit">
+            Quản lý đơn hàng, tồn kho và doanh thu tự động đồng bộ theo từng lượt quét thanh toán.
+          </p>
+        </div>
+        <div>
+          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="pos-software">
+            <span data-i18n="viewDetailBtn">Xem chi tiết</span>
+            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 4: Máy POS Thanh Toán (Smart POS) -->
+      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
+        <div>
+          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
+            <img 
+              src="./assets/images/product-smart-pos.jpg" 
+              alt="Máy POS thanh toán" 
+              class="max-h-full max-w-full object-contain rounded-xl select-none transition-transform group-hover:scale-105 duration-200"
+              loading="lazy"
+            >
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-1" data-i18n="product4Title">Máy POS thanh toán</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4" data-i18n="product4Benefit">
+            Chấp nhận mọi loại thẻ chip, thẻ quốc tế và chạm ví không tiếp xúc ngay tại bàn.
+          </p>
+        </div>
+        <div>
+          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="smart-pos">
+            <span data-i18n="viewDetailBtn">Xem chi tiết</span>
+            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- COMPARISON SECTION: BALANCED, NEUTRAL CHARACTERISTICS -->
-  <section id="comparison" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
-    <div class="max-w-5xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-300 text-slate-700 text-xs font-bold uppercase tracking-wider" data-i18n="compareBadge">
-          Đặc điểm giải pháp
-        </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900" data-i18n="compareTitle">
-          So sánh Bảng mã QR và Máy quẹt thẻ (POS)
+  <!-- ==================== 4. SHORT 3-STEP REGISTRATION PROCESS ==================== -->
+  <section id="process" class="scroll-mt-20 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-100 border-t border-b border-slate-200">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="processTitle">
+          Quy trình đăng ký 3 bước
         </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="compareSubtitle">
-          Tùy thuộc vào mô hình kinh doanh và đối tượng khách hàng, mỗi hình thức đều có những đặc điểm phù hợp riêng.
+        <p class="text-slate-600 text-sm sm:text-base mt-1.5" data-i18n="processSubtitle">
+          Nhanh chóng, đơn giản và hỗ trợ tư vấn tận nơi
         </p>
       </div>
 
-      <!-- Table Wrapper with horizontal scrolling safety -->
-      <div class="rounded-2xl fintech-card overflow-hidden border border-slate-200">
-        <!-- Mobile Horizontal Scroll Hint -->
-        <div class="sm:hidden px-4 py-2 bg-slate-100 border-b border-slate-200 flex items-center justify-between text-[11px] text-slate-500 font-medium">
-          <span class="flex items-center gap-1.5"><i data-lucide="move-horizontal" class="w-3.5 h-3.5 text-blue-600" aria-hidden="true"></i> Vuốt ngang để xem so sánh</span>
-          <span class="font-bold text-blue-600">Chi tiết</span>
-        </div>
-
-        <div class="overflow-x-auto w-full">
-          <table class="min-w-[620px] w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-slate-200 bg-slate-100/90">
-                <th scope="col" class="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider w-1/4" data-i18n="compColFeature">Tiêu chí so sánh</th>
-                <th scope="col" class="p-4 text-xs font-bold text-blue-800 uppercase tracking-wider bg-blue-50/70 border-x border-blue-200 w-3/8" data-i18n="compColQR">
-                  Bảng mã QR để bàn
-                </th>
-                <th scope="col" class="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider w-3/8" data-i18n="compColPOS">
-                  Máy quẹt thẻ (POS truyền thống)
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-200 text-xs sm:text-sm">
-              
-              <!-- Row 1 -->
-              <tr class="hover:bg-slate-50/70 transition">
-                <td class="p-4 font-bold text-slate-800" data-i18n="compRow1Feature">Hình thức thanh toán</td>
-                <td class="p-4 text-slate-800 bg-blue-50/30 border-x border-blue-100 leading-relaxed" data-i18n="compRow1_v">
-                  Khách quét mã bằng app ngân hàng / ví điện tử trên điện thoại
-                </td>
-                <td class="p-4 text-slate-600 leading-relaxed" data-i18n="compRow1_p">
-                  Khách quẹt thẻ ATM, Visa/Mastercard hoặc chạm thẻ chip
-                </td>
-              </tr>
-
-              <!-- Row 2 -->
-              <tr class="hover:bg-slate-50/70 transition">
-                <td class="p-4 font-bold text-slate-800" data-i18n="compRow2Feature">Thiết bị tại quầy</td>
-                <td class="p-4 text-slate-800 bg-blue-50/30 border-x border-blue-100 leading-relaxed" data-i18n="compRow2_v">
-                  Bảng mica nhỏ gọn, không cần sắm máy móc cồng kềnh, không cần sạc điện
-                </td>
-                <td class="p-4 text-slate-600 leading-relaxed" data-i18n="compRow2_p">
-                  Thiết bị điện tử chuyên dụng, cần cắm sạc/pin và lắp sim 4G hoặc Wifi
-                </td>
-              </tr>
-
-              <!-- Row 3 -->
-              <tr class="hover:bg-slate-50/70 transition">
-                <td class="p-4 font-bold text-slate-800" data-i18n="compRow3Feature">Thao tác thu ngân</td>
-                <td class="p-4 text-slate-800 bg-blue-50/30 border-x border-blue-100 leading-relaxed" data-i18n="compRow3_v">
-                  Khách tự thao tác trên điện thoại; thu ngân kiểm tra thông báo nhận tiền
-                </td>
-                <td class="p-4 text-slate-600 leading-relaxed" data-i18n="compRow3_p">
-                  Thu ngân thao tác trên máy POS, quẹt thẻ và in hóa đơn giấy cho khách
-                </td>
-              </tr>
-
-              <!-- Row 4 -->
-              <tr class="hover:bg-slate-50/70 transition">
-                <td class="p-4 font-bold text-slate-800" data-i18n="compRow4Feature">Chi phí & Biểu phí</td>
-                <td class="p-4 text-slate-800 bg-blue-50/30 border-x border-blue-100 leading-relaxed" data-i18n="compRow4_v">
-                  Chi phí đầu tư ban đầu thấp; biểu phí áp dụng theo chính sách đơn vị cung cấp
-                </td>
-                <td class="p-4 text-slate-600 leading-relaxed" data-i18n="compRow4_p">
-                  Chi phí thuê/mua máy và phí quẹt thẻ tính theo % doanh số mỗi giao dịch
-                </td>
-              </tr>
-
-              <!-- Row 5 -->
-              <tr class="hover:bg-slate-50/70 transition">
-                <td class="p-4 font-bold text-slate-800" data-i18n="compRow5Feature">Mô hình phù hợp</td>
-                <td class="p-4 text-slate-800 bg-blue-50/30 border-x border-blue-100 leading-relaxed" data-i18n="compRow5_v">
-                  Cửa hàng bán lẻ, quán ăn, cà phê, tiệm tạp hóa, dịch vụ vừa và nhỏ
-                </td>
-                <td class="p-4 text-slate-600 leading-relaxed" data-i18n="compRow5_p">
-                  Khách sạn, chuỗi siêu thị, nhà hàng có tỷ lệ khách dùng thẻ tín dụng cao
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ONBOARDING / PROCESS SECTION -->
-  <section id="process" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider" data-i18n="processBadge">
-          Quy trình thực hiện
-        </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900" data-i18n="processTitle">
-          3 bước đăng ký và đưa vào sử dụng
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="processSubtitle">
-          Quy trình đơn giản giúp cửa hàng nhanh chóng trang bị giải pháp thanh toán QR.
-        </p>
-      </div>
-
-      <!-- Step Cards -->
-      <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
-        
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Step 1 -->
-        <div class="p-6 sm:p-8 rounded-3xl fintech-card relative">
-          <div class="text-4xl font-black text-blue-300 mb-3" aria-hidden="true">01</div>
-          <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 leading-snug" data-i18n="step1Title">
-            Bước 1: Gửi thông tin đăng ký tư vấn
-          </h3>
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col items-center text-center">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 font-black text-lg flex items-center justify-center mb-4">
+            1
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1" data-i18n="step1Title">1. Để lại thông tin</h3>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="step1Desc">
-            Điền thông tin liên hệ và cửa hàng vào biểu mẫu bên dưới để chuyên viên tiếp nhận nhu cầu.
+            Cung cấp số điện thoại và địa chỉ cửa hàng qua biểu mẫu đăng ký bên dưới.
           </p>
         </div>
 
         <!-- Step 2 -->
-        <div class="p-6 sm:p-8 rounded-3xl fintech-card relative border-2 border-blue-500/40">
-          <div class="text-4xl font-black text-blue-600 mb-3" aria-hidden="true">02</div>
-          <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 leading-snug" data-i18n="step2Title">
-            Bước 2: Tư vấn chi tiết & ký hợp đồng online
-          </h3>
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col items-center text-center">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 font-black text-lg flex items-center justify-center mb-4">
+            2
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1" data-i18n="step2Title">2. Tư vấn giải pháp</h3>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="step2Desc">
-            Tìm hiểu chi tiết về biểu phí, điều kiện và xác nhận hợp đồng điện tử online thuận tiện qua mã OTP.
+            Chuyên viên kinh doanh liên hệ xác nhận nhu cầu và gói trang bị phù hợp nhất.
           </p>
         </div>
 
         <!-- Step 3 -->
-        <div class="p-6 sm:p-8 rounded-3xl fintech-card relative">
-          <div class="text-4xl font-black text-emerald-400 mb-3" aria-hidden="true">03</div>
-          <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 leading-snug" data-i18n="step3Title">
-            Bước 3: Nhận bảng QR và sử dụng
-          </h3>
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col items-center text-center">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 font-black text-lg flex items-center justify-center mb-4">
+            3
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1" data-i18n="step3Title">3. Nhận trang bị & Sử dụng</h3>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="step3Desc">
-            Nhận bảng mã QR đặt tại quầy, kiểm tra giao dịch thử nghiệm và bắt đầu nhận thanh toán.
+            Bàn giao tận nơi, hướng dẫn nhân viên thao tác và bắt đầu nhận thanh toán.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. MINIMALIST 2-FIELD REGISTRATION FORM ==================== -->
+  <section id="register" class="scroll-mt-20 py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+    <div class="fintech-card rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl bg-white">
+      
+      <div class="text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight" data-i18n="registerTitle">
+          Đăng ký tư vấn miễn phí
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed" data-i18n="registerExplain">
+          Để lại số điện thoại và địa chỉ cửa hàng, đội ngũ kinh doanh sẽ liên hệ tư vấn.
+        </p>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="leadForm" novalidate class="space-y-5">
+        
+        <!-- Product of Interest Selection -->
+        <div>
+          <label for="productInterest" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldProductInterest">
+            Sản phẩm bạn đang quan tâm
+          </label>
+          <div class="relative">
+            <select id="productInterest" name="productInterest" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white text-slate-900 text-sm font-medium focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition outline-none cursor-pointer">
+              <option value="all" data-i18n="optProductAll">Trọn bộ giải pháp (Được tư vấn tất cả)</option>
+              <option value="vietqr-pay" data-i18n="optProductVietQR">VietQR Pay (Bảng mica để bàn)</option>
+              <option value="soundbox" data-i18n="optProductSoundbox">Loa thông báo giao dịch</option>
+              <option value="pos-software" data-i18n="optProductSoftware">Phần mềm bán hàng</option>
+              <option value="smart-pos" data-i18n="optProductPOS">Máy POS thanh toán</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Field 1: Phone -->
+        <div>
+          <label for="phone" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldPhone">
+            Số điện thoại liên hệ *
+          </label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            required 
+            placeholder="Ví dụ: 0912 345 678" 
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 transition outline-none"
+          >
+          <p id="err-phone" class="hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1" data-i18n="formErrorPhone">
+            Vui lòng nhập số điện thoại hợp lệ (10 chữ số).
           </p>
         </div>
 
-      </div>
+        <!-- Field 2: Store Address -->
+        <div>
+          <label for="storeAddress" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldAddress">
+            Địa chỉ cửa hàng *
+          </label>
+          <input 
+            type="text" 
+            id="storeAddress" 
+            name="storeAddress" 
+            required 
+            placeholder="Ví dụ: 123 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM" 
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 transition outline-none"
+          >
+          <p id="err-storeAddress" class="hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1" data-i18n="formErrorAddress">
+            Vui lòng nhập địa chỉ cửa hàng.
+          </p>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            id="submitBtn" 
+            class="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-md transition transform active:scale-95 flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+          >
+            <span data-i18n="submitRegisterBtn">Đăng ký miễn phí ngay</span>
+            <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Success Alert (Hidden by default) -->
+        <div id="formSuccessAlert" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-start gap-3">
+          <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+          <div>
+            <div class="font-bold" data-i18n="formSuccess">Đã tiếp nhận thông tin thành công! Đội ngũ kinh doanh sẽ sớm liên hệ tư vấn cho bạn.</div>
+            <div class="text-xs text-emerald-700 mt-0.5">Chúng tôi cam kết bảo mật thông tin liên hệ của cửa hàng.</div>
+          </div>
+        </div>
+
+      </form>
 
     </div>
   </section>
 
-  <!-- LEAD GENERATION FORM -->
-  <section id="register" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
-    <div class="max-w-3xl mx-auto">
+  <!-- ==================== 6. PRODUCT DETAIL MODAL DIALOG ==================== -->
+  <div id="productDetailModal" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm p-4 sm:p-6 flex items-center justify-center">
+    <div class="relative bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-slate-200">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider" data-i18n="formBadge">
-          Đăng ký trực tuyến
+      <!-- Close Button -->
+      <button id="productDetailCloseBtn" type="button" aria-label="Đóng chi tiết sản phẩm" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+        <i data-lucide="x" class="w-6 h-6" aria-hidden="true"></i>
+      </button>
+
+      <!-- Modal Visual Header -->
+      <div class="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-slate-200">
+        <div class="w-36 h-36 shrink-0 flex items-center justify-center bg-slate-50 rounded-2xl p-2 border border-slate-100">
+          <img id="modalProductImg" src="./assets/images/standee-than-tai.png" alt="Sản phẩm" class="max-h-full max-w-full object-contain">
         </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900" data-i18n="formTitle">
-          Đăng ký nhận tư vấn giải pháp
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="formSubtitle">
-          Vui lòng để lại thông tin để chuyên viên hỗ trợ tư vấn chi tiết giải pháp phù hợp với cửa hàng của bạn.
-        </p>
+        <div class="text-center sm:text-left">
+          <div id="modalProductBadge" class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-2">
+            Trang bị quầy thu ngân
+          </div>
+          <h3 id="modalProductTitle" class="text-2xl font-black text-slate-900 tracking-tight">VietQR Pay</h3>
+          <p id="modalProductBenefit" class="text-sm text-slate-600 mt-1 leading-relaxed">Nhận thanh toán quét mã QR nhanh chóng từ mọi ngân hàng.</p>
+        </div>
       </div>
 
-      <!-- Form Card -->
-      <div class="fintech-card p-6 sm:p-10 rounded-3xl shadow-lg border border-slate-200">
+      <!-- 3 Core Questions Content -->
+      <div class="py-6 space-y-6">
         
-        <!-- Form Alert Message (Honest, Prototype Notice) -->
-        <div id="formSuccessAlert" class="hidden mb-6 p-5 rounded-2xl bg-blue-50 border border-blue-300 text-blue-900" role="alert">
-          <div class="flex items-start gap-3">
-            <i data-lucide="check-circle" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" aria-hidden="true"></i>
-            <div>
-              <div class="font-bold text-base" data-i18n="formSuccessTitle">Yêu cầu tư vấn đã được ghi nhận!</div>
-              <div class="text-xs text-blue-800 mt-1 leading-relaxed" data-i18n="formSuccessDesc">
-                Lưu ý phiên bản xem trước (Prototype): Thông tin hiện được lưu trữ cục bộ để kiểm thử giao diện. Khi kết nối cổng tiếp nhận chính thức, dữ liệu sẽ được chuyển đến chuyên viên tư vấn.
-              </div>
+        <!-- Question 1: For who? -->
+        <div class="space-y-1.5">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2" data-i18n="modalForWho">
+            <i data-lucide="store" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+            <span>Dùng cho ai, cửa hàng nào?</span>
+          </h4>
+          <p id="modalForWhoText" class="text-sm text-slate-600 pl-6 leading-relaxed">
+            Phù hợp với mọi mô hình bán lẻ, tiệm cafe, quán ăn, tiệm tạp hóa, quầy chợ và điểm dịch vụ vừa & nhỏ.
+          </p>
+        </div>
+
+        <!-- Question 2: Payment methods -->
+        <div class="space-y-1.5">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2" data-i18n="modalPaymentMethods">
+            <i data-lucide="credit-card" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+            <span>Hình thức thanh toán hỗ trợ</span>
+          </h4>
+          <p id="modalMethodsText" class="text-sm text-slate-600 pl-6 leading-relaxed">
+            Quét mã VietQR qua ứng dụng các ngân hàng tại Việt Nam và mạng lưới đối tác quốc tế.
+          </p>
+        </div>
+
+        <!-- Question 3: 3-step counter workflow -->
+        <div class="space-y-2">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2" data-i18n="modalHowToUse">
+            <i data-lucide="check-square" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+            <span>Cách sử dụng 3 bước tại quầy</span>
+          </h4>
+          <div class="grid grid-cols-1 gap-2 pl-6">
+            <div id="modalStep1Text" class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700">
+              1. Khách mở ứng dụng ngân hàng hoặc ví điện tử và quét mã QR trên bảng mica.
+            </div>
+            <div id="modalStep2Text" class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700">
+              2. Khách nhập số tiền và xác nhận chuyển khoản.
+            </div>
+            <div id="modalStep3Text" class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700">
+              3. Tiền chuyển thẳng về tài khoản ngân hàng của cửa hàng ngay tức thì.
             </div>
           </div>
         </div>
 
-        <form id="merchantLeadForm" class="space-y-5" novalidate>
-          <div class="grid sm:grid-cols-2 gap-5">
-            
-            <!-- 1. Full Name (Required) -->
-            <div class="min-w-0">
-              <label for="field-fullName" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="formFullName">
-                Họ và tên người đại diện *
-              </label>
-              <input type="text" id="field-fullName" name="fullName" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition" placeholder="Nguyễn Văn A">
-              <p id="err-fullName" class="text-xs text-rose-600 mt-1 hidden" role="alert"></p>
-            </div>
-
-            <!-- 2. Phone (Required) -->
-            <div class="min-w-0">
-              <label for="field-phone" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="formPhone">
-                Số điện thoại liên hệ *
-              </label>
-              <input type="tel" id="field-phone" name="phone" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition" placeholder="0901234567">
-              <p id="err-phone" class="text-xs text-rose-600 mt-1 hidden" role="alert"></p>
-            </div>
-
-            <!-- 3. Store Name (Required) -->
-            <div class="min-w-0">
-              <label for="field-storeName" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="formStoreName">
-                Tên thương hiệu / Cửa hàng *
-              </label>
-              <input type="text" id="field-storeName" name="storeName" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition" placeholder="Cà phê Sài Gòn, Nhà thuốc...">
-              <p id="err-storeName" class="text-xs text-rose-600 mt-1 hidden" role="alert"></p>
-            </div>
-
-            <!-- 4. City (Required) -->
-            <div class="min-w-0">
-              <label for="field-city" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="formCity">
-                Tỉnh / Thành phố kinh doanh *
-              </label>
-              <input type="text" id="field-city" name="city" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition" placeholder="TP. Hồ Chí Minh, Hà Nội...">
-              <p id="err-city" class="text-xs text-rose-600 mt-1 hidden" role="alert"></p>
-            </div>
-
-          </div>
-
-          <!-- Optional Fields Section -->
-          <div class="pt-2 border-t border-slate-100 space-y-4">
-            <div class="grid sm:grid-cols-2 gap-5">
-              
-              <!-- Optional: Email -->
-              <div class="min-w-0">
-                <label for="field-email" class="block text-xs font-medium text-slate-600 mb-1.5" data-i18n="formEmail">
-                  Email nhận thông tin (không bắt buộc)
-                </label>
-                <input type="email" id="field-email" name="email" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition" placeholder="cuahang@example.com">
-                <p id="err-email" class="text-xs text-rose-600 mt-1 hidden" role="alert"></p>
-              </div>
-
-              <!-- Optional: Business Type -->
-              <div class="min-w-0">
-                <label for="field-businessType" class="block text-xs font-medium text-slate-600 mb-1.5" data-i18n="formBusinessType">
-                  Mô hình hoạt động (không bắt buộc)
-                </label>
-                <select id="field-businessType" name="businessType" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition cursor-pointer">
-                  <option value="" data-i18n="formBusinessOptDefault">-- Chọn mô hình kinh doanh --</option>
-                  <option value="hkd" data-i18n="formBusinessOpt1">Hộ kinh doanh cá thể</option>
-                  <option value="enterprise" data-i18n="formBusinessOpt2">Công ty / Doanh nghiệp</option>
-                  <option value="chain" data-i18n="formBusinessOpt3">Chuỗi cửa hàng / Bán lẻ</option>
-                  <option value="individual" data-i18n="formBusinessOpt4">Cá nhân kinh doanh</option>
-                </select>
-              </div>
-
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-5">
-              <!-- Optional: Solution -->
-              <div class="min-w-0">
-                <label for="field-solution" class="block text-xs font-medium text-slate-600 mb-1.5" data-i18n="formSolution">
-                  Nhu cầu tư vấn (không bắt buộc)
-                </label>
-                <select id="field-solution" name="solution" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition cursor-pointer">
-                  <option value="both" selected data-i18n="formSolOpt3">Tư vấn cả hai giải pháp</option>
-                  <option value="domestic" data-i18n="formSolOpt1">Thanh toán nội địa qua VietQR</option>
-                  <option value="global" data-i18n="formSolOpt2">Thanh toán cho khách du lịch quốc tế</option>
-                </select>
-              </div>
-
-              <!-- Optional: Bank -->
-              <div class="min-w-0">
-                <label for="field-bank" class="block text-xs font-medium text-slate-600 mb-1.5" data-i18n="formBank">
-                  Ngân hàng nhận tiền dự kiến
-                </label>
-                <select id="field-bank" name="bank" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white transition cursor-pointer">
-                  <option value="" data-i18n="formBankOptDefault">-- Chọn ngân hàng dự kiến --</option>
-                  <optgroup label="4 Ngân hàng đối tác chiến lược">
-                    <option value="MB">MB Bank (Ngân hàng Quân đội)</option>
-                    <option value="TCB">Techcombank (Ngân hàng Kỹ thương)</option>
-                    <option value="VIB">VIB (Ngân hàng Quốc tế)</option>
-                    <option value="VPB">VPBank (Ngân hàng VN Thịnh Vượng)</option>
-                  </optgroup>
-                  <optgroup label="Các ngân hàng khác">
-                    <option value="VCB">Vietcombank</option>
-                    <option value="BIDV">BIDV</option>
-                    <option value="CTG">VietinBank</option>
-                    <option value="TPB">TPBank</option>
-                    <option value="other">Ngân hàng khác</option>
-                  </optgroup>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="pt-3 text-center">
-            <button type="submit" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base shadow-md shadow-blue-500/20 transition transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600">
-              <span data-i18n="formSubmit">Gửi yêu cầu tư vấn</span>
-            </button>
-          </div>
-
-        </form>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ SECTION: FACTUAL & CLARIFIED -->
-  <section id="faq" class="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-4xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider" data-i18n="faqBadge">
-          Giải đáp thắc mắc
-        </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900" data-i18n="faqTitle">
-          Câu hỏi thường gặp
-        </h2>
-      </div>
-
-      <!-- FAQ Accordion List -->
-      <div class="space-y-3.5">
-        
-        <!-- Q1 -->
-        <div class="faq-item rounded-2xl fintech-card overflow-hidden">
-          <button type="button" aria-expanded="false" class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-            <span class="font-bold text-slate-900 text-sm sm:text-base" data-i18n="faqQ1">Chi phí đăng ký và sử dụng dịch vụ được tính như thế nào?</span>
-            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
-          </button>
-          <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3" data-i18n="faqA1">
-            Biểu phí và chi phí bảng QR phụ thuộc vào chính sách của đơn vị cung cấp tại thời điểm đăng ký. Điểm bán sẽ được tư vấn cụ thể và minh bạch về toàn bộ chi phí trước khi ký hợp đồng.
-          </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="faq-item rounded-2xl fintech-card overflow-hidden">
-          <button type="button" aria-expanded="false" class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-            <span class="font-bold text-slate-900 text-sm sm:text-base" data-i18n="faqQ2">Tiền thanh toán của khách sẽ được chuyển về đâu?</span>
-            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
-          </button>
-          <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3" data-i18n="faqA2">
-            Khoản thanh toán của khách sẽ được chuyển trực tiếp vào tài khoản ngân hàng do chủ cửa hàng đăng ký. Bạn có thể sử dụng tài khoản hiện có tại hầu hết các ngân hàng tại Việt Nam.
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="faq-item rounded-2xl fintech-card overflow-hidden">
-          <button type="button" aria-expanded="false" class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-            <span class="font-bold text-slate-900 text-sm sm:text-base" data-i18n="faqQ3">Khách du lịch quốc tế thanh toán bằng cách nào?</span>
-            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
-          </button>
-          <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3" data-i18n="faqA3">
-            Khách quốc tế từ các mạng lưới đối tác liên kết (như PromptPay, GLN, v.v.) có thể quét mã VietQR bằng ứng dụng thanh toán của họ. Giao dịch được quy đổi theo tỷ giá quy định và ghi có bằng tiền Đồng Việt Nam (VND) vào tài khoản của bạn.
-          </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="faq-item rounded-2xl fintech-card overflow-hidden">
-          <button type="button" aria-expanded="false" class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-            <span class="font-bold text-slate-900 text-sm sm:text-base" data-i18n="faqQ4">Cửa hàng cần chuẩn bị những giấy tờ gì để đăng ký?</span>
-            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-blue-600 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
-          </button>
-          <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3" data-i18n="faqA4">
-            Tùy theo mô hình kinh doanh (cá nhân, hộ kinh doanh hoặc doanh nghiệp), chuyên viên sẽ hướng dẫn bạn chuẩn bị giấy tờ cơ bản như CCCD của người đại diện, giấy phép kinh doanh (nếu có). Hợp đồng được thực hiện trực tuyến thuận tiện.
-          </div>
+        <!-- Support role note (Crucial for Speaker & POS Software) -->
+        <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200 text-xs sm:text-sm text-blue-900 leading-relaxed flex items-start gap-2.5">
+          <i data-lucide="help-circle" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+          <span id="modalRoleText">Lưu ý về vai trò thiết bị hỗ trợ trong quy trình thanh toán.</span>
         </div>
 
       </div>
 
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-200 bg-white text-slate-600 text-xs sm:text-sm">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 pb-8 border-b border-slate-200">
-      
-      <!-- Col 1: Brand Info -->
-      <div class="md:col-span-5 space-y-3">
-        <div class="font-black text-xl text-slate-900">
-          <span>khongtien</span><span class="text-blue-600">mat</span><span class="text-blue-500">.vn</span>
-        </div>
-        <p class="text-slate-600 leading-relaxed max-w-md text-xs sm:text-sm" data-i18n="footerDesc">
-          Giải pháp hỗ trợ điểm bán chấp nhận thanh toán qua mã QR nội địa và quốc tế, tối ưu quy trình thu ngân và quản trị dòng tiền cho cửa hàng.
-        </p>
-        <div class="text-xs text-slate-500 font-medium pt-1">
-          Đơn vị phát triển và vận hành:<br>
-          <strong class="text-slate-800">CÔNG TY CỔ PHẦN NEXUS DIGITAL</strong>
-        </div>
-      </div>
-
-      <!-- Col 2: Quick Links -->
-      <div class="md:col-span-3 space-y-2">
-        <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Liên kết nhanh</div>
-        <div><a href="#features" class="hover:text-blue-600 transition">Tính năng thanh toán</a></div>
-        <div><a href="#cross-border" class="hover:text-blue-600 transition">Khách quốc tế</a></div>
-        <div><a href="#posm" class="hover:text-blue-600 transition">Bảng QR để bàn</a></div>
-        <div><a href="#comparison" class="hover:text-blue-600 transition">So sánh giải pháp</a></div>
-        <div><a href="#register" class="hover:text-blue-600 transition">Đăng ký tư vấn</a></div>
-      </div>
-
-      <!-- Col 3: Contact Info (Verified only, no fake 1900 hotline) -->
-      <div class="md:col-span-4 space-y-2.5">
-        <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Thông tin liên hệ</div>
-        <div class="flex items-start gap-2">
-          <i data-lucide="map-pin" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5" aria-hidden="true"></i>
-          <span data-i18n="footerAddress">35 Đường số 3, Phường Tân Mỹ, Quận 7, TP. Hồ Chí Minh</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i data-lucide="mail" class="w-4 h-4 text-blue-600 shrink-0" aria-hidden="true"></i>
-          <span data-i18n="footerEmail">operation@nexusdigital.vn</span>
-        </div>
-        <div class="flex items-center gap-2 text-slate-500">
-          <i data-lucide="help-circle" class="w-4 h-4 text-blue-600 shrink-0" aria-hidden="true"></i>
-          <span data-i18n="footerHotline">Liên hệ tư vấn qua form đăng ký</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Copyright & Policy Links -->
-    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
-      <div data-i18n="footerRights">© 2026 khongtienmat.vn. Bản quyền giao diện thuộc về đơn vị phát triển.</div>
-      <div class="flex items-center gap-4">
-        <a href="#policy" class="policy-modal-trigger hover:text-slate-800 underline underline-offset-2" data-i18n="footerTerms">Điều khoản dịch vụ</a>
-        <a href="#policy" class="policy-modal-trigger hover:text-slate-800 underline underline-offset-2" data-i18n="footerPrivacy">Chính sách bảo mật</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- POLICY MODAL (Transparent Notice while Policies are Pending Approval) -->
-  <div id="policyModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="policyModalTitleText">
-    <div class="w-full max-w-md bg-white rounded-2xl p-6 shadow-2xl border border-slate-200 space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 id="policyModalTitleText" class="text-base font-bold text-slate-900" data-i18n="policyModalTitle">
-          Thông báo về Điều khoản & Chính sách
-        </h3>
-        <button id="policyModalCloseBtn" type="button" aria-label="Đóng thông báo" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-          <i data-lucide="x" class="w-5 h-5" aria-hidden="true"></i>
+      <!-- Action Button: Register this product -->
+      <div class="pt-4 border-t border-slate-200">
+        <button id="btnModalRegisterThis" type="button" class="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base shadow-lg transition flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+          <i data-lucide="check-circle" class="w-5 h-5" aria-hidden="true"></i>
+          <span data-i18n="modalRegisterThisBtn">Đăng ký miễn phí sản phẩm này</span>
         </button>
       </div>
-      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="policyModalDesc">
-        Văn bản Điều khoản dịch vụ và Chính sách bảo mật đang trong quá trình hoàn thiện pháp lý và sẽ được ban hành chính thức trước khi hệ thống triển khai thu thập thông tin khách hàng thực tế.
-      </p>
-      <div class="pt-2 text-right">
-        <button type="button" onclick="document.getElementById('policyModal').classList.add('hidden')" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-sm transition">
-          <span data-i18n="policyModalClose">Đã hiểu và đóng</span>
+
+    </div>
+  </div>
+
+  <!-- ==================== 7. POLICY MODAL ==================== -->
+  <div id="policyModal" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm p-4 sm:p-6 flex items-center justify-center">
+    <div class="relative bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+      <button id="policyModalCloseBtn" type="button" aria-label="Đóng hộp thoại pháp lý" class="absolute top-4 right-4 p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+        <i data-lucide="x" class="w-5 h-5" aria-hidden="true"></i>
+      </button>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+          <i data-lucide="shield-alert" class="w-5 h-5" aria-hidden="true"></i>
+        </div>
+        <h3 id="policyModalTitle" class="text-lg sm:text-xl font-bold text-slate-900">Thông báo pháp lý</h3>
+      </div>
+      <div id="policyModalBody" class="text-sm text-slate-600 leading-relaxed space-y-3 mb-6">
+        <p>Văn bản Điều khoản dịch vụ và Chính sách bảo mật đang trong quá trình hoàn thiện pháp lý và sẽ được ban hành chính thức trước khi hệ thống triển khai thu thập thông tin khách hàng thực tế.</p>
+      </div>
+      <div class="text-right">
+        <button id="policyModalOkBtn" type="button" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-sm transition">
+          Đã hiểu
         </button>
       </div>
     </div>
   </div>
+
+  <!-- ==================== 8. MOBILE STICKY BOTTOM REGISTER BAR ==================== -->
+  <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-3 flex items-center justify-between gap-3 shadow-lg">
+    <div class="text-xs text-slate-600 font-medium">
+      Trang bị quầy thu ngân
+    </div>
+    <a href="#register" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition">
+      <span data-i18n="ctaRegisterFree">Đăng ký miễn phí</span>
+      <i data-lucide="arrow-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <!-- ==================== 9. COMPACT FOOTER ==================== -->
+  <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800 text-sm">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div>
+        <div class="text-white font-black text-lg mb-1">
+          <span>khong</span><span class="text-blue-400">tienmat</span><span class="text-xs px-1.5 py-0.5 ml-1 rounded bg-slate-800 text-blue-300 border border-slate-700">.vn</span>
+        </div>
+        <p class="text-xs text-slate-400 mt-1" data-i18n="footerDev">Đơn vị phát triển: CÔNG TY CỔ PHẦN NEXUS DIGITAL</p>
+        <p class="text-xs text-slate-500" data-i18n="footerAddress">35 Đường số 3, Phường Tân Mỹ, Quận 7, TP. Hồ Chí Minh</p>
+        <p class="text-xs text-slate-500" data-i18n="footerEmail">Email hỗ trợ: operation@nexusdigital.vn</p>
+      </div>
+
+      <div class="space-y-2">
+        <div class="flex items-center justify-center md:justify-end gap-4 text-xs font-semibold text-slate-400">
+          <a href="#terms" class="policy-link hover:text-white transition" data-type="terms" data-i18n="footerTerms">Điều khoản dịch vụ</a>
+          <span>•</span>
+          <a href="#privacy" class="policy-link hover:text-white transition" data-type="privacy" data-i18n="footerPrivacy">Chính sách bảo mật</a>
+        </div>
+        <div class="text-xs text-slate-500" data-i18n="footerCopyright">
+          © 2026 khongtienmat.vn. Bản quyền thuộc về Nexus Digital.
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- App Script -->
   <script type="module" src="./app.js"></script>

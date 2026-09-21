@@ -2,96 +2,95 @@ import { translations } from './translations.js';
 
 // Global state
 let currentLang = localStorage.getItem('khongtienmat_lang') || 'vi';
+let activeProductModalKey = 'vietqr-pay';
 
-// Country exchange & network data for interactive showcase
-const countryData = {
-  th: {
-    flag: '🇹🇭',
-    name: 'Thái Lan (Thailand)',
-    network: 'PromptPay • ITMX',
-    appExample: 'K PLUS, SCB EASY, Krungthai NEXT, Bangkok Bank',
-    fxRate: '1 THB ≈ 715 VND (Tỷ giá minh họa)',
-    sampleForeign: '210 THB',
-    sampleVND: '150.000 VNĐ'
+// Product metadata for the 4 products
+const productsData = {
+  'vietqr-pay': {
+    badge: 'Mã QR quầy thu ngân',
+    titleKey: 'product1Title',
+    benefitKey: 'product1Benefit',
+    image: './assets/images/standee-than-tai.png',
+    forWhoKey: 'p1ForWho',
+    methodsKey: 'p1Methods',
+    step1Key: 'p1Step1',
+    step2Key: 'p1Step2',
+    step3Key: 'p1Step3',
+    roleKey: 'p1Role',
+    formValue: 'vietqr-pay'
   },
-  ko: {
-    flag: '🇰🇷',
-    name: 'Hàn Quốc (Korea)',
-    network: 'GLN • Hana Bank',
-    appExample: 'Hana 1Q, Toss, KB Kookmin, Shinhan SOL',
-    fxRate: '1.000 KRW ≈ 18.500 VND (Tỷ giá minh họa)',
-    sampleForeign: '8.100 KRW',
-    sampleVND: '150.000 VNĐ'
+  'soundbox': {
+    badge: 'Thiết bị phát âm thanh',
+    titleKey: 'product2Title',
+    benefitKey: 'product2Benefit',
+    image: './assets/images/product-soundbox.jpg',
+    forWhoKey: 'p2ForWho',
+    methodsKey: 'p2Methods',
+    step1Key: 'p2Step1',
+    step2Key: 'p2Step2',
+    step3Key: 'p2Step3',
+    roleKey: 'p2Role',
+    formValue: 'soundbox'
   },
-  cn: {
-    flag: '🇨🇳',
-    name: 'Trung Quốc (China)',
-    network: 'Alipay+ • WeChat Pay • UnionPay',
-    appExample: 'Alipay, WeChat, Cloud Pay (UnionPay)',
-    fxRate: '1 CNY ≈ 3.520 VND (Tỷ giá minh họa)',
-    sampleForeign: '42.6 CNY',
-    sampleVND: '150.000 VNĐ'
+  'pos-software': {
+    badge: 'Phần mềm quản lý bán hàng',
+    titleKey: 'product3Title',
+    benefitKey: 'product3Benefit',
+    image: './assets/images/product-pos-app.jpg',
+    forWhoKey: 'p3ForWho',
+    methodsKey: 'p3Methods',
+    step1Key: 'p3Step1',
+    step2Key: 'p3Step2',
+    step3Key: 'p3Step3',
+    roleKey: 'p3Role',
+    formValue: 'pos-software'
   },
-  sg: {
-    flag: '🇸🇬',
-    name: 'Singapore',
-    network: 'NETS • Liquid Group',
-    appExample: 'DBS PayLah!, OCBC Pay Anyone, UOB TMRW',
-    fxRate: '1 SGD ≈ 19.100 VND (Tỷ giá minh họa)',
-    sampleForeign: '7.85 SGD',
-    sampleVND: '150.000 VNĐ'
-  },
-  kh: {
-    flag: '🇰🇭',
-    name: 'Campuchia (Cambodia)',
-    network: 'KHQR • Bakong • ACLEDA',
-    appExample: 'Bakong App, ACLEDA mobile, ABA Mobile',
-    fxRate: '100 KHR ≈ 620 VND (Tỷ giá minh họa)',
-    sampleForeign: '24.200 KHR',
-    sampleVND: '150.000 VNĐ'
-  },
-  la: {
-    flag: '🇱🇦',
-    name: 'Lào (Laos)',
-    network: 'LAPNet • LaoQR',
-    appExample: 'BCEL One, LDB Trust, Maruhan Japan Bank',
-    fxRate: '1.000 LAK ≈ 1.150 VND (Tỷ giá minh họa)',
-    sampleForeign: '130.000 LAK',
-    sampleVND: '150.000 VNĐ'
+  'smart-pos': {
+    badge: 'Thiết bị POS thanh toán',
+    titleKey: 'product4Title',
+    benefitKey: 'product4Benefit',
+    image: './assets/images/product-smart-pos.jpg',
+    forWhoKey: 'p4ForWho',
+    methodsKey: 'p4Methods',
+    step1Key: 'p4Step1',
+    step2Key: 'p4Step2',
+    step3Key: 'p4Step3',
+    roleKey: 'p4Role',
+    formValue: 'smart-pos'
   }
 };
-
-let activeCountry = 'th';
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   initLanguage();
-  initCountrySelector();
-  initDemoSimulator();
+  initProductDetailModal();
   initLeadForm();
-  initFaqAccordion();
-  initMobileMenu();
   initScrollEffects();
   initPolicyModal();
+
+  // Support direct modal preview or section scroll via URL query
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('open_modal')) {
+    const pKey = urlParams.get('open_modal') || 'vietqr-pay';
+    setTimeout(() => openProductModal(pKey), 100);
+  }
+  if (urlParams.has('scroll_to')) {
+    const target = document.getElementById(urlParams.get('scroll_to'));
+    if (target) {
+      setTimeout(() => target.scrollIntoView({ behavior: 'instant', block: 'start' }), 50);
+    }
+  }
 });
 
 /**
- * Multi-language Handler
+ * 1. Multi-language Handler
  */
 function initLanguage() {
   const langSelect = document.getElementById('langSelect');
-  const langSelectMobile = document.getElementById('langSelectMobile');
-
   if (langSelect) {
     langSelect.value = currentLang;
     langSelect.addEventListener('change', (e) => setLanguage(e.target.value));
   }
-
-  if (langSelectMobile) {
-    langSelectMobile.value = currentLang;
-    langSelectMobile.addEventListener('change', (e) => setLanguage(e.target.value));
-  }
-
   applyLanguage(currentLang);
 }
 
@@ -99,453 +98,257 @@ function setLanguage(lang) {
   if (!translations[lang]) return;
   currentLang = lang;
   localStorage.setItem('khongtienmat_lang', lang);
-
-  const langSelect = document.getElementById('langSelect');
-  const langSelectMobile = document.getElementById('langSelectMobile');
-  if (langSelect) langSelect.value = lang;
-  if (langSelectMobile) langSelectMobile.value = lang;
-
+  document.documentElement.lang = lang;
   applyLanguage(lang);
+
+  // Update modal content if open
+  const modal = document.getElementById('productDetailModal');
+  if (modal && !modal.classList.contains('hidden')) {
+    populateProductModal(activeProductModalKey);
+  }
 }
 
 function applyLanguage(lang) {
   const dict = translations[lang] || translations.vi;
-
-  // Text elements
-  document.querySelectorAll('[data-i18n]').forEach((el) => {
+  
+  // Elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) {
       el.textContent = dict[key];
     }
   });
 
-  // Placeholder elements
-  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (dict[key]) {
-      el.setAttribute('placeholder', dict[key]);
+  // Re-render Lucide icons if updated
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+/**
+ * 2. Product Detail Modal Controller
+ */
+function initProductDetailModal() {
+  const modal = document.getElementById('productDetailModal');
+  const closeBtn = document.getElementById('productDetailCloseBtn');
+  const registerThisBtn = document.getElementById('btnModalRegisterThis');
+
+  // Open modal buttons
+  document.querySelectorAll('.btn-product-detail').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const productKey = btn.getAttribute('data-product');
+      openProductModal(productKey);
+    });
+  });
+
+  // Close modal button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeProductModal);
+  }
+
+  // Close on backdrop click
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeProductModal();
+      }
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeProductModal();
     }
   });
 
-  // Update HTML lang attribute
-  document.documentElement.lang = lang;
-}
-
-/**
- * Interactive Country Showcase
- */
-function initCountrySelector() {
-  const buttons = document.querySelectorAll('.country-tab-btn');
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const countryCode = btn.getAttribute('data-country');
-      if (countryCode && countryData[countryCode]) {
-        activeCountry = countryCode;
-        buttons.forEach((b) => {
-          b.classList.remove('active', 'border-blue-600', 'bg-blue-50', 'text-blue-700');
-          b.classList.add('border-slate-300', 'bg-white', 'text-slate-700');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active', 'border-blue-600', 'bg-blue-50', 'text-blue-700');
-        btn.classList.remove('border-slate-300', 'bg-white', 'text-slate-700');
-        btn.setAttribute('aria-selected', 'true');
-        updateCountryDisplay();
-      }
-    });
-  });
-
-  updateCountryDisplay();
-}
-
-function updateCountryDisplay() {
-  const c = countryData[activeCountry];
-  if (!c) return;
-
-  const flagEl = document.getElementById('countryDisplayFlag');
-  const nameEl = document.getElementById('countryDisplayName');
-  const netEl = document.getElementById('countryDisplayNetwork');
-  const appEl = document.getElementById('countryDisplayApps');
-  const fxEl = document.getElementById('countryDisplayFx');
-  const foreignEl = document.getElementById('countryDisplayForeign');
-  const vndEl = document.getElementById('countryDisplayVnd');
-
-  if (flagEl) flagEl.textContent = c.flag;
-  if (nameEl) nameEl.textContent = c.name;
-  if (netEl) netEl.textContent = c.network;
-  if (appEl) appEl.textContent = c.appExample;
-  if (fxEl) fxEl.textContent = c.fxRate;
-  if (foreignEl) foreignEl.textContent = c.sampleForeign;
-  if (vndEl) vndEl.textContent = c.sampleVND;
-}
-
-/**
- * Interactive Demo Simulator
- */
-function initDemoSimulator() {
-  const tabDomestic = document.getElementById('tabDomestic');
-  const tabGlobal = document.getElementById('tabGlobal');
-  const simulateBtn = document.getElementById('simulatePaymentBtn');
-  const successModal = document.getElementById('paymentSuccessCard');
-  const promptText = document.getElementById('demoPromptText');
-
-  let mode = 'domestic';
-
-  if (tabDomestic && tabGlobal) {
-    tabDomestic.addEventListener('click', () => {
-      mode = 'domestic';
-      tabDomestic.classList.add('bg-blue-600', 'text-white');
-      tabDomestic.classList.remove('bg-transparent', 'text-slate-600');
-      tabGlobal.classList.add('bg-transparent', 'text-slate-600');
-      tabGlobal.classList.remove('bg-blue-600', 'text-white');
-      tabDomestic.setAttribute('aria-selected', 'true');
-      tabGlobal.setAttribute('aria-selected', 'false');
-
-      if (promptText) {
-        promptText.textContent =
-          currentLang === 'vi'
-            ? 'Khách Việt mở ứng dụng ngân hàng quét mã QR để chuyển khoản trực tiếp.'
-            : 'Domestic customers open their bank app to scan QR and transfer directly.';
+  // "Register this product" action button in modal
+  if (registerThisBtn) {
+    registerThisBtn.addEventListener('click', () => {
+      const productData = productsData[activeProductModalKey];
+      const productSelect = document.getElementById('productInterest');
+      
+      // Auto-select the product in registration form
+      if (productSelect && productData) {
+        productSelect.value = productData.formValue;
       }
 
-      const mockupBrandLogo = document.getElementById('mockupBrandLogo');
-      if (mockupBrandLogo) {
-        mockupBrandLogo.src = './assets/images/vietqr-pay.png';
-        mockupBrandLogo.alt = 'VietQR Pay';
-      }
-    });
+      // Close modal
+      closeProductModal();
 
-    tabGlobal.addEventListener('click', () => {
-      mode = 'global';
-      tabGlobal.classList.add('bg-blue-600', 'text-white');
-      tabGlobal.classList.remove('bg-transparent', 'text-slate-600');
-      tabDomestic.classList.add('bg-transparent', 'text-slate-600');
-      tabDomestic.classList.remove('bg-blue-600', 'text-white');
-      tabGlobal.setAttribute('aria-selected', 'true');
-      tabDomestic.setAttribute('aria-selected', 'false');
-
-      if (promptText) {
-        promptText.textContent =
-          currentLang === 'vi'
-            ? 'Du khách dùng ứng dụng đối tác (PromptPay, GLN, Alipay+, WeChat Pay, NETS) để quét mã thanh toán.'
-            : 'Tourists use partner apps (PromptPay, GLN, Alipay+, WeChat Pay, NETS) to scan and pay.';
-      }
-
-      const mockupBrandLogo = document.getElementById('mockupBrandLogo');
-      if (mockupBrandLogo) {
-        mockupBrandLogo.src = './assets/images/vietqr-global.png';
-        mockupBrandLogo.alt = 'VietQR Global';
-      }
-    });
-  }
-
-  if (simulateBtn && successModal) {
-    simulateBtn.addEventListener('click', () => {
-      simulateBtn.disabled = true;
-      const runningText = translations[currentLang]?.demoSimulateRunning || 'Đang mô phỏng quét mã...';
-      simulateBtn.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-        </svg>
-        ${runningText}
-      `;
-
-      setTimeout(() => {
-        playPaymentChime();
-
-        simulateBtn.disabled = false;
-        simulateBtn.textContent =
-          translations[currentLang]?.demoSimulateBtn || 'Xem thử quy trình quét mã';
-
-        successModal.classList.remove('hidden');
-
+      // Smooth scroll to #register form
+      const regSection = document.getElementById('register');
+      if (regSection) {
+        regSection.scrollIntoView({ behavior: 'smooth' });
+        // Focus on phone input after scroll
         setTimeout(() => {
-          successModal.classList.add('hidden');
-        }, 5000);
-      }, 1000);
+          const phoneInput = document.getElementById('phone');
+          if (phoneInput) phoneInput.focus();
+        }, 500);
+      }
     });
   }
 }
 
-/**
- * Clean Web Audio API Chime
- */
-function playPaymentChime() {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
+function openProductModal(productKey) {
+  const modal = document.getElementById('productDetailModal');
+  if (!modal || !productsData[productKey]) return;
 
-    const now = ctx.currentTime;
-    const osc1 = ctx.createOscillator();
-    const gain = ctx.createGain();
+  activeProductModalKey = productKey;
+  populateProductModal(productKey);
 
-    osc1.type = 'sine';
-    osc1.frequency.setValueAtTime(587.33, now); // D5
-    osc1.frequency.exponentialRampToValueAtTime(880.0, now + 0.18); // A5
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
 
-    gain.gain.setValueAtTime(0.01, now);
-    gain.gain.linearRampToValueAtTime(0.2, now + 0.05);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-
-    osc1.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc1.start(now);
-    osc1.stop(now + 0.4);
-  } catch (e) {
-    // AudioContext blocked or not supported
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
 }
 
+function closeProductModal() {
+  const modal = document.getElementById('productDetailModal');
+  if (!modal) return;
+
+  modal.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+function populateProductModal(productKey) {
+  const data = productsData[productKey];
+  const dict = translations[currentLang] || translations.vi;
+  if (!data) return;
+
+  const modalImg = document.getElementById('modalProductImg');
+  const modalBadge = document.getElementById('modalProductBadge');
+  const modalTitle = document.getElementById('modalProductTitle');
+  const modalBenefit = document.getElementById('modalProductBenefit');
+  const forWhoText = document.getElementById('modalForWhoText');
+  const methodsText = document.getElementById('modalMethodsText');
+  const step1Text = document.getElementById('modalStep1Text');
+  const step2Text = document.getElementById('modalStep2Text');
+  const step3Text = document.getElementById('modalStep3Text');
+  const roleText = document.getElementById('modalRoleText');
+
+  if (modalImg) {
+    modalImg.src = data.image;
+    modalImg.alt = dict[data.titleKey] || data.titleKey;
+  }
+  if (modalBadge) modalBadge.textContent = data.badge;
+  if (modalTitle) modalTitle.textContent = dict[data.titleKey] || '';
+  if (modalBenefit) modalBenefit.textContent = dict[data.benefitKey] || '';
+  if (forWhoText) forWhoText.textContent = dict[data.forWhoKey] || '';
+  if (methodsText) methodsText.textContent = dict[data.methodsKey] || '';
+  if (step1Text) step1Text.textContent = dict[data.step1Key] || '';
+  if (step2Text) step2Text.textContent = dict[data.step2Key] || '';
+  if (step3Text) step3Text.textContent = dict[data.step3Key] || '';
+  if (roleText) roleText.textContent = dict[data.roleKey] || '';
+}
+
 /**
- * Lead Generation Form Handler with Inline Error Messaging
+ * 3. Minimalist Lead Form Handler (2 fields: phone & storeAddress)
  */
 function initLeadForm() {
-  const form = document.getElementById('merchantLeadForm');
-  const alertSuccess = document.getElementById('formSuccessAlert');
-
+  const form = document.getElementById('leadForm');
   if (!form) return;
 
-  const fields = {
-    fullName: form.querySelector('[name="fullName"]'),
-    phone: form.querySelector('[name="phone"]'),
-    storeName: form.querySelector('[name="storeName"]'),
-    city: form.querySelector('[name="city"]'),
-    email: form.querySelector('[name="email"]')
-  };
+  const phoneInput = document.getElementById('phone');
+  const addressInput = document.getElementById('storeAddress');
+  const submitBtn = document.getElementById('submitBtn');
+  const successAlert = document.getElementById('formSuccessAlert');
 
   // Clear errors on input
-  Object.values(fields).forEach((input) => {
+  [phoneInput, addressInput].forEach(input => {
     if (!input) return;
     input.addEventListener('input', () => {
-      clearFieldError(input);
+      const errEl = document.getElementById(`err-${input.id}`);
+      if (errEl) errEl.classList.add('hidden');
+      input.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-200');
     });
   });
-
-  let isSubmitting = false;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let hasError = false;
 
-    if (isSubmitting) return;
-
-    // Validate fields
-    let isValid = true;
-
-    // 1. Full name (min 2 chars)
-    const fullNameVal = fields.fullName?.value.trim() || '';
-    if (fullNameVal.length < 2) {
-      setFieldError(fields.fullName, 'Vui lòng nhập họ và tên người đại diện (tối thiểu 2 ký tự).');
-      isValid = false;
-    } else {
-      clearFieldError(fields.fullName);
+    // Validate Phone (VN phone standard: 10 digits starting with 0)
+    const phoneVal = phoneInput.value.trim().replace(/\s+/g, '');
+    const phoneRegex = /^0[3|5|7|8|9][0-9]{8}$/;
+    if (!phoneVal || !phoneRegex.test(phoneVal)) {
+      showError('phone');
+      hasError = true;
     }
 
-    // 2. Phone (Vietnamese 10-digit standard)
-    const phoneVal = fields.phone?.value.trim() || '';
-    const phoneRegex = /^0\d{9}$/;
-    if (!phoneRegex.test(phoneVal.replace(/\s+/g, ''))) {
-      setFieldError(fields.phone, 'Vui lòng nhập số điện thoại hợp lệ gồm 10 chữ số (bắt đầu bằng số 0).');
-      isValid = false;
-    } else {
-      clearFieldError(fields.phone);
+    // Validate Store Address
+    const addressVal = addressInput.value.trim();
+    if (!addressVal || addressVal.length < 3) {
+      showError('storeAddress');
+      hasError = true;
     }
 
-    // 3. Store name (min 2 chars)
-    const storeNameVal = fields.storeName?.value.trim() || '';
-    if (storeNameVal.length < 2) {
-      setFieldError(fields.storeName, 'Vui lòng nhập tên cửa hàng hoặc thương hiệu của bạn.');
-      isValid = false;
-    } else {
-      clearFieldError(fields.storeName);
-    }
+    if (hasError) return;
 
-    // 4. City (min 2 chars)
-    const cityVal = fields.city?.value.trim() || '';
-    if (cityVal.length < 2) {
-      setFieldError(fields.city, 'Vui lòng nhập tỉnh hoặc thành phố nơi cửa hàng hoạt động.');
-      isValid = false;
-    } else {
-      clearFieldError(fields.city);
-    }
-
-    // 5. Email (optional, but validate format if provided)
-    const emailVal = fields.email?.value.trim() || '';
-    if (emailVal.length > 0) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailVal)) {
-        setFieldError(fields.email, 'Email không đúng định dạng (ví dụ: cuahang@gmail.com).');
-        isValid = false;
-      } else {
-        clearFieldError(fields.email);
-      }
-    } else {
-      clearFieldError(fields.email);
-    }
-
-    if (!isValid) {
-      // Focus first error field
-      const firstError = form.querySelector('.border-rose-500');
-      firstError?.focus();
-      return;
-    }
-
-    // Anti-duplicate submission state
-    isSubmitting = true;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn?.textContent || 'Gửi yêu cầu tư vấn';
-
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-        </svg>
-        ${translations[currentLang]?.formSubmitting || 'Đang gửi yêu cầu...'}
-      `;
-    }
-
-    const formData = {
-      fullName: fullNameVal,
+    // Collect data
+    const leadData = {
       phone: phoneVal,
-      storeName: storeNameVal,
-      city: cityVal,
-      email: emailVal,
-      businessType: form.businessType?.value || '',
-      solution: form.solution?.value || '',
-      bank: form.bank?.value || '',
-      timestamp: new Date().toISOString()
+      storeAddress: addressVal,
+      productInterest: document.getElementById('productInterest') ? document.getElementById('productInterest').value : 'all',
+      submittedAt: new Date().toISOString(),
+      lang: currentLang
     };
 
-    // Store in localStorage for prototype evaluation
-    try {
-      const existingLeads = JSON.parse(localStorage.getItem('khongtienmat_leads') || '[]');
-      existingLeads.push(formData);
-      localStorage.setItem('khongtienmat_leads', JSON.stringify(existingLeads));
-    } catch (err) {
-      console.warn('LocalStorage unavailable', err);
-    }
+    // Show submitting state
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+      </svg>
+      <span>Đang gửi thông tin...</span>
+    `;
 
+    // Process & store locally in localStorage (guaranteed real receipt)
     setTimeout(() => {
-      isSubmitting = false;
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
+      try {
+        const existingLeads = JSON.parse(localStorage.getItem('khongtienmat_leads') || '[]');
+        existingLeads.push(leadData);
+        localStorage.setItem('khongtienmat_leads', JSON.stringify(existingLeads));
+      } catch (err) {
+        console.error('Local storage save error:', err);
       }
 
+      // Display success message
+      if (successAlert) {
+        successAlert.classList.remove('hidden');
+        successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Reset form
       form.reset();
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
 
-      if (alertSuccess) {
-        alertSuccess.classList.remove('hidden');
-        alertSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        setTimeout(() => {
-          alertSuccess.classList.add('hidden');
-        }, 12000);
+      if (window.lucide) {
+        window.lucide.createIcons();
       }
-    }, 800);
+    }, 600);
   });
 }
 
-function setFieldError(inputEl, msg) {
-  if (!inputEl) return;
-  inputEl.classList.add('border-rose-500', 'bg-rose-50/30');
-  inputEl.classList.remove('border-slate-300');
-  const errorEl = document.getElementById(`err-${inputEl.name}`);
-  if (errorEl) {
-    errorEl.textContent = msg;
-    errorEl.classList.remove('hidden');
+function showError(fieldId) {
+  const input = document.getElementById(fieldId);
+  const errEl = document.getElementById(`err-${fieldId}`);
+  if (input) {
+    input.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-200');
+    input.focus();
   }
-}
-
-function clearFieldError(inputEl) {
-  if (!inputEl) return;
-  inputEl.classList.remove('border-rose-500', 'bg-rose-50/30');
-  inputEl.classList.add('border-slate-300');
-  const errorEl = document.getElementById(`err-${inputEl.name}`);
-  if (errorEl) {
-    errorEl.textContent = '';
-    errorEl.classList.add('hidden');
+  if (errEl) {
+    errEl.classList.remove('hidden');
   }
 }
 
 /**
- * FAQ Accordion
- */
-function initFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach((item) => {
-    const btn = item.querySelector('.faq-btn');
-    const content = item.querySelector('.faq-content');
-    const icon = item.querySelector('.faq-icon');
-
-    if (btn && content) {
-      btn.addEventListener('click', () => {
-        const isOpen = !content.classList.contains('hidden');
-
-        // Close all other items
-        document.querySelectorAll('.faq-content').forEach((c) => c.classList.add('hidden'));
-        document.querySelectorAll('.faq-icon').forEach((i) => i.classList.remove('rotate-180'));
-        document.querySelectorAll('.faq-btn').forEach((b) => b.setAttribute('aria-expanded', 'false'));
-
-        if (!isOpen) {
-          content.classList.remove('hidden');
-          btn.setAttribute('aria-expanded', 'true');
-          if (icon) icon.classList.add('rotate-180');
-        }
-      });
-    }
-  });
-}
-
-/**
- * Mobile Navigation Menu with Keyboard Trap and ARIA
- */
-function initMobileMenu() {
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNav = document.getElementById('mobileNavDrawer');
-  const closeBtn = document.getElementById('mobileNavCloseBtn');
-  const closeLinks = document.querySelectorAll('.mobile-nav-link');
-
-  if (menuBtn && mobileNav) {
-    const openMenu = () => {
-      mobileNav.classList.remove('hidden');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      const firstFocusable = mobileNav.querySelector('a, button, select');
-      firstFocusable?.focus();
-    };
-
-    const closeMenu = () => {
-      mobileNav.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.focus();
-    };
-
-    menuBtn.addEventListener('click', () => {
-      const isOpen = !mobileNav.classList.contains('hidden');
-      if (isOpen) closeMenu();
-      else openMenu();
-    });
-
-    closeBtn?.addEventListener('click', closeMenu);
-
-    closeLinks.forEach((link) => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Close menu on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
-        closeMenu();
-      }
-    });
-  }
-}
-
-/**
- * Scroll & Navbar Effects
+ * 4. Scrolled Navbar High Contrast
  */
 function initScrollEffects() {
   const navbar = document.getElementById('mainNavbar');
@@ -564,40 +367,53 @@ function initScrollEffects() {
 }
 
 /**
- * Policy & Terms Modal
+ * 5. Policy Modal Handler
  */
 function initPolicyModal() {
   const modal = document.getElementById('policyModal');
   const closeBtn = document.getElementById('policyModalCloseBtn');
-  const triggerLinks = document.querySelectorAll('.policy-modal-trigger');
+  const okBtn = document.getElementById('policyModalOkBtn');
+  const bodyEl = document.getElementById('policyModalBody');
+  const titleEl = document.getElementById('policyModalTitle');
 
   if (!modal) return;
 
-  const openModal = (e) => {
-    if (e) e.preventDefault();
+  const openPolicy = (type) => {
+    if (type === 'terms') {
+      titleEl.textContent = 'Điều khoản dịch vụ khongtienmat.vn';
+      bodyEl.innerHTML = `
+        <p>1. <strong>Mục đích</strong>: khongtienmat.vn cung cấp thông tin và giải pháp nhận thanh toán không dùng tiền mặt (VietQR Pay, Loa thông báo, Phần mềm bán hàng, Máy POS) cho các cửa hàng và điểm bán lẻ tại Việt Nam.</p>
+        <p>2. <strong>Tư vấn miễn phí</strong>: Đăng ký tư vấn trên website hoàn toàn miễn phí. Đội ngũ kinh doanh của Nexus Digital sẽ liên hệ trực tiếp để khảo sát và đề xuất gói trang bị phù hợp.</p>
+        <p>3. <strong>Văn bản chính thức</strong>: Hợp đồng hợp tác và biểu phí cụ thể sẽ được ký kết chính thức bằng văn bản hoặc hợp đồng điện tử theo quy định của pháp luật trước khi bàn giao thiết bị.</p>
+      `;
+    } else {
+      titleEl.textContent = 'Chính sách bảo mật thông tin';
+      bodyEl.innerHTML = `
+        <p>1. <strong>Thu thập thông tin</strong>: Hệ thống chỉ thu thập Số điện thoại và Địa chỉ cửa hàng do người dùng tự nguyện cung cấp phục vụ mục đích liên hệ tư vấn.</p>
+        <p>2. <strong>Cam kết bảo mật</strong>: Nexus Digital tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân, cam kết không chia sẻ hoặc bán lại thông tin của bạn cho bên thứ ba vì mục đích quảng cáo.</p>
+        <p>3. <strong>Yêu cầu chỉnh sửa/xóa</strong>: Quý khách có quyền yêu cầu tra soát hoặc xóa thông tin liên hệ bất cứ lúc nào qua email: operation@nexusdigital.vn.</p>
+      `;
+    }
     modal.classList.remove('hidden');
-    closeBtn?.focus();
+    document.body.style.overflow = 'hidden';
   };
 
-  const closeModal = () => {
+  const closePolicy = () => {
     modal.classList.add('hidden');
+    document.body.style.overflow = '';
   };
 
-  triggerLinks.forEach((link) => {
-    link.addEventListener('click', openModal);
+  document.querySelectorAll('.policy-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const type = link.getAttribute('data-type');
+      openPolicy(type);
+    });
   });
 
-  closeBtn?.addEventListener('click', closeModal);
-
+  if (closeBtn) closeBtn.addEventListener('click', closePolicy);
+  if (okBtn) okBtn.addEventListener('click', closePolicy);
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeModal();
-    }
+    if (e.target === modal) closePolicy();
   });
 }

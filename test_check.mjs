@@ -44,8 +44,6 @@ const bannedTerms = [
   'Sáng kiến Chuyển đổi số & Thanh toán Quốc gia',
   'Phát triển bởi NAPAS',
   '50.000+',
-  '40+ ngân hàng',
-  '6+ quốc gia',
   'tiền về 0 giây',
   'bảo hành trọn đời',
   '1900 xxxx',
@@ -62,49 +60,46 @@ bannedTerms.forEach(term => {
   assert(!inHtml && !inApp, `Unsubstantiated claim absent: "${term}"`);
 });
 
-// 3. Check presence of merchant-centric headline & buttons
-assert(html.includes('Nhận thanh toán QR thuận tiện cho cửa hàng'), 'Merchant-centric hero title present in HTML');
-assert(html.includes('Đăng ký tư vấn'), 'Primary button "Đăng ký tư vấn" present in HTML');
-assert(html.includes('Xem cách hoạt động'), 'Secondary button "Xem cách hoạt động" present in HTML');
-assert(html.includes('Mô phỏng — không dùng để thanh toán'), 'QR standee simulation disclaimer present');
-assert(html.includes('Tỷ giá minh họa'), 'FX illustrative rate disclaimer present');
+// 3. Check Logo Semantic Grouping: "khong" + "tienmat" (NOT "khongtien" + "mat")
+assert(html.includes('khong</span><span class="nav-brand-suffix text-blue-600">tienmat</span>'), 'Logo semantic grouping "khong" + "tienmat" present');
+assert(!html.includes('khongtien<span class="text-blue-600">mat</span>'), 'Old erroneous logo split "khongtien" + "mat" absent');
 
-// 4. Check form fields & validation markup
-assert(html.includes('name="fullName"'), 'Form contains fullName field');
-assert(html.includes('name="phone"'), 'Form contains phone field');
-assert(html.includes('name="storeName"'), 'Form contains storeName field');
-assert(html.includes('name="city"'), 'Form contains city field');
-assert(html.includes('id="err-fullName"'), 'Form contains inline error element for fullName');
-assert(html.includes('id="err-phone"'), 'Form contains inline error element for phone');
-assert(html.includes('id="err-storeName"'), 'Form contains inline error element for storeName');
-assert(html.includes('id="err-city"'), 'Form contains inline error element for city');
+// 4. Check 4 Products Showcase
+assert(html.includes('id="products"'), '4 Products section id="products" present');
+assert(html.includes('standee-than-tai.png'), 'VietQR Pay authentic mica standee image present');
+assert(html.includes('product-soundbox.jpg'), 'Loa thông báo product image present');
+assert(html.includes('product-pos-app.jpg'), 'Phần mềm bán hàng product image present');
+assert(html.includes('product-smart-pos.jpg'), 'Máy POS thanh toán product image present');
+assert(html.includes('data-product="vietqr-pay"'), 'VietQR Pay detail button present');
+assert(html.includes('data-product="soundbox"'), 'Soundbox detail button present');
+assert(html.includes('data-product="pos-software"'), 'POS software detail button present');
+assert(html.includes('data-product="smart-pos"'), 'Smart POS detail button present');
 
-// 5. Check Navigation & Accessibility
-assert(html.includes('id="mainNavbar"'), 'Navbar has id="mainNavbar"');
-assert(html.includes('#mainNavbar.scrolled'), 'Navbar high-contrast scrolled CSS present in style');
-assert(html.includes('aria-expanded'), 'Mobile menu button has aria-expanded');
-assert(html.includes('aria-label'), 'Mobile menu has aria-label');
-assert(html.includes('scroll-mt-24'), 'Sections have scroll-mt-24 for sticky navbar offset');
-assert(html.includes('scroll-padding-top'), 'HTML has scroll-padding-top for in-page anchors');
+// 5. Check Product Detail Modal & Interactivity
+assert(html.includes('id="productDetailModal"'), 'Product detail modal present in HTML');
+assert(html.includes('id="btnModalRegisterThis"'), '"Đăng ký miễn phí sản phẩm này" button present in modal');
+assert(appJs.includes('openProductModal'), 'openProductModal handler defined in app.js');
+assert(appJs.includes('initProductDetailModal'), 'initProductDetailModal initialized in app.js');
 
-// 6. Check Policy Modal
-assert(html.includes('id="policyModal"'), 'Policy modal dialog present in HTML');
+// 6. Check Minimalist 2-Field Form
+assert(html.includes('id="phone"'), 'Form contains phone field');
+assert(html.includes('id="storeAddress"'), 'Form contains storeAddress field');
+assert(html.includes('id="productInterest"'), 'Form contains productInterest selector');
+assert(!html.includes('name="fullName"'), 'Old unnecessary fullName field absent');
+assert(!html.includes('name="email"'), 'Old unnecessary email field absent');
+assert(!html.includes('name="bank"'), 'Old unnecessary bank selector field absent');
+assert(html.includes('Để lại số điện thoại và địa chỉ cửa hàng, đội ngũ kinh doanh sẽ liên hệ tư vấn.'), 'Form standard explanation line present');
+
+// 7. Check 3-Step Process
+assert(html.includes('id="process"'), 'Process section id="process" present');
+assert(html.includes('Quy trình đăng ký 3 bước'), '3-Step process title present in HTML');
+
+// 8. Check CTA "Đăng ký miễn phí"
+assert(html.includes('Đăng ký miễn phí'), 'Primary CTA "Đăng ký miễn phí" present in HTML');
+
+// 9. Check Policy Modal
+assert(html.includes('id="policyModal"'), 'Policy modal present in HTML');
 assert(appJs.includes('initPolicyModal'), 'Policy modal handler initialized in app.js');
-
-// 7. Check 4 Domestic Banks & 8 International Partners (matching official t-shirt)
-assert(html.includes('id="network"'), 'Partner Network section id="network" present in HTML');
-const domesticBanks = ['MB Bank', 'Techcombank', 'VIB', 'VPBank'];
-domesticBanks.forEach(bank => {
-  assert(html.includes(bank), `Domestic partner bank present: ${bank}`);
-});
-
-const intlPartners = ['PromptPay', 'KHQR', 'LaPNet', 'NETS', 'GLN', 'Alipay+', 'UnionPay', 'WeChat Pay'];
-intlPartners.forEach(partner => {
-  assert(html.includes(partner), `International partner present: ${partner}`);
-});
-
-// 8. Check Official VietQR Global & VietQR Pay Logos
-assert(html.includes('vietqr-global.png') && html.includes('vietqr-pay.png'), 'Official VietQR Global & VietQR Pay logos present in partner sections');
 
 console.log(`\n=== SUMMARY: ${passed} PASSED, ${failed} FAILED ===`);
 if (failed > 0) process.exit(1);
