@@ -91,5 +91,17 @@ assert(html.includes('scroll-padding-top'), 'HTML has scroll-padding-top for in-
 assert(html.includes('id="policyModal"'), 'Policy modal dialog present in HTML');
 assert(appJs.includes('initPolicyModal'), 'Policy modal handler initialized in app.js');
 
+// 7. Check 4 Domestic Banks & 8 International Partners (matching official t-shirt)
+assert(html.includes('id="network"'), 'Partner Network section id="network" present in HTML');
+const domesticBanks = ['MB Bank', 'Techcombank', 'VIB', 'VPBank'];
+domesticBanks.forEach(bank => {
+  assert(html.includes(bank), `Domestic partner bank present: ${bank}`);
+});
+
+const intlPartners = ['PromptPay', 'KHQR', 'LaPNet', 'NETS', 'GLN', 'Alipay+', 'UnionPay', 'WeChat Pay'];
+intlPartners.forEach(partner => {
+  assert(html.includes(partner), `International partner present: ${partner}`);
+});
+
 console.log(`\n=== SUMMARY: ${passed} PASSED, ${failed} FAILED ===`);
 if (failed > 0) process.exit(1);
