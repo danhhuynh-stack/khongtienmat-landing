@@ -103,8 +103,8 @@ intlPartners.forEach(partner => {
   assert(html.includes(partner), `International partner present: ${partner}`);
 });
 
-// 8. Check VietQR Global Logo
-assert(html.includes('VietQR Global Logo') && html.includes('GLOBAL'), 'VietQR Global logo present in international partner section');
+// 8. Check Official VietQR Global & VietQR Pay Logos
+assert(html.includes('vietqr-global.png') && html.includes('vietqr-pay.png'), 'Official VietQR Global & VietQR Pay logos present in partner sections');
 
 console.log(`\n=== SUMMARY: ${passed} PASSED, ${failed} FAILED ===`);
 if (failed > 0) process.exit(1);

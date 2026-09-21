@@ -206,6 +206,12 @@ function initDemoSimulator() {
             ? 'Khách Việt mở ứng dụng ngân hàng quét mã QR để chuyển khoản trực tiếp.'
             : 'Domestic customers open their bank app to scan QR and transfer directly.';
       }
+
+      const mockupBrandLogo = document.getElementById('mockupBrandLogo');
+      if (mockupBrandLogo) {
+        mockupBrandLogo.src = './assets/images/vietqr-pay.png';
+        mockupBrandLogo.alt = 'VietQR Pay';
+      }
     });
 
     tabGlobal.addEventListener('click', () => {
@@ -222,6 +228,12 @@ function initDemoSimulator() {
           currentLang === 'vi'
             ? 'Du khách dùng ứng dụng đối tác (PromptPay, GLN, Alipay+, WeChat Pay, NETS) để quét mã thanh toán.'
             : 'Tourists use partner apps (PromptPay, GLN, Alipay+, WeChat Pay, NETS) to scan and pay.';
+      }
+
+      const mockupBrandLogo = document.getElementById('mockupBrandLogo');
+      if (mockupBrandLogo) {
+        mockupBrandLogo.src = './assets/images/vietqr-global.png';
+        mockupBrandLogo.alt = 'VietQR Global';
       }
     });
   }

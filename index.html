@@ -274,11 +274,12 @@
 
           <!-- Standee Mockup Container -->
           <div class="bg-slate-50 text-slate-900 rounded-2xl p-4 border border-slate-200 text-center relative overflow-hidden shadow-sm">
-            <!-- Header on Mockup -->
+            <!-- Header on Mockup with Dynamic Brand Logo -->
             <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
-              <div class="text-left">
-                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Mã thanh toán tại quầy</div>
-                <div class="text-xs font-black text-blue-900">VIETQR • KHONGTIENMAT.VN</div>
+              <div class="text-left flex items-center gap-1.5">
+                <img id="mockupBrandLogo" src="./assets/images/vietqr-pay.png" alt="VietQR Pay" class="h-4.5 w-auto object-contain">
+                <span class="text-[10px] font-bold text-slate-300">•</span>
+                <span class="text-[10px] font-bold text-slate-600">KHONGTIENMAT.VN</span>
               </div>
               <div class="flex items-center gap-1 text-[10px] font-semibold text-blue-800 bg-blue-100 px-2 py-0.5 rounded">
                 Mô hình mẫu
@@ -394,17 +395,9 @@
               4 Ngân hàng đối tác chiến lược trong nước
             </h3>
           </div>
-          <!-- VietQR Nội Địa Logo Badge -->
-          <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-sm shrink-0 hover:border-blue-400 transition-colors" title="VietQR - Chuẩn thanh toán QR nội địa">
-            <svg viewBox="0 0 130 34" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VietQR Logo">
-              <circle cx="16" cy="17" r="13" stroke="#005BAA" stroke-width="2.2" fill="#F0F9FF"/>
-              <rect x="9" y="10" width="5" height="5" fill="#005BAA"/>
-              <rect x="18" y="10" width="5" height="5" fill="#005BAA"/>
-              <rect x="9" y="19" width="5" height="5" fill="#005BAA"/>
-              <circle cx="20.5" cy="21.5" r="2.5" fill="#EE2E24"/>
-              <text x="35" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" fill="#005BAA" letter-spacing="-0.5">Viet<tspan fill="#EE2E24">QR</tspan></text>
-            </svg>
-            <span class="text-xs font-bold text-slate-600 border-l border-slate-200 pl-2">Nội địa</span>
+          <!-- VietQR Pay Official Brand Logo -->
+          <div class="inline-flex items-center px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-sm shrink-0 hover:border-blue-400 transition-all" title="VietQR Pay - Chuẩn thanh toán QR nội địa">
+            <img src="./assets/images/vietqr-pay.png" alt="VietQR Pay Logo" class="h-6 sm:h-7 w-auto object-contain">
           </div>
         </div>
 
@@ -509,24 +502,9 @@
               8 Đơn vị & Mạng lưới thanh toán quốc tế
             </h3>
           </div>
-          <!-- VietQR Global Official Logo Badge -->
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-sm shrink-0 hover:border-cyan-400 transition-colors" title="VietQR Global - Chuẩn thanh toán QR quốc tế">
-            <svg viewBox="0 0 176 34" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VietQR Global Logo">
-              <!-- Globe Icon -->
-              <g transform="translate(3, 3)">
-                <circle cx="14" cy="14" r="13" stroke="#005BAA" stroke-width="2.2" fill="#F0F9FF"/>
-                <ellipse cx="14" cy="14" rx="6.5" ry="13" stroke="#00A8E8" stroke-width="1.4" fill="none"/>
-                <line x1="1" y1="14" x2="27" y2="14" stroke="#00A8E8" stroke-width="1.4"/>
-                <path d="M5 7.5C8 9.5 20 9.5 23 7.5" stroke="#00A8E8" stroke-width="1.2" fill="none"/>
-                <path d="M5 20.5C8 18.5 20 18.5 23 20.5" stroke="#00A8E8" stroke-width="1.2" fill="none"/>
-                <circle cx="14" cy="14" r="3.2" fill="#EE2E24"/>
-              </g>
-              <!-- VietQR text -->
-              <text x="36" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" fill="#005BAA" letter-spacing="-0.5">Viet<tspan fill="#EE2E24">QR</tspan></text>
-              <!-- GLOBAL Badge -->
-              <rect x="114" y="7" width="58" height="20" rx="5" fill="#E0F2FE"/>
-              <text x="143" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="900" fill="#0369A1" letter-spacing="0.8" text-anchor="middle">GLOBAL</text>
-            </svg>
+          <!-- VietQR Global Official Brand Logo -->
+          <div class="inline-flex items-center px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-sm shrink-0 hover:border-cyan-400 transition-all" title="VietQR Global - Chuẩn thanh toán QR quốc tế">
+            <img src="./assets/images/vietqr-global.png" alt="VietQR Global Logo" class="h-6 sm:h-7 w-auto object-contain">
           </div>
         </div>
 
@@ -763,8 +741,9 @@
       
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-100 border border-cyan-200 text-cyan-800 text-xs font-bold uppercase tracking-wider" data-i18n="globalBadge">
-          Khách du lịch quốc tế
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-cyan-200 shadow-sm">
+          <img src="./assets/images/vietqr-global.png" alt="VietQR Global" class="h-4 w-auto object-contain">
+          <span class="text-cyan-900 text-xs font-bold uppercase tracking-wider border-l border-slate-200 pl-2" data-i18n="globalBadge">Khách du lịch quốc tế</span>
         </div>
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900" data-i18n="globalTitle">
           Hỗ trợ khách quốc tế thanh toán qua mã QR
@@ -883,9 +862,7 @@
               <div class="relative rounded-2xl bg-white p-5 border border-slate-300 shadow-xl overflow-hidden pt-6">
                 <!-- Header on Acrylic -->
                 <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
-                  <div class="text-[11px] font-black text-blue-900">
-                    VIETQR
-                  </div>
+                  <img src="./assets/images/vietqr-global.png" alt="VietQR Global" class="h-4.5 w-auto object-contain">
                   <span class="text-[10px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
                     Khổ A5 quầy thu ngân
                   </span>
