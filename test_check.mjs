@@ -103,5 +103,8 @@ intlPartners.forEach(partner => {
   assert(html.includes(partner), `International partner present: ${partner}`);
 });
 
+// 8. Check VietQR Global Logo
+assert(html.includes('VietQR Global Logo') && html.includes('GLOBAL'), 'VietQR Global logo present in international partner section');
+
 console.log(`\n=== SUMMARY: ${passed} PASSED, ${failed} FAILED ===`);
 if (failed > 0) process.exit(1);
