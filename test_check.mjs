@@ -67,9 +67,9 @@ assert(!html.includes('khongtien<span class="text-blue-600">mat</span>'), 'Old e
 // 4. Check 4 Products Showcase
 assert(html.includes('id="products"'), '4 Products section id="products" present');
 assert(html.includes('standee-than-tai.png'), 'VietQR Pay authentic mica standee image present');
-assert(html.includes('product-soundbox.jpg'), 'Loa thông báo product image present');
-assert(html.includes('product-pos-app.jpg'), 'Phần mềm bán hàng product image present');
-assert(html.includes('product-smart-pos.jpg'), 'Máy POS thanh toán product image present');
+assert(html.includes('product-soundbox.png'), 'Loa thông báo product image present');
+assert(html.includes('product-pos-app.png'), 'Phần mềm bán hàng product image present');
+assert(html.includes('product-smart-pos.png'), 'Máy POS thanh toán product image present');
 assert(html.includes('data-product="vietqr-pay"'), 'VietQR Pay detail button present');
 assert(html.includes('data-product="soundbox"'), 'Soundbox detail button present');
 assert(html.includes('data-product="pos-software"'), 'POS software detail button present');
