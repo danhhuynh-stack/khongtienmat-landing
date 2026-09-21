@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>khongtienmat.vn | Cổng Giải Pháp Thanh Toán Không Tiền Mặt Quốc Gia & Xuyên Biên Giới</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Chấp nhận thanh toán mọi ngân hàng Việt Nam (VietQR Pay) và đón hàng triệu du khách quốc tế từ 6+ quốc gia (VietQR Global) trên cùng một mã QR duy nhất.">
+  <meta name="keywords" content="khongtienmat, không tiền mặt, vietqr, napas, vietqr global, thanh toan xuyen bien gioi, nexus digital, diem ban, promptpay, alipay, wechat pay, gln, nets">
+  <meta property="og:title" content="khongtienmat.vn | Hệ Sinh Thái Thanh Toán Không Tiền Mặt Toàn Diện & Xuyên Biên Giới">
+  <meta property="og:description" content="Miễn phí 100% mở điểm bán VietQR Napas và đón khách du lịch quốc tế thanh toán bằng ví điện tử quê nhà.">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#050c18',
+              card: '#0c1527',
+              primary: '#0066cc',
+              cyan: '#00e5ff',
+              accent: '#ff5e00',
+              gold: '#f59e0b'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-short': 'bounce 1s ease-in-out 1'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #050c18;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 40px -10px rgba(0, 229, 255, 0.3);
+    }
+    .glow-primary {
+      box-shadow: 0 0 50px -15px rgba(0, 102, 204, 0.4);
+    }
+    .glass-panel {
+      background: rgba(12, 21, 39, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+
+<body class="relative selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-cyan-600/15 via-blue-700/10 to-transparent blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed top-1/3 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[160px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-10 left-0 w-[600px] h-[600px] bg-cyan-600/10 blur-[180px] pointer-events-none -z-10"></div>
+
+  <!-- STICKY NAVBAR -->
+  <nav id="mainNavbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logos -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="flex items-center gap-2 py-1 px-2.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-cyan-500/40 transition">
+          <div class="font-extrabold tracking-tight text-white flex items-center text-lg sm:text-xl">
+            <span class="text-white">khongtien</span><span class="text-cyan-400">mat</span><span class="text-xs px-1.5 py-0.5 ml-1 rounded bg-cyan-500/20 text-cyan-300 font-bold">.vn</span>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center gap-2 text-xs text-slate-400 border-l border-slate-700/60 pl-3">
+          <span class="font-semibold text-slate-200">NAPAS</span>
+          <span>×</span>
+          <span class="text-cyan-300 font-medium">VietQR Global</span>
+          <span>×</span>
+          <span class="text-slate-300 font-medium">NEXUS</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#features" class="hover:text-cyan-400 transition" data-i18n="navFeatures">Tính Năng</a>
+        <a href="#cross-border" class="hover:text-cyan-400 transition" data-i18n="navGlobal">Quốc Tế</a>
+        <a href="#posm" class="hover:text-cyan-400 transition" data-i18n="navPosm">Ấn Phẩm POSM</a>
+        <a href="#comparison" class="hover:text-cyan-400 transition" data-i18n="navCompare">So Sánh</a>
+        <a href="#process" class="hover:text-cyan-400 transition" data-i18n="navProcess">Quy Trình</a>
+        <a href="#faq" class="hover:text-cyan-400 transition" data-i18n="navFaq">Hỏi Đáp</a>
+      </div>
+
+      <!-- Right Controls: Language Switcher & Register CTA -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher Dropdown -->
+        <div class="relative flex items-center">
+          <label for="langSelect" class="sr-only">Language</label>
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/90 border border-slate-700/80 hover:border-cyan-500/60 transition text-sm">
+            <i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i>
+            <select id="langSelect" class="bg-transparent text-slate-200 text-xs sm:text-sm font-semibold focus:outline-none cursor-pointer pr-1">
+              <option value="vi" class="bg-slate-900 text-slate-100">🇻🇳 Tiếng Việt</option>
+              <option value="en" class="bg-slate-900 text-slate-100">🇬🇧 English</option>
+              <option value="zh" class="bg-slate-900 text-slate-100">🇨🇳 中文</option>
+              <option value="ko" class="bg-slate-900 text-slate-100">🇰🇷 한국어</option>
+              <option value="th" class="bg-slate-900 text-slate-100">🇹🇭 ไทย</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Primary CTA Button -->
+        <a href="#register" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-md shadow-cyan-500/20 transition transform hover:-translate-y-0.5">
+          <span data-i18n="navRegister">Đăng Ký Mở Điểm</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" aria-label="Open menu" class="lg:hidden p-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileNavDrawer" class="hidden lg:hidden mt-3 px-4 py-5 rounded-2xl glass-panel border border-slate-800 space-y-4 shadow-2xl">
+      <div class="flex flex-col space-y-3 text-base font-medium text-slate-300">
+        <a href="#features" class="mobile-nav-link hover:text-cyan-400 py-1" data-i18n="navFeatures">Tính Năng</a>
+        <a href="#cross-border" class="mobile-nav-link hover:text-cyan-400 py-1" data-i18n="navGlobal">Quốc Tế</a>
+        <a href="#posm" class="mobile-nav-link hover:text-cyan-400 py-1" data-i18n="navPosm">Ấn Phẩm POSM</a>
+        <a href="#comparison" class="mobile-nav-link hover:text-cyan-400 py-1" data-i18n="navCompare">So Sánh</a>
+        <a href="#process" class="mobile-nav-link hover:text-cyan-400 py-1" data-i18n="navProcess">Quy Trình</a>
+        <a href="#faq" class="mobile-nav-link hover:text-cyan-400 py-1" data-i18n="navFaq">Hỏi Đáp</a>
+      </div>
+      <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+        <select id="langSelectMobile" class="bg-slate-900 text-slate-200 border border-slate-700 rounded-lg px-2 py-1.5 text-sm">
+          <option value="vi">🇻🇳 Tiếng Việt</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="zh">🇨🇳 中文</option>
+          <option value="ko">🇰🇷 한국어</option>
+          <option value="th">🇹🇭 ไทย</option>
+        </select>
+        <a href="#register" class="mobile-nav-link inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-cyan-500 text-slate-950 font-bold text-sm">
+          <span data-i18n="navRegister">Đăng Ký Ngay</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-8 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Column: Copy & Value Proposition -->
+      <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
+        
+        <!-- National Initiative Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-medium">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <span data-i18n="heroBadge">Sáng kiến Chuyển đổi số & Thanh toán Quốc gia 2026</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight sm:leading-tight">
+          <span data-i18n="heroTitle">Hệ Sinh Thái Thanh Toán Không Tiền Mặt Toàn Diện & Xuyên Biên Giới</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal" data-i18n="heroSubtitle">
+          Chấp nhận thanh toán mọi ngân hàng Việt Nam (VietQR Pay) và đón hàng triệu du khách quốc tế từ 6+ quốc gia (VietQR Global) trên cùng một mã QR duy nhất.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <a href="#register" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-cyan-400 hover:opacity-95 text-white font-bold text-base shadow-xl shadow-cyan-500/25 transition transform hover:-translate-y-0.5">
+            <i data-lucide="store" class="w-5 h-5"></i>
+            <span data-i18n="heroCtaPrimary">Đăng Ký Điểm Bán Miễn Phí</span>
+          </a>
+          <a href="#demo" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl glass-panel hover:bg-slate-800/80 border border-slate-700 text-slate-200 font-semibold text-base transition">
+            <i data-lucide="play-circle" class="w-5 h-5 text-cyan-400"></i>
+            <span data-i18n="heroCtaSecondary">Trải Nghiệm Thanh Toán</span>
+          </a>
+        </div>
+
+        <!-- Metric Counters -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800/80">
+          <div class="text-left">
+            <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400">40+</div>
+            <div class="text-xs text-slate-400 font-medium" data-i18n="heroStat1">Ngân Hàng Liên Kết</div>
+          </div>
+          <div class="text-left">
+            <div class="text-2xl sm:text-3xl font-extrabold text-blue-400">6+</div>
+            <div class="text-xs text-slate-400 font-medium" data-i18n="heroStat2">Quốc Gia Chuyển Mạch</div>
+          </div>
+          <div class="text-left">
+            <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">0đ</div>
+            <div class="text-xs text-slate-400 font-medium" data-i18n="heroStat3">Phí Mở Điểm & Duy Trì</div>
+          </div>
+          <div class="text-left">
+            <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">0s</div>
+            <div class="text-xs text-slate-400 font-medium" data-i18n="heroStat4">Thời Gian Tiền Về TK</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Phone & QR Standee Simulator -->
+      <div id="demo" class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-sm rounded-3xl glass-panel p-6 border border-slate-700/80 glow-cyan">
+          
+          <!-- Mode Tabs -->
+          <div class="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-slate-950/80 border border-slate-800 text-xs font-semibold mb-5">
+            <button id="tabDomestic" class="py-2 px-2.5 rounded-lg bg-blue-600 text-white transition text-center" data-i18n="demoDomesticTab">
+              🇻🇳 Khách Việt (VietQR Pay)
+            </button>
+            <button id="tabGlobal" class="py-2 px-2.5 rounded-lg bg-slate-800/80 text-slate-400 hover:text-white transition text-center" data-i18n="demoGlobalTab">
+              🌏 Khách Quốc Tế (VietQR Global)
+            </button>
+          </div>
+
+          <!-- Standee Mockup Container -->
+          <div class="bg-white text-slate-900 rounded-2xl p-5 shadow-inner border border-slate-200 text-center relative overflow-hidden">
+            <!-- Header on Standee -->
+            <div class="flex items-center justify-between border-b border-slate-200 pb-2.5 mb-3">
+              <div class="text-left">
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Điểm Chấp Nhận Thanh Toán</div>
+                <div class="text-xs font-extrabold text-blue-900">NAPAS • VIETQR GLOBAL</div>
+              </div>
+              <div class="flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                Chính Hãng
+              </div>
+            </div>
+
+            <!-- Realistic QR Code SVG Vector with VietQR Center Logo -->
+            <div class="relative w-48 h-48 mx-auto my-2 p-2 bg-white rounded-xl border-2 border-slate-900 flex items-center justify-center shadow-md group cursor-pointer">
+              <!-- Stylized QR Grid -->
+              <svg viewBox="0 0 100 100" class="w-full h-full text-slate-900">
+                <!-- Outer markers -->
+                <rect x="5" y="5" width="26" height="26" fill="currentColor" rx="4"/>
+                <rect x="8" y="8" width="20" height="20" fill="white" rx="2"/>
+                <rect x="12" y="12" width="12" height="12" fill="currentColor" rx="1"/>
+
+                <rect x="69" y="5" width="26" height="26" fill="currentColor" rx="4"/>
+                <rect x="72" y="8" width="20" height="20" fill="white" rx="2"/>
+                <rect x="76" y="12" width="12" height="12" fill="currentColor" rx="1"/>
+
+                <rect x="5" y="69" width="26" height="26" fill="currentColor" rx="4"/>
+                <rect x="8" y="72" width="20" height="20" fill="white" rx="2"/>
+                <rect x="12" y="76" width="12" height="12" fill="currentColor" rx="1"/>
+
+                <!-- Random QR Data Points -->
+                <rect x="36" y="8" width="8" height="8" fill="currentColor"/>
+                <rect x="48" y="12" width="6" height="6" fill="currentColor"/>
+                <rect x="58" y="8" width="6" height="8" fill="currentColor"/>
+                <rect x="36" y="22" width="6" height="6" fill="currentColor"/>
+                <rect x="46" y="24" width="8" height="6" fill="currentColor"/>
+
+                <rect x="8" y="38" width="6" height="8" fill="currentColor"/>
+                <rect x="18" y="42" width="8" height="6" fill="currentColor"/>
+                <rect x="8" y="52" width="6" height="6" fill="currentColor"/>
+
+                <rect x="74" y="38" width="6" height="6" fill="currentColor"/>
+                <rect x="84" y="44" width="8" height="8" fill="currentColor"/>
+                <rect x="72" y="54" width="6" height="6" fill="currentColor"/>
+
+                <rect x="36" y="68" width="6" height="8" fill="currentColor"/>
+                <rect x="48" y="72" width="8" height="6" fill="currentColor"/>
+                <rect x="36" y="84" width="6" height="6" fill="currentColor"/>
+                <rect x="46" y="82" width="8" height="8" fill="currentColor"/>
+
+                <rect x="68" y="74" width="8" height="8" fill="currentColor"/>
+                <rect x="82" y="70" width="8" height="6" fill="currentColor"/>
+                <rect x="76" y="86" width="10" height="6" fill="currentColor"/>
+
+                <!-- Center Logo Container -->
+                <circle cx="50" cy="50" r="14" fill="white" stroke="#0066cc" stroke-width="2"/>
+                <text x="50" y="53" font-size="7" font-weight="900" fill="#0066cc" text-anchor="middle">VietQR</text>
+              </svg>
+
+              <!-- Pulsing scan target overlay -->
+              <div class="absolute inset-0 border-2 border-cyan-400 rounded-xl animate-pulse pointer-events-none opacity-60"></div>
+            </div>
+
+            <!-- Partner badges below QR -->
+            <div class="pt-2 text-[11px] font-semibold text-slate-600 flex items-center justify-center gap-1.5 flex-wrap">
+              <span class="px-1.5 py-0.5 rounded bg-slate-100">MB Bank</span>
+              <span class="px-1.5 py-0.5 rounded bg-slate-100">Techcombank</span>
+              <span class="px-1.5 py-0.5 rounded bg-slate-100">VIB</span>
+              <span class="px-1.5 py-0.5 rounded bg-slate-100">VPBank</span>
+            </div>
+
+            <p id="demoPromptText" class="text-[11px] text-slate-500 mt-2 font-medium">
+              Khách Việt dùng App ngân hàng quét thanh toán • Tiền về tức thì!
+            </p>
+          </div>
+
+          <!-- Interactive Action Button -->
+          <div class="mt-4 text-center">
+            <button id="simulatePaymentBtn" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-sm transition shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2">
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              <span data-i18n="demoSimulateBtn">Thử Giả Lập Quét Mã & Thanh Toán</span>
+            </button>
+          </div>
+
+          <!-- Payment Success Toast Overlay -->
+          <div id="paymentSuccessCard" class="hidden absolute inset-x-4 top-1/3 p-5 rounded-2xl bg-slate-900/95 border-2 border-emerald-500 shadow-2xl backdrop-blur-xl text-center z-20">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-2">
+              <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+            </div>
+            <div class="text-base font-extrabold text-white" data-i18n="demoSuccessTitle">Thanh Toán Thành Công!</div>
+            <div class="text-2xl font-black text-emerald-400 my-1" data-i18n="demoSuccessAmt">+ 150.000 VNĐ</div>
+            <div class="text-xs text-slate-300" data-i18n="demoSuccessDesc">Tiền đã vào tài khoản cửa hàng • Quyết toán Realtime</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- VIETQR PAY: DOMESTIC MERCHANT SECTION -->
+  <section id="features" class="py-20 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider" data-i18n="payBadge">
+          Giải Pháp Điểm Bán Nội Địa
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="payTitle">
+          VietQR Pay: Tối Ưu Từng Giao Dịch Cho Điểm Bán
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base" data-i18n="paySubtitle">
+          Thay thế hoàn toàn tiền mặt lỉnh kỉnh và máy quẹt thẻ cồng kềnh với giải pháp thanh toán QR chuẩn quốc gia Napas.
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Feat 1 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 hover:border-cyan-500/40 transition group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition">
+            <i data-lucide="zap" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="payFeat1Title">Tiền Về Tài Khoản 0 Giây</h3>
+          <p class="text-sm text-slate-400 leading-relaxed" data-i18n="payFeat1Desc">
+            Nhận tiền trực tiếp vào tài khoản ngân hàng của bạn ngay khi khách chuyển, không lo bị giữ tiền hay đối soát chậm trễ.
+          </p>
+        </div>
+
+        <!-- Feat 2 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 hover:border-cyan-500/40 transition group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-5 group-hover:scale-110 transition">
+            <i data-lucide="volume-2" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="payFeat2Title">Loa Thông Báo & Ting Ting Tức Thì</h3>
+          <p class="text-sm text-slate-400 leading-relaxed" data-i18n="payFeat2Desc">
+            Hệ thống tự động phát âm thanh và gửi tin nhắn biến động số dư, nhân viên không cần chụp lại màn hình của khách.
+          </p>
+        </div>
+
+        <!-- Feat 3 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 hover:border-cyan-500/40 transition group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 transition">
+            <i data-lucide="shield" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="payFeat3Title">Phân Quyền Thu Ngân An Toàn</h3>
+          <p class="text-sm text-slate-400 leading-relaxed" data-i18n="payFeat3Desc">
+            Nhân viên chỉ thấy thông báo đơn hàng vừa thanh toán, tuyệt đối không nhìn thấy số dư tổng hay lịch sử tài khoản của chủ quán.
+          </p>
+        </div>
+
+        <!-- Feat 4 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 hover:border-cyan-500/40 transition group hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5 group-hover:scale-110 transition">
+            <i data-lucide="banknote" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="payFeat4Title">Triệt Tiêu Rủi Ro Tiền Mặt</h3>
+          <p class="text-sm text-slate-400 leading-relaxed" data-i18n="payFeat4Desc">
+            Loại bỏ hoàn toàn rủi ro tiền giả, rách hỏng, thiếu tiền lẻ thối trả hay thất thoát doanh thu cuối ngày.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Partner Banks Logo Bar -->
+      <div class="mt-14 pt-8 border-t border-slate-800/60 text-center">
+        <p class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-6">Kết Nối Trực Tiếp Các Ngân Hàng Thanh Toán Hàng Đầu</p>
+        <div class="flex items-center justify-center gap-6 sm:gap-10 flex-wrap opacity-75">
+          <span class="font-extrabold text-sm sm:text-base tracking-wider text-slate-300">★ MB BANK</span>
+          <span class="font-extrabold text-sm sm:text-base tracking-wider text-slate-300">◆ TECHCOMBANK</span>
+          <span class="font-extrabold text-sm sm:text-base tracking-wider text-slate-300">✱ VIB</span>
+          <span class="font-extrabold text-sm sm:text-base tracking-wider text-slate-300">✦ VPBANK</span>
+          <span class="font-extrabold text-sm sm:text-base tracking-wider text-slate-300">VIETCOMBANK</span>
+          <span class="font-extrabold text-sm sm:text-base tracking-wider text-slate-300">BIDV</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VIETQR GLOBAL: CROSS-BORDER PAYMENT SECTION -->
+  <section id="cross-border" class="py-20 px-4 sm:px-8 border-t border-slate-800/80 relative">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold uppercase tracking-wider" data-i18n="globalBadge">
+          Chuyển Mạch Xuyên Biên Giới
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="globalTitle">
+          VietQR Global: Đón Hàng Triệu Du Khách Quốc Tế
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base" data-i18n="globalSubtitle">
+          Khách quốc tế du lịch tại Việt Nam chỉ cần dùng chính ứng dụng ngân hàng hoặc ví điện tử quen thuộc ở quê nhà để quét mã VietQR và thanh toán.
+        </p>
+      </div>
+
+      <!-- 6 Country Tab Buttons -->
+      <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-10">
+        <button class="country-tab-btn active px-4 py-2.5 rounded-xl border border-cyan-500 bg-cyan-500/10 text-cyan-400 text-xs sm:text-sm font-bold transition flex items-center gap-2" data-country="th">
+          <span>🇹🇭</span><span>Thái Lan (PromptPay)</span>
+        </button>
+        <button class="country-tab-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white text-xs sm:text-sm font-bold transition flex items-center gap-2" data-country="ko">
+          <span>🇰🇷</span><span>Hàn Quốc (GLN)</span>
+        </button>
+        <button class="country-tab-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white text-xs sm:text-sm font-bold transition flex items-center gap-2" data-country="cn">
+          <span>🇨🇳</span><span>Trung Quốc (Alipay+/WeChat)</span>
+        </button>
+        <button class="country-tab-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white text-xs sm:text-sm font-bold transition flex items-center gap-2" data-country="sg">
+          <span>🇸🇬</span><span>Singapore (NETS)</span>
+        </button>
+        <button class="country-tab-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white text-xs sm:text-sm font-bold transition flex items-center gap-2" data-country="kh">
+          <span>🇰🇭</span><span>Campuchia (KHQR)</span>
+        </button>
+        <button class="country-tab-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white text-xs sm:text-sm font-bold transition flex items-center gap-2" data-country="la">
+          <span>🇱🇦</span><span>Lào (LAPNet)</span>
+        </button>
+      </div>
+
+      <!-- Country Details & Cross-Border Exchange Showcase Card -->
+      <div class="max-w-4xl mx-auto glass-panel p-6 sm:p-10 rounded-3xl border border-slate-700/80 shadow-2xl relative overflow-hidden">
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left: Country Info & Flow -->
+          <div class="md:col-span-7 space-y-5">
+            <div class="flex items-center gap-3">
+              <span id="countryDisplayFlag" class="text-4xl">🇹🇭</span>
+              <div>
+                <h3 id="countryDisplayName" class="text-xl sm:text-2xl font-bold text-white">Thái Lan (Thailand)</h3>
+                <p id="countryDisplayNetwork" class="text-xs text-cyan-400 font-semibold tracking-wide uppercase">PromptPay • ITMX</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-2">
+              <div class="text-xs text-slate-400 font-medium">Ứng dụng khách sử dụng:</div>
+              <div id="countryDisplayApps" class="text-sm font-semibold text-slate-200 p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+                K PLUS, SCB EASY, Krungthai NEXT, Bangkok Bank
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 text-xs text-slate-300 pt-1">
+              <i data-lucide="refresh-cw" class="w-4 h-4 text-cyan-400"></i>
+              <span>Tỷ giá quy đổi tức thì: <strong id="countryDisplayFx" class="text-white font-semibold">1 THB ≈ 715 VND</strong></span>
+            </div>
+          </div>
+
+          <!-- Right: Visual FX Conversion Simulator -->
+          <div class="md:col-span-5 p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-center space-y-4">
+            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Cơ Chế Khách Quét - Quán Nhận</div>
+            
+            <!-- Foreign customer pays -->
+            <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
+              <div class="text-[11px] text-slate-400">Du khách trả từ app bản địa:</div>
+              <div id="countryDisplayForeign" class="text-xl font-extrabold text-cyan-300">210 THB</div>
+            </div>
+
+            <div class="flex justify-center text-cyan-400">
+              <i data-lucide="arrow-down" class="w-5 h-5 animate-bounce"></i>
+            </div>
+
+            <!-- Merchant receives VND -->
+            <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+              <div class="text-[11px] text-emerald-300 font-medium">Chủ quán Việt Nam nhận trực tiếp:</div>
+              <div id="countryDisplayVnd" class="text-2xl font-black text-emerald-400">150.000 VNĐ</div>
+            </div>
+
+            <div class="text-[11px] text-slate-500">Quyết toán qua cổng chuyển mạch quốc gia NAPAS</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POSM & FREE MERCHANT DISPLAY KIT -->
+  <section id="posm" class="py-20 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/60">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider" data-i18n="posmBadge">
+          Tài Trợ 100% Chi Phí
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="posmTitle">
+          Trọn Bộ Ấn Phẩm POSM Cao Cấp Tận Nơi
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base" data-i18n="posmSubtitle">
+          Ngay sau khi đăng ký, đội ngũ Fieldman sẽ đến tận điểm bán trao tặng và lắp đặt trọn bộ nhận diện chuẩn Napas.
+        </p>
+      </div>
+
+      <!-- POSM Items Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- POSM 1 -->
+        <div class="rounded-2xl glass-panel p-6 border border-slate-800 hover:border-amber-500/40 transition">
+          <div class="h-44 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center mb-5 relative overflow-hidden">
+            <!-- Mica Standee Graphic -->
+            <div class="w-28 h-36 bg-gradient-to-b from-white to-slate-100 rounded-lg p-2 shadow-2xl border-2 border-slate-300 text-center flex flex-col justify-between">
+              <div class="text-[8px] font-extrabold text-blue-900">VIETQR GLOBAL</div>
+              <div class="w-16 h-16 mx-auto bg-slate-900 rounded p-1 flex items-center justify-center text-white text-[7px] font-mono">
+                [ QR CODE ]
+              </div>
+              <div class="text-[7px] text-slate-500 font-bold">MB • TCB • VIB • VPB</div>
+            </div>
+            <!-- Base of standee -->
+            <div class="absolute bottom-2 w-32 h-2.5 bg-slate-400 rounded-full blur-[1px]"></div>
+          </div>
+          <h3 class="text-base font-bold text-white mb-1.5" data-i18n="posmItem1Title">Bảng Mica Để Bàn A5 Sang Trọng</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="posmItem1Desc">
+            Chất liệu Acrylic trong suốt, in sắc nét, đế chắc chắn đặt ngay quầy thu ngân.
+          </p>
+        </div>
+
+        <!-- POSM 2 -->
+        <div class="rounded-2xl glass-panel p-6 border border-slate-800 hover:border-amber-500/40 transition">
+          <div class="h-44 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center mb-5">
+            <div class="w-28 h-28 rounded-2xl bg-cyan-500/10 border-2 border-dashed border-cyan-400 p-3 flex flex-col items-center justify-center text-center">
+              <i data-lucide="shield-alert" class="w-8 h-8 text-cyan-400 mb-1"></i>
+              <span class="text-[10px] font-extrabold text-cyan-300 uppercase">Decal Chống Nước</span>
+              <span class="text-[8px] text-slate-400">Keo Dính Siêu Chắc</span>
+            </div>
+          </div>
+          <h3 class="text-base font-bold text-white mb-1.5" data-i18n="posmItem2Title">Bộ Sticker Decal Chống Nước</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="posmItem2Desc">
+            Keo dính chuyên dụng bền bỉ, dán lên kính, bàn ăn hoặc quầy order chống trầy xước.
+          </p>
+        </div>
+
+        <!-- POSM 3 -->
+        <div class="rounded-2xl glass-panel p-6 border border-slate-800 hover:border-amber-500/40 transition">
+          <div class="h-44 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center mb-5">
+            <div class="w-24 h-32 rounded-xl bg-blue-900/40 border border-blue-500/40 p-2 text-center flex flex-col justify-between">
+              <div class="w-8 h-1.5 bg-blue-400 rounded-full mx-auto"></div>
+              <i data-lucide="badge-check" class="w-8 h-8 text-blue-400 mx-auto"></i>
+              <div class="text-[8px] font-bold text-white uppercase">Chứng Nhận Napas</div>
+            </div>
+          </div>
+          <h3 class="text-base font-bold text-white mb-1.5" data-i18n="posmItem3Title">Dây Đeo & Thẻ Nhận Diện Điểm Bán</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="posmItem3Desc">
+            Tạo sự tin tưởng tuyệt đối cho khách hàng với chứng nhận điểm chấp nhận thanh toán Napas.
+          </p>
+        </div>
+
+        <!-- POSM 4 -->
+        <div class="rounded-2xl glass-panel p-6 border border-slate-800 hover:border-amber-500/40 transition">
+          <div class="h-44 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center mb-5">
+            <div class="w-28 h-28 rounded-full bg-slate-800/80 border border-slate-700 flex flex-col items-center justify-center text-center">
+              <i data-lucide="shirt" class="w-8 h-8 text-cyan-400 mb-1"></i>
+              <span class="text-[10px] font-bold text-white">Áo Polo Đồng Phục</span>
+              <span class="text-[8px] text-slate-400">VietQR Global</span>
+            </div>
+          </div>
+          <h3 class="text-base font-bold text-white mb-1.5" data-i18n="posmItem4Title">Áo Thun Đồng Phục & Tài Liệu</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="posmItem4Desc">
+            Cẩm nang hướng dẫn sử dụng và hỗ trợ kỹ thuật 24/7 từ đội ngũ chăm sóc điểm bán.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE: VIETQR vs TRADITIONAL POS -->
+  <section id="comparison" class="py-20 px-4 sm:px-8 border-t border-slate-800/80">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider" data-i18n="compareBadge">
+          Hiệu Quả Kinh Tế
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="compareTitle">
+          So Sánh VietQR vs Máy POS Truyền Thống
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base" data-i18n="compareSubtitle">
+          Tiết kiệm hàng chục triệu đồng chi phí vận hành mỗi năm cho cửa hàng của bạn.
+        </p>
+      </div>
+
+      <!-- Table Wrapper -->
+      <div class="rounded-3xl glass-panel border border-slate-700/80 overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 bg-slate-900/80">
+                <th class="p-5 text-sm font-bold text-slate-400 uppercase tracking-wider w-1/3" data-i18n="compColFeature">Tiêu chí so sánh</th>
+                <th class="p-5 text-sm font-extrabold text-cyan-300 uppercase tracking-wider bg-cyan-500/10 border-x border-cyan-500/20 w-1/3" data-i18n="compColVietQR">
+                  Giải Pháp VietQR (khongtienmat.vn)
+                </th>
+                <th class="p-5 text-sm font-bold text-slate-400 uppercase tracking-wider w-1/3" data-i18n="compColPos">
+                  Máy POS quẹt thẻ truyền thống
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/70 text-sm">
+              
+              <!-- Row 1 -->
+              <tr class="hover:bg-slate-900/40 transition">
+                <td class="p-5 font-semibold text-white" data-i18n="compRow1">Chi phí thiết bị / đặt cọc</td>
+                <td class="p-5 font-bold text-emerald-400 bg-cyan-500/5 border-x border-cyan-500/20 flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                  <span data-i18n="compRow1_v">0đ (Được tài trợ miễn phí)</span>
+                </td>
+                <td class="p-5 text-slate-400" data-i18n="compRow1_p">3.000.000đ - 5.000.000đ / máy</td>
+              </tr>
+
+              <!-- Row 2 -->
+              <tr class="hover:bg-slate-900/40 transition">
+                <td class="p-5 font-semibold text-white" data-i18n="compRow2">Phí giao dịch</td>
+                <td class="p-5 font-bold text-emerald-400 bg-cyan-500/5 border-x border-cyan-500/20 flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                  <span data-i18n="compRow2_v">Siêu ưu đãi, miễn phí nội địa</span>
+                </td>
+                <td class="p-5 text-slate-400" data-i18n="compRow2_p">1.5% - 2.5% mỗi giao dịch</td>
+              </tr>
+
+              <!-- Row 3 -->
+              <tr class="hover:bg-slate-900/40 transition">
+                <td class="p-5 font-semibold text-white" data-i18n="compRow3">Thời gian tiền về tài khoản</td>
+                <td class="p-5 font-bold text-emerald-400 bg-cyan-500/5 border-x border-cyan-500/20 flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                  <span data-i18n="compRow3_v">Tức thì 0 giây (Realtime)</span>
+                </td>
+                <td class="p-5 text-slate-400" data-i18n="compRow3_p">T+1 đến T+3 ngày làm việc</td>
+              </tr>
+
+              <!-- Row 4 -->
+              <tr class="hover:bg-slate-900/40 transition">
+                <td class="p-5 font-semibold text-white" data-i18n="compRow4">Thanh toán quốc tế</td>
+                <td class="p-5 font-bold text-emerald-400 bg-cyan-500/5 border-x border-cyan-500/20 flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                  <span data-i18n="compRow4_v">Tích hợp sẵn 6+ quốc gia Châu Á</span>
+                </td>
+                <td class="p-5 text-slate-400" data-i18n="compRow4_p">Cần đăng ký thêm máy thẻ Visa/Master</td>
+              </tr>
+
+              <!-- Row 5 -->
+              <tr class="hover:bg-slate-900/40 transition">
+                <td class="p-5 font-semibold text-white" data-i18n="compRow5">Bảo trì & Hư hỏng linh kiện</td>
+                <td class="p-5 font-bold text-emerald-400 bg-cyan-500/5 border-x border-cyan-500/20 flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                  <span data-i18n="compRow5_v">Không bao giờ lo kẹt giấy, hết pin</span>
+                </td>
+                <td class="p-5 text-slate-400" data-i18n="compRow5_p">Thường xuyên hết giấy in, lỗi mạng, pin chai</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3-STEP ONBOARDING PROCESS -->
+  <section id="process" class="py-20 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/60">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider" data-i18n="processBadge">
+          Onboarding Siêu Tốc
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="processTitle">
+          3 Bước Đơn Giản Để Điểm Bán Hoạt Động
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base" data-i18n="processSubtitle">
+          Không giấy tờ rườm rà, số hóa 100% hợp đồng điện tử qua Savis TrustCA.
+        </p>
+      </div>
+
+      <!-- Step Cards -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Step 1 -->
+        <div class="p-8 rounded-3xl glass-panel border border-slate-800 hover:border-cyan-500/40 transition relative">
+          <div class="text-5xl font-black text-cyan-500/20 mb-4">01</div>
+          <h3 class="text-xl font-bold text-white mb-2" data-i18n="step1Title">Bước 1: Đăng Ký Online</h3>
+          <p class="text-sm text-slate-400 leading-relaxed" data-i18n="step1Desc">
+            Điền thông tin cửa hàng vào form bên dưới trong vòng 1 phút.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-8 rounded-3xl glass-panel border border-slate-800 hover:border-cyan-500/40 transition relative">
+          <div class="text-5xl font-black text-blue-500/20 mb-4">02</div>
+          <h3 class="text-xl font-bold text-white mb-2" data-i18n="step2Title">Bước 2: Ký Hợp Đồng Điện Tử</h3>
+          <p class="text-sm text-slate-400 leading-relaxed" data-i18n="step2Desc">
+            Ký hợp đồng 3 bên (Napas - Điểm Bán - Nexus) bằng mã OTP an toàn.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-8 rounded-3xl glass-panel border border-slate-800 hover:border-cyan-500/40 transition relative">
+          <div class="text-5xl font-black text-emerald-500/20 mb-4">03</div>
+          <h3 class="text-xl font-bold text-white mb-2" data-i18n="step3Title">Bước 3: Nhận Kit & Hoạt Động</h3>
+          <p class="text-sm text-slate-400 leading-relaxed" data-i18n="step3Desc">
+            Đội ngũ Fieldman giao bảng mica, sticker và kích hoạt nhận tiền ngay.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LEAD GENERATION FORM -->
+  <section id="register" class="py-20 px-4 sm:px-8 border-t border-slate-800/80 relative">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold uppercase tracking-wider" data-i18n="formBadge">
+          Cổng Đăng Ký Trực Tuyến
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="formTitle">
+          Đăng Ký Trở Thành Điểm Chấp Nhận Thanh Toán
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base" data-i18n="formSubtitle">
+          Hoàn toàn miễn phí. Hơn 50.000+ điểm bán trên toàn quốc đã tin dùng.
+        </p>
+      </div>
+
+      <!-- Form Box -->
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-slate-700/80 shadow-2xl relative">
+        
+        <!-- Form Alert Message -->
+        <div id="formSuccessAlert" class="hidden mb-6 p-5 rounded-2xl bg-emerald-500/20 border border-emerald-500/50 text-emerald-200">
+          <div class="flex items-center gap-3">
+            <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400"></i>
+            <div>
+              <div class="font-bold text-base" data-i18n="formSuccessTitle">Đăng Ký Thành Công!</div>
+              <div class="text-xs text-emerald-300" data-i18n="formSuccessDesc">Chuyên viên vận hành sẽ liên hệ với bạn trong vòng 15 phút để hoàn tất hồ sơ và bàn giao bộ ấn phẩm tận nơi.</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="merchantLeadForm" class="space-y-6">
+          <div class="grid sm:grid-cols-2 gap-6">
+            
+            <!-- Full Name -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formFullName">Họ và tên người đại diện *</label>
+              <input type="text" name="fullName" required class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition" placeholder="Nguyễn Văn A">
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formPhone">Số điện thoại liên hệ *</label>
+              <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition" placeholder="0901 234 567">
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formEmail">Email nhận hợp đồng điện tử *</label>
+              <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition" placeholder="cuahang@example.com">
+            </div>
+
+            <!-- Store Name -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formStoreName">Tên thương hiệu / Cửa hàng *</label>
+              <input type="text" name="storeName" required class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition" placeholder="Cà Phê Sài Gòn, Nhà Thuốc...">
+            </div>
+
+            <!-- City -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formCity">Tỉnh / Thành phố kinh doanh *</label>
+              <input type="text" name="city" required class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition" placeholder="TP. Hồ Chí Minh, Hà Nội, Đà Nẵng...">
+            </div>
+
+            <!-- Business Type -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formBusinessType">Loại hình hoạt động *</label>
+              <select name="businessType" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500 transition cursor-pointer">
+                <option value="hkd" data-i18n="formBusinessOpt1">Hộ kinh doanh cá thể</option>
+                <option value="enterprise" data-i18n="formBusinessOpt2">Công ty / Doanh nghiệp</option>
+                <option value="chain" data-i18n="formBusinessOpt3">Chuỗi cửa hàng / Bán lẻ</option>
+                <option value="individual" data-i18n="formBusinessOpt4">Cá nhân kinh doanh tự do</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6 pt-2">
+            <!-- Solution Interest -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formSolution">Giải pháp quan tâm *</label>
+              <select name="solution" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500 transition cursor-pointer">
+                <option value="both" selected data-i18n="formSolOpt3">Trọn gói cả hai giải pháp (Khuyên dùng)</option>
+                <option value="domestic" data-i18n="formSolOpt1">VietQR Pay (Thanh toán nội địa)</option>
+                <option value="global" data-i18n="formSolOpt2">VietQR Global (Đón khách quốc tế)</option>
+              </select>
+            </div>
+
+            <!-- Payout Bank -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2" data-i18n="formBank">Ngân hàng nhận tiền mong muốn</label>
+              <select name="bank" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500 transition cursor-pointer">
+                <option value="" data-i18n="formBankOptDefault">-- Chọn ngân hàng chính --</option>
+                <option value="MB">MB Bank (Ngân hàng Quân Đội)</option>
+                <option value="TCB">Techcombank</option>
+                <option value="VIB">VIB</option>
+                <option value="VPB">VPBank</option>
+                <option value="VCB">Vietcombank</option>
+                <option value="BIDV">BIDV</option>
+                <option value="CTG">VietinBank</option>
+                <option value="other">Ngân hàng khác</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pt-4 text-center">
+            <button type="submit" class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-cyan-400 hover:opacity-95 text-white font-extrabold text-base shadow-xl shadow-cyan-500/25 transition transform hover:-translate-y-0.5">
+              <span data-i18n="formSubmit">Gửi Yêu Cầu Mở Điểm Ngay</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="py-20 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/60">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider" data-i18n="faqBadge">
+          Hỗ Trợ Điểm Bán
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="faqTitle">
+          Câu Hỏi Thường Gặp
+        </h2>
+      </div>
+
+      <!-- FAQ Accordion List -->
+      <div class="space-y-4">
+        
+        <!-- Q1 -->
+        <div class="faq-item rounded-2xl glass-panel border border-slate-800 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-bold text-white text-base" data-i18n="faqQ1">Chi phí đăng ký và duy trì điểm bán có mất phí không?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-4" data-i18n="faqA1">
+            Hoàn toàn MIỄN PHÍ. Điểm bán được tài trợ 100% chi phí mở điểm, cấp mã QR chuẩn Napas và nhận trọn bộ ấn phẩm Mica để bàn, Sticker decal chống nước mà không phải đóng bất kỳ khoản cọc hay phí duy trì hàng tháng nào.
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item rounded-2xl glass-panel border border-slate-800 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-bold text-white text-base" data-i18n="faqQ2">Khách quốc tế thanh toán thì tôi nhận tiền bằng loại tiền gì?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-4" data-i18n="faqA2">
+            Khách quốc tế (Thái Lan, Hàn Quốc, Trung Quốc, v.v.) sẽ thanh toán bằng đồng tiền của nước họ trên app ví điện tử quê nhà, nhưng hệ thống VietQR Global sẽ tự động quy đổi theo tỷ giá chuyển nhượng thời gian thực và ghi có 100% bằng TIỀN VNĐ vào tài khoản ngân hàng của bạn.
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item rounded-2xl glass-panel border border-slate-800 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-bold text-white text-base" data-i18n="faqQ3">Cửa hàng của tôi cần chuẩn bị giấy tờ gì để đăng ký?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-4" data-i18n="faqA3">
+            Thủ tục cực kỳ đơn giản: Đối với Hộ Kinh Doanh cần CCCD của chủ hộ và Giấy phép ĐKKD (nếu có); đối với Doanh Nghiệp cần ĐKKD và thông tin người đại diện pháp luật. Mọi hợp đồng đều ký điện tử qua Savis TrustCA bằng OTP gửi về điện thoại.
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item rounded-2xl glass-panel border border-slate-800 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-bold text-white text-base" data-i18n="faqQ4">Sau bao lâu từ khi gửi thông tin thì điểm bán được kích hoạt?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-cyan-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-4" data-i18n="faqA4">
+            Trong vòng 24 giờ làm việc. Sau khi hồ sơ được duyệt online, nhân sự thực địa của Fieldman sẽ trực tiếp mang ấn phẩm POSM đến tận cửa hàng và hướng dẫn thu ngân cách vận hành.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 px-4 sm:px-8 border-t border-slate-800 bg-slate-950 text-slate-400 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 pb-10 border-b border-slate-800/80">
+      
+      <!-- Col 1: Brand Info -->
+      <div class="md:col-span-5 space-y-4">
+        <div class="font-extrabold text-xl text-white">
+          <span>khongtien</span><span class="text-cyan-400">mat</span><span class="text-cyan-300">.vn</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed max-w-md" data-i18n="footerDesc">
+          Sáng kiến chuyển đổi số quốc gia hợp tác phát triển bởi NAPAS và NEXUS DIGITAL, thúc đẩy xã hội không tiền mặt và kết nối kinh tế du lịch toàn cầu.
+        </p>
+        <div class="text-xs text-slate-500 font-medium">
+          <span data-i18n="footerPartners">Đơn vị bảo trợ & phát triển:</span><br>
+          <strong class="text-slate-300">CÔNG TY CỔ PHẦN THANH TOÁN QUỐC GIA VIỆT NAM (NAPAS)</strong><br>
+          <strong class="text-slate-300">CÔNG TY CỔ PHẦN NEXUS DIGITAL</strong>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="md:col-span-3 space-y-2">
+        <div class="font-bold text-white text-sm uppercase tracking-wider mb-3">Liên Kết Nhanh</div>
+        <div><a href="#features" class="hover:text-cyan-400 transition">VietQR Pay Nội Địa</a></div>
+        <div><a href="#cross-border" class="hover:text-cyan-400 transition">VietQR Global Quốc Tế</a></div>
+        <div><a href="#posm" class="hover:text-cyan-400 transition">Ấn Phẩm & Standee Mica</a></div>
+        <div><a href="#comparison" class="hover:text-cyan-400 transition">So Sánh Chi Phí Máy POS</a></div>
+        <div><a href="#register" class="hover:text-cyan-400 transition">Cổng Đăng Ký Điểm Bán</a></div>
+      </div>
+
+      <!-- Col 3: Contact Info -->
+      <div class="md:col-span-4 space-y-3">
+        <div class="font-bold text-white text-sm uppercase tracking-wider mb-3">Thông Tin Liên Hệ</div>
+        <div class="flex items-start gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+          <span data-i18n="footerAddress">35 Đường số 3, Phường Tân Mỹ, Quận 7, TP. Hồ Chí Minh</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+          <span data-i18n="footerHotline">Hotline hỗ trợ điểm bán: 1900 xxxx (24/7)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i data-lucide="mail" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+          <span>operation@nexusdigital.vn</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+      <div data-i18n="footerRights">© 2026 khongtienmat.vn. Bản quyền thuộc về CÔNG TY CỔ PHẦN NEXUS DIGITAL & NAPAS.</div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-slate-400">Điều khoản dịch vụ</a>
+        <a href="#" class="hover:text-slate-400">Chính sách bảo mật</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script type="module" src="./app.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+
+</body>
+</html>
