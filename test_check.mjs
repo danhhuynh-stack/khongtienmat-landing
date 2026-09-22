@@ -66,7 +66,7 @@ assert(!html.includes('khongtien<span class="text-blue-600">mat</span>'), 'Old e
 
 // 4. Hero Section & Headline Line-Height Requirements
 assert(html.includes('MIỄN PHÍ') && html.includes('text-red-600 font-black'), 'Hero headline highlights "MIỄN PHÍ" in bold red');
-assert(html.includes('leading-[1.28]'), 'Headline line-height is 1.28-1.3 to prevent Vietnamese tone marks touching');
+assert(html.includes('.hero-headline') && html.includes('style="line-height: 1.28 !important;"'), 'Hero headline line-height 1.28 !important protected against CSS override');
 assert(html.includes('VietQR Pay, loa thông báo, phần mềm bán hàng và máy POS — lựa chọn giải pháp phù hợp cho cửa hàng của bạn.'), 'Hero subtitle updated with concise product overview');
 assert(html.includes('Đăng ký miễn phí'), 'Primary CTA "Đăng ký miễn phí" present in Hero');
 
@@ -76,6 +76,7 @@ assert(html.includes('standee-than-tai.png'), 'VietQR Pay authentic mica standee
 assert(html.includes('product-soundbox.png'), 'Loa thông báo product image present');
 assert(html.includes('product-pos-app.png'), 'Phần mềm bán hàng product image present');
 assert(html.includes('product-smart-pos.png'), 'Máy POS thanh toán product image present');
+assert(html.includes('h-44 sm:h-56 lg:h-60'), 'Product image containers increased 15-20% (h-44 sm:h-56 lg:h-60)');
 assert(html.includes('badgeFree'), 'data-i18n="badgeFree" present for products');
 assert(html.includes('badgeFreePOS'), 'data-i18n="badgeFreePOS" present for Smart POS');
 assert(html.includes('posConditionNote'), 'data-i18n="posConditionNote" present');
@@ -86,22 +87,34 @@ assert(html.includes('id="network"'), 'Section id="network" present between #pro
 assert(html.includes('id="marquee-intl"'), 'Group 1 international marquee container present');
 assert(html.includes('id="marquee-banks"'), 'Group 2 domestic banks marquee container present');
 
-// Group 1: 12 Brands
+// Group 1 & 2 titles centered
+assert(html.includes('text-center max-w-5xl mx-auto mb-2') && html.includes('networkGroup1Title'), 'Group 1 title centered');
+assert(html.includes('text-center max-w-5xl mx-auto mb-3') && html.includes('networkGroup2Title'), 'Group 2 title centered');
+
+// Removed subtitles, source links, and pause buttons
+assert(!html.includes('4 ngân hàng đối tác và 8 mạng lưới thanh toán'), 'Group 1 subtitle removed from HTML');
+assert(!html.includes('https://napas.com.vn/dich-vu-cong-thanh-toan-truc-tuyen-napas-doi-tuong-khac'), 'NAPAS source link removed from HTML');
+assert(!html.includes('btn-marquee-toggle'), 'Pause/Play button removed from page');
+assert(!html.includes('data-i18n="marqueePause"'), 'Marquee pause translation attribute removed from page');
+
+// Group 1: Prominent Fixed Row for Alipay+ and WeChat Pay
+assert(html.includes('title="Alipay+"') && html.includes('title="WeChat Pay"'), 'Alipay+ and WeChat Pay present in Group 1');
+const marqueeIntlHtml = html.substring(html.indexOf('id="marquee-intl"'), html.indexOf('id="marquee-banks"'));
+assert(!marqueeIntlHtml.includes('title="Alipay+"'), 'Alipay+ NOT duplicated in Group 1 marquee');
+assert(!marqueeIntlHtml.includes('title="WeChat Pay"'), 'WeChat Pay NOT duplicated in Group 1 marquee');
+
+// Remaining 10 partners in marquee
 const domesticPartners = ['MB Bank', 'Techcombank', 'VIB', 'VPBank'];
 domesticPartners.forEach(bank => {
-  assert(html.includes(bank), `Group 1 partner bank "${bank}" present`);
+  assert(marqueeIntlHtml.includes(bank), `Group 1 marquee contains "${bank}"`);
 });
-const intlNetworks = ['PromptPay', 'KHQR', 'LAPNet', 'NETS', 'GLN', 'Alipay+', 'UnionPay', 'WeChat Pay'];
-intlNetworks.forEach(net => {
-  assert(html.includes(net), `Group 1 international network "${net}" present`);
+const otherIntlNetworks = ['PromptPay', 'KHQR', 'LAPNet', 'NETS', 'GLN', 'UnionPay'];
+otherIntlNetworks.forEach(net => {
+  assert(marqueeIntlHtml.includes(net), `Group 1 marquee contains "${net}"`);
 });
-// Check Alipay+ and WeChat Pay prominence (1.5-1.8x larger visual size, h-10 to h-12 in h-14 to h-16 container)
-assert(html.includes('h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="Alipay+"'), 'Alipay+ is prominent with large container in Group 1');
-assert(html.includes('h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="WeChat Pay"'), 'WeChat Pay is prominent with large container in Group 1');
 
-// Group 2: NAPAS Source Link & 56 Banks
-assert(html.includes('https://napas.com.vn/dich-vu-cong-thanh-toan-truc-tuyen-napas-doi-tuong-khac'), 'NAPAS official source link present');
-assert(html.includes('data-i18n="networkGroup2Source"'), 'NAPAS source translation attribute present');
+// Group 2: 56 Banks with enhanced sizing
+assert(html.includes('max-h-8 sm:max-h-9 max-w-[130px] sm:max-w-[150px]'), 'Bank logos use enhanced sizing for mobile legibility');
 const napasSampleBanks = ['vietcombank.png', 'vietinbank.png', 'bidv.png', 'agribank.png', 'sacombank.png', 'vikki.png', 'vcbneo.png', 'mbv.png', 'coopbank.png', 'vbsp.png'];
 napasSampleBanks.forEach(b => {
   assert(html.includes(b), `NAPAS bank "${b}" present in Group 2 marquee`);
@@ -111,11 +124,9 @@ assert(!html.includes('vietcredit.png'), 'Finance company VietCredit excluded fr
 assert(!html.includes('tnex.png') && !html.includes('tnex-finance.png'), 'Finance company TNEX excluded from bank list');
 assert(!html.includes('mirae.png') && !html.includes('mirae-asset.png'), 'Finance company Mirae Asset excluded from bank list');
 
-// 7. Check Marquee Animation & Controls
+// 7. Check Marquee Animation
 assert(html.includes('animate-marquee-intl'), 'International marquee animation class present');
 assert(html.includes('animate-marquee-banks'), 'Banks marquee animation class present');
-assert(html.includes('btn-marquee-toggle'), 'Pause/Play toggle button present');
-assert(appJs.includes('initMarqueeControls'), 'app.js initializes marquee controls');
 assert(html.includes('prefers-reduced-motion'), 'Prefers-reduced-motion accessibility handled in CSS');
 
 // 8. Check Prominent Hotline & Zalo Integration
@@ -124,6 +135,7 @@ assert(html.includes('tel:0924093461'), 'Clickable tel:0924093461 link present')
 assert(html.includes('https://zalo.me/0924093461'), 'Zalo chat link https://zalo.me/0924093461 present');
 assert(html.includes('id="floatingZalo"'), 'Desktop floating Zalo button present');
 assert(html.includes('zalo.svg'), 'Official Zalo SVG icon present');
+assert(appJs.includes('floatingZalo.classList.add(\'opacity-0\', \'pointer-events-none\')'), 'Floating Zalo hides when modal is open');
 
 // 9. Check Short 3-Step Process (No repeated numbers)
 assert(html.includes('id="process"'), 'Process section id="process" present');

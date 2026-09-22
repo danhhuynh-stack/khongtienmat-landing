@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLeadForm();
   initScrollEffects();
   initPolicyModal();
-  initMarqueeControls();
 
   // Support direct modal preview or section scroll via URL query
   const urlParams = new URLSearchParams(window.location.search);
@@ -149,17 +148,7 @@ function applyLanguage(lang) {
     }
   });
 
-  // Update marquee control button labels
-  document.querySelectorAll('.btn-marquee-toggle').forEach(btn => {
-    const targetId = btn.getAttribute('data-target');
-    const container = targetId ? document.getElementById(targetId) : btn.closest('.marquee-container');
-    const isPaused = container ? container.classList.contains('is-paused') : false;
-    const textSpan = btn.querySelector('span[data-i18n]');
-    if (textSpan) {
-      textSpan.textContent = isPaused ? (dict.marqueePlay || 'Tiếp tục') : (dict.marqueePause || 'Tạm dừng');
-    }
-    btn.setAttribute('aria-label', isPaused ? (dict.marqueePlay || 'Tiếp tục') : (dict.marqueePause || 'Tạm dừng'));
-  });
+
 
   // Re-render Lucide icons if updated
   if (window.lucide) {
@@ -443,37 +432,7 @@ function showError(fieldId) {
   }
 }
 
-/**
- * 4. Marquee Controls Handler (Play / Pause toggle)
- */
-function initMarqueeControls() {
-  document.querySelectorAll('.btn-marquee-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-target');
-      const container = targetId ? document.getElementById(targetId) : btn.closest('.marquee-container');
-      if (!container) return;
 
-      const isPaused = container.classList.toggle('is-paused');
-      const icon = btn.querySelector('i');
-      const textSpan = btn.querySelector('span[data-i18n]');
-      const dict = translations[currentLang] || translations.vi;
-
-      if (isPaused) {
-        btn.setAttribute('aria-label', dict.marqueePlay || 'Tiếp tục chuyển động');
-        if (textSpan) textSpan.textContent = dict.marqueePlay || 'Tiếp tục';
-        if (icon) icon.setAttribute('data-lucide', 'play');
-      } else {
-        btn.setAttribute('aria-label', dict.marqueePause || 'Tạm dừng chuyển động');
-        if (textSpan) textSpan.textContent = dict.marqueePause || 'Tạm dừng';
-        if (icon) icon.setAttribute('data-lucide', 'pause');
-      }
-
-      if (window.lucide) {
-        window.lucide.createIcons();
-      }
-    });
-  });
-}
 
 /**
  * 5. Scrolled Navbar High Contrast
@@ -524,11 +483,19 @@ function initPolicyModal() {
     }
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    const floatingZalo = document.getElementById('floatingZalo');
+    if (floatingZalo) {
+      floatingZalo.classList.add('opacity-0', 'pointer-events-none');
+    }
   };
 
   const closePolicy = () => {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
+    const floatingZalo = document.getElementById('floatingZalo');
+    if (floatingZalo) {
+      floatingZalo.classList.remove('opacity-0', 'pointer-events-none');
+    }
   };
 
   document.querySelectorAll('.policy-link').forEach(link => {
@@ -543,5 +510,12 @@ function initPolicyModal() {
   if (okBtn) okBtn.addEventListener('click', closePolicy);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closePolicy();
+  });
+
+  // Close policy modal on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closePolicy();
+    }
   });
 }
