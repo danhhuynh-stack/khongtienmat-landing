@@ -154,11 +154,20 @@ function initProductDetailModal() {
   const closeBtn = document.getElementById('productDetailCloseBtn');
   const registerThisBtn = document.getElementById('btnModalRegisterThis');
 
-  // Open modal buttons
-  document.querySelectorAll('.btn-product-detail').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productKey = btn.getAttribute('data-product');
-      openProductModal(productKey);
+  // Open modal buttons and clickable card areas
+  document.querySelectorAll('.btn-product-detail, .product-clickable').forEach(el => {
+    el.addEventListener('click', () => {
+      const productKey = el.getAttribute('data-product');
+      if (productKey) openProductModal(productKey);
+    });
+
+    // Keyboard accessibility for clickable card areas (Enter / Space)
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const productKey = el.getAttribute('data-product');
+        if (productKey) openProductModal(productKey);
+      }
     });
   });
 

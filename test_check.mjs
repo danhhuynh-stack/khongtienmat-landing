@@ -95,16 +95,38 @@ assert(html.includes('Alipay<tspan fill="#1677FF" font-weight="900">+</tspan>') 
 // Check WeChat Pay
 assert(html.includes('WeChat') && html.includes('Pay'), 'WeChat Pay logo present');
 
-// 7. Check Prominent Hotline: 0924.0934.61
+// 7. Check Prominent Hotline: 0924.0934.61 (Navbar, Register, Footer, no duplicate in Hero)
 assert(html.includes('0924.0934.61'), 'Hotline text 0924.0934.61 present');
 assert(html.includes('tel:0924093461'), 'Clickable tel:0924093461 link present');
-// Check hotline in multiple sections
 assert(html.includes('nav-hotline'), 'Hotline present in Navbar');
-assert(html.includes('quickConsult'), 'Hotline present in Hero consult block');
-assert(html.includes('id="register"') && html.includes('Hotline:'), 'Hotline present in Register form section');
-assert(html.includes('id="mainNavbar"') && html.includes('0924.0934.61'), 'Hotline in navbar header');
+assert(html.includes('id="register"') && html.includes('0924.0934.61'), 'Hotline present in Register form section');
+assert(html.includes('<footer') && html.includes('0924.0934.61'), 'Hotline present in Footer');
+assert(!html.includes('quickConsult'), 'Redundant Hero hotline under CTA button removed');
 
-// 8. Check Product Detail Modal & POS condition toggle
+// 8. Check Streamlined Layout Requirements
+assert(html.includes('grid-cols-2 lg:grid-cols-4'), 'Products grid is 2x2 on mobile and 4 cols on desktop');
+assert(!html.includes('productsHeading'), 'Redundant section heading in #products removed');
+assert(!html.includes('heroSecondary'), 'Redundant secondary button in Hero removed');
+assert(html.includes('product-clickable'), 'Product card image and title are keyboard & click accessible');
+assert(appJs.includes('.product-clickable'), 'app.js binds clicks & keys to .product-clickable');
+assert(html.includes('Nhận thanh toán qua mã QR.'), 'VietQR Pay 1-sentence benefit present');
+assert(html.includes('Nghe thông báo khi tiền về.'), 'Loa thông báo 1-sentence benefit present');
+assert(html.includes('Quản lý đơn hàng, hàng hóa và doanh thu.'), 'Phần mềm bán hàng 1-sentence benefit present');
+assert(html.includes('Nhận thanh toán bằng thẻ và chạm.'), 'Máy POS 1-sentence benefit present');
+
+// 9. Check Clean Logo Strip (#network) without Box Frames or Active Borders
+assert(!html.includes('border-2 border-blue-400'), 'Alipay+ has no active-state blue border');
+assert(!html.includes('border-2 border-emerald-400'), 'WeChat Pay has no active-state emerald border');
+assert(!html.includes('min-h-[96px]'), 'Individual boxed card frames removed from logo section');
+
+// 10. Check Short 3-Step Process
+assert(html.includes('id="process"'), 'Process section id="process" present');
+assert(html.includes('Quy trình đăng ký 3 bước'), '3-Step process title present in HTML');
+assert(html.includes('1. Để lại thông tin'), 'Step 1 title present');
+assert(html.includes('2. Nhận tư vấn'), 'Step 2 title present');
+assert(html.includes('3. Nhận trang bị'), 'Step 3 title present');
+
+// 11. Check Product Detail Modal & POS condition toggle
 assert(html.includes('id="productDetailModal"'), 'Product detail modal present in HTML');
 assert(html.includes('id="modalFreeBadge"'), 'Dynamic modalFreeBadge element present in modal');
 assert(html.includes('id="modalPosCondition"'), 'Dynamic modalPosCondition container present in modal');
@@ -112,7 +134,7 @@ assert(html.includes('id="btnModalRegisterThis"'), '"Đăng ký miễn phí sả
 assert(appJs.includes('modalPosCondition'), 'app.js toggles modalPosCondition based on product');
 assert(appJs.includes('modalFreeBadge'), 'app.js updates modalFreeBadge based on product');
 
-// 9. Check Minimalist 2-Field Form
+// 12. Check Minimalist 2-Field Form
 assert(html.includes('id="phone"'), 'Form contains phone field');
 assert(html.includes('id="storeAddress"'), 'Form contains storeAddress field');
 assert(html.includes('id="productInterest"'), 'Form contains productInterest selector');
@@ -120,11 +142,7 @@ assert(!html.includes('name="fullName"'), 'Old unnecessary fullName field absent
 assert(!html.includes('name="email"'), 'Old unnecessary email field absent');
 assert(!html.includes('name="bank"'), 'Old unnecessary bank selector field absent');
 
-// 10. Check 3-Step Process
-assert(html.includes('id="process"'), 'Process section id="process" present');
-assert(html.includes('Quy trình đăng ký 3 bước'), '3-Step process title present in HTML');
-
-// 11. Check Policy Modal
+// 13. Check Policy Modal
 assert(html.includes('id="policyModal"'), 'Policy modal present in HTML');
 assert(appJs.includes('initPolicyModal'), 'Policy modal handler initialized in app.js');
 

@@ -167,161 +167,138 @@
   </nav>
 
   <!-- ==================== 2. SHORT HERO SECTION ==================== -->
-  <header class="pt-24 sm:pt-32 pb-8 sm:pb-10 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
+  <header class="pt-20 sm:pt-24 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
     <!-- Main Headline with bold red MIỄN PHÍ -->
-    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4 [text-wrap:balance]" data-i18n="heroTitle">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-3 [text-wrap:balance]" data-i18n="heroTitle">
       <span class="block sm:inline whitespace-nowrap">Bộ giải pháp thanh toán</span> <span class="whitespace-nowrap"><span class="text-red-600 font-black">MIỄN PHÍ</span> cho cửa hàng</span>
     </h1>
     
     <!-- One-sentence Description -->
-    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-6 [text-wrap:balance]" data-i18n="heroSubtitle">
+    <p class="text-slate-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-5 [text-wrap:balance]" data-i18n="heroSubtitle">
       VietQR Pay, loa thông báo, phần mềm bán hàng và máy POS — lựa chọn giải pháp phù hợp cho cửa hàng của bạn.
     </p>
 
-    <!-- Quick CTAs -->
-    <div class="flex flex-wrap items-center justify-center gap-3">
-      <a href="#register" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+    <!-- Single Primary CTA: "Đăng ký miễn phí" -->
+    <div class="flex items-center justify-center">
+      <a href="#register" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
         <span data-i18n="heroCta">Đăng ký miễn phí</span>
         <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
-      </a>
-      <a href="#products" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-300 hover:border-blue-500 hover:bg-slate-50 text-slate-700 font-semibold text-sm shadow-sm transition">
-        <span data-i18n="heroSecondary">Xem 4 sản phẩm</span>
-        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400" aria-hidden="true"></i>
-      </a>
-    </div>
-
-    <!-- Hero Hotline Callout -->
-    <div class="mt-4 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-600">
-      <span data-i18n="quickConsult">Tư vấn nhanh:</span>
-      <a href="tel:0924093461" class="font-black text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1.5">
-        <i data-lucide="phone-call" class="w-3.5 h-3.5 text-red-600 shrink-0" aria-hidden="true"></i>
-        <span>0924.0934.61</span>
       </a>
     </div>
   </header>
 
   <!-- ==================== 3. 4 PRODUCTS SHOWCASE (ABOVE-THE-FOLD PRIORITY) ==================== -->
-  <section id="products" class="scroll-mt-20 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <!-- Header -->
-    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="productsHeading">
-        Trang bị thanh toán cho quầy thu ngân
-      </h2>
-      <p class="text-slate-500 text-sm sm:text-base mt-2" data-i18n="productsSubheading">
-        Lựa chọn công cụ phù hợp với quy mô và đặc thù kinh doanh của bạn
-      </p>
-    </div>
-
-    <!-- 4 Products Grid: 4 cols on desktop, 2 cols on tablet, 1 col on mobile -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <section id="products" class="scroll-mt-16 pt-2 pb-12 sm:pb-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <!-- 4 Products Grid: 4 cols on desktop, 2 cols on tablet, 2x2 grid on mobile -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
       
-      <!-- PRODUCT 1: VietQR Pay (Authentic Transparent Mica Than Tai Standee) -->
-      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
-        <div>
-          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
+      <!-- PRODUCT 1: VietQR Pay -->
+      <div class="fintech-card rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between hover:shadow-md transition-all border border-slate-200/90 group bg-white">
+        <div class="product-clickable cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-xl" role="button" tabindex="0" data-product="vietqr-pay" aria-label="Xem chi tiết VietQR Pay">
+          <div class="h-36 sm:h-48 w-full flex items-end justify-center p-1 sm:p-2 mb-3 select-none">
             <img 
               src="./assets/images/standee-than-tai.png" 
               alt="VietQR Pay" 
-              class="max-h-full max-w-full object-contain select-none transition-transform group-hover:scale-105 duration-200"
+              class="max-h-full max-w-full object-contain select-none transition-opacity hover:opacity-90"
               loading="lazy"
             >
           </div>
-          <div class="flex items-center justify-between gap-2 mb-1">
-            <h3 class="text-lg font-bold text-slate-900" data-i18n="product1Title">VietQR Pay</h3>
-            <span class="bg-red-50 text-red-600 border border-red-200 font-bold px-2 py-0.5 rounded-full text-xs shrink-0" data-i18n="badgeFree">Miễn phí</span>
+          <div class="mb-1.5">
+            <span class="inline-block bg-red-50 text-red-600 border border-red-200/80 font-bold px-2 py-0.5 rounded-full text-[11px] sm:text-xs" data-i18n="badgeFree">Miễn phí</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4" data-i18n="product1Benefit">
-            Nhận thanh toán quét mã QR nhanh chóng từ mọi ngân hàng và ví điện tử, không lo kẹt tiền.
+          <h3 class="text-sm sm:text-base lg:text-lg font-bold text-slate-900 leading-snug mb-1 group-hover:text-blue-600 transition-colors" data-i18n="product1Title">VietQR Pay</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3" data-i18n="product1Benefit">
+            Nhận thanh toán qua mã QR.
           </p>
         </div>
-        <div>
-          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="vietqr-pay">
+        <div class="pt-2 mt-auto">
+          <button type="button" class="btn-product-detail w-full py-2 sm:py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="vietqr-pay">
             <span data-i18n="viewDetailBtn">Xem chi tiết</span>
-            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+            <i data-lucide="info" class="w-3.5 h-3.5 text-blue-600" aria-hidden="true"></i>
           </button>
         </div>
       </div>
 
       <!-- PRODUCT 2: Loa Thông Báo (Soundbox) -->
-      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
-        <div>
-          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
+      <div class="fintech-card rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between hover:shadow-md transition-all border border-slate-200/90 group bg-white">
+        <div class="product-clickable cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-xl" role="button" tabindex="0" data-product="soundbox" aria-label="Xem chi tiết Loa thông báo">
+          <div class="h-36 sm:h-48 w-full flex items-end justify-center p-1 sm:p-2 mb-3 select-none">
             <img 
               src="./assets/images/product-soundbox.png" 
               alt="Loa thông báo" 
-              class="max-h-full max-w-full object-contain select-none transition-transform group-hover:scale-105 duration-200"
+              class="max-h-full max-w-full object-contain select-none transition-opacity hover:opacity-90"
               loading="lazy"
             >
           </div>
-          <div class="flex items-center justify-between gap-2 mb-1">
-            <h3 class="text-lg font-bold text-slate-900" data-i18n="product2Title">Loa thông báo</h3>
-            <span class="bg-red-50 text-red-600 border border-red-200 font-bold px-2 py-0.5 rounded-full text-xs shrink-0" data-i18n="badgeFree">Miễn phí</span>
+          <div class="mb-1.5">
+            <span class="inline-block bg-red-50 text-red-600 border border-red-200/80 font-bold px-2 py-0.5 rounded-full text-[11px] sm:text-xs" data-i18n="badgeFree">Miễn phí</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4" data-i18n="product2Benefit">
-            Phát âm thanh báo tiền về tài khoản tức thì, chống gian lận chuyển khoản vào giờ cao điểm.
+          <h3 class="text-sm sm:text-base lg:text-lg font-bold text-slate-900 leading-snug mb-1 group-hover:text-blue-600 transition-colors" data-i18n="product2Title">Loa thông báo</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3" data-i18n="product2Benefit">
+            Nghe thông báo khi tiền về.
           </p>
         </div>
-        <div>
-          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="soundbox">
+        <div class="pt-2 mt-auto">
+          <button type="button" class="btn-product-detail w-full py-2 sm:py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="soundbox">
             <span data-i18n="viewDetailBtn">Xem chi tiết</span>
-            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+            <i data-lucide="info" class="w-3.5 h-3.5 text-blue-600" aria-hidden="true"></i>
           </button>
         </div>
       </div>
 
       <!-- PRODUCT 3: Phần Mềm Bán Hàng (POS Software) -->
-      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
-        <div>
-          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
+      <div class="fintech-card rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between hover:shadow-md transition-all border border-slate-200/90 group bg-white">
+        <div class="product-clickable cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-xl" role="button" tabindex="0" data-product="pos-software" aria-label="Xem chi tiết Phần mềm bán hàng">
+          <div class="h-36 sm:h-48 w-full flex items-end justify-center p-1 sm:p-2 mb-3 select-none">
             <img 
               src="./assets/images/product-pos-app.png" 
               alt="Phần mềm bán hàng" 
-              class="max-h-full max-w-full object-contain select-none transition-transform group-hover:scale-105 duration-200"
+              class="max-h-full max-w-full object-contain select-none transition-opacity hover:opacity-90"
               loading="lazy"
             >
           </div>
-          <div class="flex items-center justify-between gap-2 mb-1">
-            <h3 class="text-lg font-bold text-slate-900" data-i18n="product3Title">Phần mềm bán hàng</h3>
-            <span class="bg-red-50 text-red-600 border border-red-200 font-bold px-2 py-0.5 rounded-full text-xs shrink-0" data-i18n="badgeFree">Miễn phí</span>
+          <div class="mb-1.5">
+            <span class="inline-block bg-red-50 text-red-600 border border-red-200/80 font-bold px-2 py-0.5 rounded-full text-[11px] sm:text-xs" data-i18n="badgeFree">Miễn phí</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4" data-i18n="product3Benefit">
-            Quản lý đơn hàng, tồn kho và doanh thu tự động đồng bộ theo từng lượt quét thanh toán.
+          <h3 class="text-sm sm:text-base lg:text-lg font-bold text-slate-900 leading-snug mb-1 group-hover:text-blue-600 transition-colors" data-i18n="product3Title">Phần mềm bán hàng</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3" data-i18n="product3Benefit">
+            Quản lý đơn hàng, hàng hóa và doanh thu.
           </p>
         </div>
-        <div>
-          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="pos-software">
+        <div class="pt-2 mt-auto">
+          <button type="button" class="btn-product-detail w-full py-2 sm:py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="pos-software">
             <span data-i18n="viewDetailBtn">Xem chi tiết</span>
-            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+            <i data-lucide="info" class="w-3.5 h-3.5 text-blue-600" aria-hidden="true"></i>
           </button>
         </div>
       </div>
 
       <!-- PRODUCT 4: Máy POS Thanh Toán (Smart POS) -->
-      <div class="fintech-card rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-all border border-slate-200 hover:border-blue-300 group">
-        <div>
-          <div class="h-48 sm:h-52 w-full flex items-center justify-center p-2 mb-3 bg-slate-50/50 rounded-xl">
+      <div class="fintech-card rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between hover:shadow-md transition-all border border-slate-200/90 group bg-white">
+        <div class="product-clickable cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-xl" role="button" tabindex="0" data-product="smart-pos" aria-label="Xem chi tiết Máy POS thanh toán">
+          <div class="h-36 sm:h-48 w-full flex items-end justify-center p-1 sm:p-2 mb-3 select-none">
             <img 
               src="./assets/images/product-smart-pos.png" 
               alt="Máy POS thanh toán" 
-              class="max-h-full max-w-full object-contain select-none transition-transform group-hover:scale-105 duration-200"
+              class="max-h-full max-w-full object-contain select-none transition-opacity hover:opacity-90"
               loading="lazy"
             >
           </div>
-          <div class="flex items-center justify-between gap-2 mb-1">
-            <h3 class="text-lg font-bold text-slate-900" data-i18n="product4Title">Máy POS thanh toán</h3>
-            <span class="bg-red-50 text-red-600 border border-red-200 font-bold px-2 py-0.5 rounded-full text-xs shrink-0" data-i18n="badgeFreePOS">Miễn phí*</span>
+          <div class="mb-1.5">
+            <span class="inline-block bg-red-50 text-red-600 border border-red-200/80 font-bold px-2 py-0.5 rounded-full text-[11px] sm:text-xs" data-i18n="badgeFreePOS">Miễn phí*</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-2 mb-2" data-i18n="product4Benefit">
-            Chấp nhận mọi loại thẻ chip, thẻ quốc tế và chạm ví không tiếp xúc ngay tại bàn.
+          <h3 class="text-sm sm:text-base lg:text-lg font-bold text-slate-900 leading-snug mb-1 group-hover:text-blue-600 transition-colors" data-i18n="product4Title">Máy POS thanh toán</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-1.5" data-i18n="product4Benefit">
+            Nhận thanh toán bằng thẻ và chạm.
           </p>
-          <p class="text-xs text-amber-700 font-medium bg-amber-50/80 p-2 rounded-lg border border-amber-200/60 mb-4" data-i18n="posConditionNote">
+          <p class="text-[11px] sm:text-xs text-amber-800 font-medium leading-tight mb-3" data-i18n="posConditionNote">
             *Có điều kiện ký quỹ và sử dụng.
           </p>
         </div>
-        <div>
-          <button type="button" class="btn-product-detail w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="smart-pos">
+        <div class="pt-2 mt-auto">
+          <button type="button" class="btn-product-detail w-full py-2 sm:py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-700 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 border border-slate-200 hover:border-blue-300" data-product="smart-pos">
             <span data-i18n="viewDetailBtn">Xem chi tiết</span>
-            <i data-lucide="info" class="w-4 h-4 text-blue-600" aria-hidden="true"></i>
+            <i data-lucide="info" class="w-3.5 h-3.5 text-blue-600" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -330,224 +307,182 @@
   </section>
 
   <!-- ==================== SECTION: MẠNG LƯỚI KẾT NỐI ==================== -->
-  <section id="network" class="scroll-mt-20 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
-    <div class="max-w-7xl mx-auto">
+  <section id="network" class="scroll-mt-20 py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200/80">
+    <div class="max-w-6xl mx-auto">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="networkTitle">
+      <!-- Section Header: Minimalist -->
+      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight" data-i18n="networkTitle">
           Mạng lưới kết nối
         </h2>
-        <p class="text-slate-500 text-sm sm:text-base mt-2 leading-relaxed" data-i18n="networkSubtitle">
+        <p class="text-slate-500 text-xs sm:text-sm mt-1.5" data-i18n="networkSubtitle">
           Kết nối trực tiếp 4 ngân hàng trong nước và 8 mạng lưới thanh toán quốc tế
         </p>
       </div>
 
       <!-- 1. Domestic Banks (4 Brands: MB, Techcombank, VIB, VPBank) -->
-      <div class="mb-8">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-          <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500" data-i18n="networkDomesticHeading">
+      <div class="mb-10">
+        <div class="text-center mb-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400" data-i18n="networkDomesticHeading">
             Ngân hàng nội địa
-          </h3>
+          </span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <!-- Symmetrical logo grid: 2 cols on mobile, 4 cols on tablet & desktop -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-5 gap-x-4 sm:gap-8 items-center justify-items-center max-w-3xl mx-auto">
           
           <!-- MB Bank -->
-          <div class="p-4 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-2 group min-h-[96px]">
-            <div class="h-8 flex items-center justify-center">
-              <svg viewBox="0 0 160 48" class="h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
-                <g transform="translate(4, 4)">
-                  <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
-                  <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
-                  <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
-                </g>
-                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
-              </svg>
-            </div>
-            <div class="text-xs font-bold text-slate-800 group-hover:text-blue-600 transition-colors">MB Bank</div>
+          <div class="flex items-center justify-center h-10 w-full max-w-[130px] transition-opacity hover:opacity-80" title="MB Bank">
+            <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
+              <g transform="translate(4, 4)">
+                <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
+                <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
+                <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
+              </g>
+              <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
+            </svg>
           </div>
 
           <!-- Techcombank -->
-          <div class="p-4 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-red-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-2 group min-h-[96px]">
-            <div class="h-8 flex items-center justify-center">
-              <svg viewBox="0 0 200 48" class="h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
-                <g transform="translate(6, 12)">
-                  <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
-                  <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
-                  <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
-                  <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
-                </g>
-                <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
-                <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
-              </svg>
-            </div>
-            <div class="text-xs font-bold text-slate-800 group-hover:text-red-600 transition-colors">Techcombank</div>
+          <div class="flex items-center justify-center h-10 w-full max-w-[150px] transition-opacity hover:opacity-80" title="Techcombank">
+            <svg viewBox="0 0 200 48" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
+              <g transform="translate(6, 12)">
+                <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
+                <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
+                <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
+                <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
+              </g>
+              <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
+              <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
+            </svg>
           </div>
 
           <!-- VIB -->
-          <div class="p-4 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-orange-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-2 group min-h-[96px]">
-            <div class="h-8 flex items-center justify-center">
-              <svg viewBox="0 0 160 48" class="h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
-                <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
-                <g transform="translate(66, 6)">
-                  <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
-                  <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
-                  <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
-                </g>
-              </svg>
-            </div>
-            <div class="text-xs font-bold text-slate-800 group-hover:text-blue-900 transition-colors">VIB</div>
+          <div class="flex items-center justify-center h-10 w-full max-w-[130px] transition-opacity hover:opacity-80" title="VIB">
+            <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
+              <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
+              <g transform="translate(66, 6)">
+                <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
+                <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
+                <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
+              </g>
+            </svg>
           </div>
 
           <!-- VPBank -->
-          <div class="p-4 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-2 group min-h-[96px]">
-            <div class="h-8 flex items-center justify-center">
-              <svg viewBox="0 0 180 48" class="h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
-                <g transform="translate(6, 8)">
-                  <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
-                  <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
-                  <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
-                </g>
-                <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
-              </svg>
-            </div>
-            <div class="text-xs font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">VPBank</div>
+          <div class="flex items-center justify-center h-10 w-full max-w-[140px] transition-opacity hover:opacity-80" title="VPBank">
+            <svg viewBox="0 0 180 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
+              <g transform="translate(6, 8)">
+                <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
+                <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
+                <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
+              </g>
+              <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
+            </svg>
           </div>
 
         </div>
       </div>
 
-      <!-- 2. International Payment Networks (8 Brands with Alipay+ & WeChat Pay Prominently Highlighted) -->
+      <!-- 2. International Payment Networks (8 Brands with Alipay+ & WeChat Pay Prominently Highlighted, No Active Borders) -->
       <div>
-        <div class="flex items-center gap-2 mb-4">
-          <span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
-          <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500" data-i18n="networkInternationalHeading">
+        <div class="text-center mb-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400" data-i18n="networkInternationalHeading">
             Mạng lưới & đối tác quốc tế
-          </h3>
+          </span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 items-stretch">
+        <!-- Symmetrical logo grid: 2 cols on mobile, 4 cols on tablet, 8 cols on desktop -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-y-6 gap-x-4 sm:gap-6 items-center justify-items-center max-w-5xl mx-auto">
           
-          <!-- 1. PromptPay (Thailand) -->
-          <div class="p-3 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px]">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 140 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
-                <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
-                <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
-                <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
-                <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
-              </svg>
-            </div>
-            <div class="text-[11px] font-bold text-slate-700">PromptPay</div>
+          <!-- 1. PromptPay -->
+          <div class="flex items-center justify-center h-9 w-full max-w-[120px] transition-opacity hover:opacity-80" title="PromptPay">
+            <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
+              <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
+              <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
+              <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
+              <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
+            </svg>
           </div>
 
-          <!-- 2. KHQR (Cambodia) -->
-          <div class="p-3 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-red-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px]">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 130 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
-                <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
-                <g transform="translate(62, 7)">
-                  <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
-                  <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
-                  <circle cx="17" cy="18" r="6" fill="#004A99"/>
-                  <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
-                  <circle cx="17" cy="18" r="2" fill="#004A99"/>
-                </g>
-                <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
-              </svg>
-            </div>
-            <div class="text-[11px] font-bold text-slate-700">KHQR</div>
+          <!-- 2. KHQR -->
+          <div class="flex items-center justify-center h-9 w-full max-w-[110px] transition-opacity hover:opacity-80" title="KHQR">
+            <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
+              <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
+              <g transform="translate(62, 7)">
+                <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
+                <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
+                <circle cx="17" cy="18" r="6" fill="#004A99"/>
+                <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
+                <circle cx="17" cy="18" r="2" fill="#004A99"/>
+              </g>
+              <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
+            </svg>
           </div>
 
-          <!-- 3. LAPNet (Laos) -->
-          <div class="p-3 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px]">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 140 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LAPNet Logo">
-                <g transform="translate(4, 6)">
-                  <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
-                  <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
-                  <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
-                  <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
-                </g>
-              </svg>
-            </div>
-            <div class="text-[11px] font-bold text-slate-700">LAPNet</div>
+          <!-- 3. LAPNet -->
+          <div class="flex items-center justify-center h-9 w-full max-w-[120px] transition-opacity hover:opacity-80" title="LAPNet">
+            <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LAPNet Logo">
+              <g transform="translate(4, 6)">
+                <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
+                <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
+                <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
+                <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
+              </g>
+            </svg>
           </div>
 
-          <!-- 4. NETS (Singapore) -->
-          <div class="p-3 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-red-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px]">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 130 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
-                <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
-              </svg>
-            </div>
-            <div class="text-[11px] font-bold text-slate-700">NETS</div>
+          <!-- 4. NETS -->
+          <div class="flex items-center justify-center h-9 w-full max-w-[110px] transition-opacity hover:opacity-80" title="NETS">
+            <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
+              <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
+            </svg>
           </div>
 
-          <!-- 5. GLN (South Korea) -->
-          <div class="p-3 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-cyan-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px]">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 130 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
-                <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
-                <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
-                <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
-                <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
-              </svg>
-            </div>
-            <div class="text-[11px] font-bold text-slate-700">GLN</div>
+          <!-- 5. GLN -->
+          <div class="flex items-center justify-center h-9 w-full max-w-[110px] transition-opacity hover:opacity-80" title="GLN">
+            <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
+              <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
+              <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
+              <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
+              <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
+            </svg>
           </div>
 
-          <!-- 6. Alipay+ (PROMINENT: Enhanced border & scale, exact logo matching polo shirt) -->
-          <div class="p-3 rounded-xl bg-blue-50/50 hover:bg-white border-2 border-blue-400 hover:border-blue-600 shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px] ring-2 ring-blue-100">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 160 48" class="h-7 w-auto scale-110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alipay+ Logo">
-                <circle cx="18" cy="24" r="16" fill="#1677FF"/>
-                <path d="M11 17H25M18 14V20M10 22H26M13 22C13 25.5 12 28.5 9 31M17 23C19 26.5 22.5 29.5 26 31" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="42" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#1E293B">Alipay<tspan fill="#1677FF" font-weight="900">+</tspan></text>
-              </svg>
-            </div>
-            <div class="text-[11px] font-extrabold text-blue-700 flex items-center gap-1">
-              <span>Alipay+</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-            </div>
+          <!-- 6. Alipay+ (PROMINENT: Moderately larger by ~15-20%, clean on white background without active border) -->
+          <div class="flex items-center justify-center h-10 w-full max-w-[135px] transition-opacity hover:opacity-80" title="Alipay+">
+            <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alipay+ Logo">
+              <circle cx="18" cy="24" r="16" fill="#1677FF"/>
+              <path d="M11 17H25M18 14V20M10 22H26M13 22C13 25.5 12 28.5 9 31M17 23C19 26.5 22.5 29.5 26 31" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="42" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#1E293B">Alipay<tspan fill="#1677FF" font-weight="900">+</tspan></text>
+            </svg>
           </div>
 
-          <!-- 7. UnionPay (Global) -->
-          <div class="p-3 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200 hover:border-red-300 hover:shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px]">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 140 44" class="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
-                <g transform="translate(4, 4)">
-                  <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
-                  <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
-                  <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
-                  <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
-                  <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
-                </g>
-                <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
-                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
-              </svg>
-            </div>
-            <div class="text-[11px] font-bold text-slate-700">UnionPay 银联</div>
+          <!-- 7. UnionPay -->
+          <div class="flex items-center justify-center h-9 w-full max-w-[120px] transition-opacity hover:opacity-80" title="UnionPay 银联">
+            <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
+              <g transform="translate(4, 4)">
+                <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
+                <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
+                <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
+                <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
+                <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
+              </g>
+              <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
+              <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
+            </svg>
           </div>
 
-          <!-- 8. WeChat Pay (PROMINENT: Enhanced border & scale) -->
-          <div class="p-3 rounded-xl bg-emerald-50/50 hover:bg-white border-2 border-emerald-400 hover:border-emerald-600 shadow-sm transition-all flex flex-col items-center justify-center text-center gap-1.5 group min-h-[92px] ring-2 ring-emerald-100">
-            <div class="h-7 flex items-center justify-center">
-              <svg viewBox="0 0 170 48" class="h-7 w-auto scale-110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WeChat Pay Logo">
-                <circle cx="20" cy="24" r="16" fill="#07C160"/>
-                <ellipse cx="17" cy="22" rx="7" ry="6" fill="#FFFFFF"/>
-                <circle cx="15" cy="21" r="1" fill="#07C160"/>
-                <circle cx="19" cy="21" r="1" fill="#07C160"/>
-                <ellipse cx="23" cy="26" rx="5.5" ry="4.5" fill="#FFFFFF"/>
-                <circle cx="22" cy="25.5" r="0.8" fill="#07C160"/>
-                <circle cx="25" cy="25.5" r="0.8" fill="#07C160"/>
-                <text x="44" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#1E293B">WeChat <tspan font-weight="900" fill="#07C160">Pay</tspan></text>
-              </svg>
-            </div>
-            <div class="text-[11px] font-extrabold text-emerald-800 flex items-center gap-1">
-              <span>WeChat Pay</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            </div>
+          <!-- 8. WeChat Pay (PROMINENT: Moderately larger by ~15-20%, clean on white background without active border) -->
+          <div class="flex items-center justify-center h-10 w-full max-w-[145px] transition-opacity hover:opacity-80" title="WeChat Pay">
+            <svg viewBox="0 0 170 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WeChat Pay Logo">
+              <circle cx="20" cy="24" r="16" fill="#07C160"/>
+              <ellipse cx="17" cy="22" rx="7" ry="6" fill="#FFFFFF"/>
+              <circle cx="15" cy="21" r="1" fill="#07C160"/>
+              <circle cx="19" cy="21" r="1" fill="#07C160"/>
+              <ellipse cx="23" cy="26" rx="5.5" ry="4.5" fill="#FFFFFF"/>
+              <circle cx="22" cy="25.5" r="0.8" fill="#07C160"/>
+              <circle cx="25" cy="25.5" r="0.8" fill="#07C160"/>
+              <text x="44" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#1E293B">WeChat <tspan font-weight="900" fill="#07C160">Pay</tspan></text>
+            </svg>
           </div>
 
         </div>
@@ -557,50 +492,54 @@
   </section>
 
   <!-- ==================== 4. SHORT 3-STEP REGISTRATION PROCESS ==================== -->
-  <section id="process" class="scroll-mt-20 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-100 border-t border-b border-slate-200">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center max-w-xl mx-auto mb-10">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="processTitle">
+  <section id="process" class="scroll-mt-20 py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-slate-100/70 border-t border-b border-slate-200/80">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight" data-i18n="processTitle">
           Quy trình đăng ký 3 bước
         </h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-1.5" data-i18n="processSubtitle">
+        <p class="text-slate-500 text-xs sm:text-sm mt-1" data-i18n="processSubtitle">
           Nhanh chóng, đơn giản và hỗ trợ tư vấn tận nơi
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- 3-Step Inline Timeline: Single row on desktop with arrows, stacked on mobile -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
+        
         <!-- Step 1 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col items-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 font-black text-lg flex items-center justify-center mb-4">
+        <div class="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-slate-200/90 shadow-sm w-full sm:w-auto flex-1 justify-start sm:justify-center">
+          <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 font-black text-sm flex items-center justify-center shrink-0">
             1
           </div>
-          <h3 class="text-base font-bold text-slate-900 mb-1" data-i18n="step1Title">1. Để lại thông tin</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="step1Desc">
-            Cung cấp số điện thoại và địa chỉ cửa hàng qua biểu mẫu đăng ký bên dưới.
-          </p>
+          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step1Title">1. Để lại thông tin</span>
+        </div>
+
+        <!-- Arrow 1 (Desktop only) -->
+        <div class="hidden sm:flex text-slate-300 shrink-0">
+          <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
         </div>
 
         <!-- Step 2 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col items-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 font-black text-lg flex items-center justify-center mb-4">
+        <div class="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-slate-200/90 shadow-sm w-full sm:w-auto flex-1 justify-start sm:justify-center">
+          <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 font-black text-sm flex items-center justify-center shrink-0">
             2
           </div>
-          <h3 class="text-base font-bold text-slate-900 mb-1" data-i18n="step2Title">2. Tư vấn giải pháp</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="step2Desc">
-            Chuyên viên kinh doanh liên hệ xác nhận nhu cầu và gói trang bị phù hợp nhất.
-          </p>
+          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step2Title">2. Nhận tư vấn</span>
+        </div>
+
+        <!-- Arrow 2 (Desktop only) -->
+        <div class="hidden sm:flex text-slate-300 shrink-0">
+          <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
         </div>
 
         <!-- Step 3 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col items-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 font-black text-lg flex items-center justify-center mb-4">
+        <div class="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-slate-200/90 shadow-sm w-full sm:w-auto flex-1 justify-start sm:justify-center">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 font-black text-sm flex items-center justify-center shrink-0">
             3
           </div>
-          <h3 class="text-base font-bold text-slate-900 mb-1" data-i18n="step3Title">3. Nhận trang bị & Sử dụng</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="step3Desc">
-            Bàn giao tận nơi, hướng dẫn nhân viên thao tác và bắt đầu nhận thanh toán.
-          </p>
+          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step3Title">3. Nhận trang bị</span>
         </div>
+
       </div>
     </div>
   </section>
