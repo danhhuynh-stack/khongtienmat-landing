@@ -64,9 +64,11 @@ bannedTerms.forEach(term => {
 assert(html.includes('khong</span><span class="nav-brand-suffix text-blue-600">tienmat</span>'), 'Logo semantic grouping "khong" + "tienmat" present');
 assert(!html.includes('khongtien<span class="text-blue-600">mat</span>'), 'Old erroneous logo split "khongtien" + "mat" absent');
 
-// 4. Hero Section & Headline Line-Height Requirements
+// 4. Hero Section & Headline Separation Requirements
 assert(html.includes('MIỄN PHÍ') && html.includes('text-red-600 font-black'), 'Hero headline highlights "MIỄN PHÍ" in bold red');
-assert(html.includes('.hero-headline') && html.includes('style="line-height: 1.28 !important;"'), 'Hero headline line-height 1.28 !important protected against CSS override');
+assert(html.includes('flex flex-col items-center gap-2 sm:gap-3'), 'Hero headline uses flex-col with gap-2 on mobile and sm:gap-3 on desktop for physical diacritic clearance');
+assert(html.includes('data-i18n="heroTitleLine1"') && html.includes('data-i18n="heroTitleLine2"'), 'Hero headline uses separate i18n keys for line 1 and line 2 across all languages');
+assert(html.includes('.hero-headline') && html.includes('line-height: 1.25 !important;'), 'Hero headline line-height 1.25 !important protected against CSS override');
 assert(html.includes('VietQR Pay, loa thông báo, phần mềm bán hàng và máy POS — lựa chọn giải pháp phù hợp cho cửa hàng của bạn.'), 'Hero subtitle updated with concise product overview');
 assert(html.includes('Đăng ký miễn phí'), 'Primary CTA "Đăng ký miễn phí" present in Hero');
 
@@ -96,6 +98,41 @@ assert(!html.includes('4 ngân hàng đối tác và 8 mạng lưới thanh toá
 assert(!html.includes('https://napas.com.vn/dich-vu-cong-thanh-toan-truc-tuyen-napas-doi-tuong-khac'), 'NAPAS source link removed from HTML');
 assert(!html.includes('btn-marquee-toggle'), 'Pause/Play button removed from page');
 assert(!html.includes('data-i18n="marqueePause"'), 'Marquee pause translation attribute removed from page');
+
+// Group 1: 12 Official Partner Logo Assets Verification
+const officialLogos = [
+  { brand: 'Alipay+', file: 'alipayplus.png' },
+  { brand: 'WeChat Pay', file: 'wechatpay.svg' },
+  { brand: 'MB Bank', file: 'mbbank.png' },
+  { brand: 'Techcombank', file: 'techcombank.svg' },
+  { brand: 'VIB', file: 'vib.png' },
+  { brand: 'VPBank', file: 'vpbank.svg' },
+  { brand: 'PromptPay', file: 'promptpay.png' },
+  { brand: 'KHQR', file: 'khqr.png' },
+  { brand: 'LAPNet', file: 'lapnet.png' },
+  { brand: 'NETS', file: 'nets.svg' },
+  { brand: 'GLN', file: 'gln.png' },
+  { brand: 'UnionPay', file: 'unionpay.svg' }
+];
+
+officialLogos.forEach(item => {
+  const localPath = 'assets/logos/network/' + item.file;
+  const exists = fs.existsSync(localPath) && fs.statSync(localPath).size > 0;
+  assert(exists, `Official asset exists locally: ${localPath} (${item.brand})`);
+  assert(html.includes(item.file), `index.html references official asset "${item.file}"`);
+});
+
+// Check internal source attribution document
+assert(fs.existsSync('assets/logos/network/logo_sources.json'), 'Internal logo source documentation logo_sources.json exists');
+const sourcesJson = JSON.parse(fs.readFileSync('assets/logos/network/logo_sources.json', 'utf8'));
+assert(sourcesJson.length === 12, `logo_sources.json documents all 12 brands (found: ${sourcesJson.length})`);
+
+// Check absence of simulated SVG texts in #network
+const networkSectionHtml = html.substring(html.indexOf('id="network"'), html.indexOf('id="process"'));
+const simulatedSvgTexts = ['>TECHCOM<', '>VIB<', '>Prompt<', '>Pay<', '>KH<', '>NETS<', '>GLN<', '>Alipay<', '>WeChat<'];
+simulatedSvgTexts.forEach(sim => {
+  assert(!networkSectionHtml.includes(sim), `Simulated SVG text "${sim}" absent from Group 1`);
+});
 
 // Group 1: Prominent Fixed Row for Alipay+ and WeChat Pay
 assert(html.includes('title="Alipay+"') && html.includes('title="WeChat Pay"'), 'Alipay+ and WeChat Pay present in Group 1');

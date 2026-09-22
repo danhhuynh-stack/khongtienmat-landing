@@ -1,0 +1,86 @@
+[
+  {
+    "brand": "Alipay+",
+    "localPath": "assets/logos/network/alipayplus.png",
+    "sourceUrl": "https://cdn.marmot-cloud.com/storage/intl_website/2025/08/01/A4p9W3b/aplus-logo.png",
+    "organization": "Alipay+ (Ant International / Ant Group)",
+    "note": "Official corporate brand identity asset with stylized A-ribbon and + mark."
+  },
+  {
+    "brand": "WeChat Pay",
+    "localPath": "assets/logos/network/wechatpay.svg",
+    "sourceUrl": "https://gtimg.wechatpay-global.com/pay_en/img/common/logo.svg",
+    "organization": "WeChat Pay (Tencent Holdings / WeChat Pay Global)",
+    "note": "Official vector SVG with payment speech bubble mark and bilingual brand mark."
+  },
+  {
+    "brand": "MB Bank",
+    "localPath": "assets/logos/network/mbbank.png",
+    "sourceUrl": "https://www.mbbank.com.vn/images/logo.png",
+    "organization": "Military Commercial Joint Stock Bank (MB)",
+    "note": "Official corporate identity asset via MB corporate portal & NAPAS directory."
+  },
+  {
+    "brand": "Techcombank",
+    "localPath": "assets/logos/network/techcombank.svg",
+    "sourceUrl": "https://techcombank.com/content/dam/techcombank/public-site/seo/techcombank-logo.svg",
+    "organization": "Vietnam Technological and Commercial Joint Stock Bank (Techcombank)",
+    "note": "Official vector SVG directly from Techcombank corporate website SEO asset."
+  },
+  {
+    "brand": "VIB",
+    "localPath": "assets/logos/network/vib.png",
+    "sourceUrl": "https://www.vib.com.vn/",
+    "organization": "Vietnam International Commercial Joint Stock Bank (VIB)",
+    "note": "Official corporate identity asset via VIB corporate portal & NAPAS directory."
+  },
+  {
+    "brand": "VPBank",
+    "localPath": "assets/logos/network/vpbank.svg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/VPBank_logo.svg",
+    "organization": "Vietnam Prosperity Joint Stock Commercial Bank (VPBank)",
+    "note": "Official vector SVG matching VPBank brand guidelines and corporate identity."
+  },
+  {
+    "brand": "PromptPay",
+    "localPath": "assets/logos/network/promptpay.png",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/PromptPay-logo.png",
+    "organization": "National ITMX Thailand / Bank of Thailand",
+    "note": "Official national digital payment scheme identity of Thailand."
+  },
+  {
+    "brand": "KHQR",
+    "localPath": "assets/logos/network/khqr.png",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/KHQR_Logo.png",
+    "organization": "National Bank of Cambodia (Bakong / KHQR standard)",
+    "note": "Official national QR code payment standard identity of Cambodia."
+  },
+  {
+    "brand": "LAPNet",
+    "localPath": "assets/logos/network/lapnet.png",
+    "sourceUrl": "https://www.lapnet.com.la/logolapnet/fullcircle.png",
+    "organization": "Lao National Payment Network (LAPNet)",
+    "note": "Official digital switch and national payment brand identity of Laos."
+  },
+  {
+    "brand": "NETS",
+    "localPath": "assets/logos/network/nets.svg",
+    "sourceUrl": "https://www.nets.com.sg/wp-content/uploads/2022/02/logo-nets-colour.svg",
+    "organization": "Network for Electronic Transfers (Singapore) Pte Ltd",
+    "note": "Official vector SVG directly from NETS corporate portal."
+  },
+  {
+    "brand": "GLN",
+    "localPath": "assets/logos/network/gln.png",
+    "sourceUrl": "https://framerusercontent.com/images/ENwIMK5Fn4any1crwtHxkjRIIek.png",
+    "organization": "GLN International (Hana Financial Group)",
+    "note": "Official brand emblem and app identity directly from glninternational.com."
+  },
+  {
+    "brand": "UnionPay",
+    "localPath": "assets/logos/network/unionpay.svg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/UnionPay_logo.svg",
+    "organization": "China UnionPay / UnionPay International",
+    "note": "Official 3-color vector SVG of China UnionPay card and payment network."
+  }
+]

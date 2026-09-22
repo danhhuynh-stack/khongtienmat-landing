@@ -99,9 +99,9 @@
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
     }
 
-    /* Hero Headline Line-Height Protection against Tailwind utility overrides */
+    /* Hero Headline Line-Height & Separation Protection against Tailwind utility overrides */
     .hero-headline {
-      line-height: 1.28 !important;
+      line-height: 1.25 !important;
     }
 
     /* Continuous Seamless Horizontal Marquees */
@@ -194,9 +194,10 @@
 
   <!-- ==================== 2. SHORT HERO SECTION ==================== -->
   <header class="pt-20 sm:pt-24 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-    <!-- Main Headline with bold red MIỄN PHÍ and comfortable line-height to prevent tone diacritics touching -->
-    <h1 class="hero-headline text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-slate-900 tracking-tight py-2 mb-3 [text-wrap:balance]" style="line-height: 1.28 !important;" data-i18n="heroTitle">
-      <span class="block sm:inline whitespace-nowrap">Bộ giải pháp thanh toán</span> <span class="whitespace-nowrap"><span class="text-red-600 font-black">MIỄN PHÍ</span> cho cửa hàng</span>
+    <!-- Main Headline with bold red MIỄN PHÍ and generous physical gap between lines to prevent tone diacritics touching -->
+    <h1 class="hero-headline flex flex-col items-center gap-2 sm:gap-3 text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-slate-900 tracking-tight py-2 mb-3 text-center" style="line-height: 1.25 !important;">
+      <span class="block text-center" data-i18n="heroTitleLine1">Bộ giải pháp thanh toán</span>
+      <span class="block text-center" data-i18n="heroTitleLine2"><span class="text-red-600 font-black">MIỄN PHÍ</span> cho cửa hàng</span>
     </h1>
     
     <!-- One-sentence Description -->
@@ -351,25 +352,12 @@
         <div class="flex items-center justify-center gap-8 sm:gap-14 my-3 sm:my-4">
           <!-- 1. Alipay+ (PROMINENT FIXED: large, clean, no border/frame) -->
           <div class="flex items-center justify-center h-12 sm:h-14 transition-opacity hover:opacity-85" title="Alipay+">
-            <svg viewBox="0 0 160 48" class="h-9 sm:h-11 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alipay+ Logo">
-              <circle cx="18" cy="24" r="16" fill="#1677FF"/>
-              <path d="M11 17H25M18 14V20M10 22H26M13 22C13 25.5 12 28.5 9 31M17 23C19 26.5 22.5 29.5 26 31" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="42" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#1E293B">Alipay<tspan fill="#1677FF" font-weight="900">+</tspan></text>
-            </svg>
+            <img src="./assets/logos/network/alipayplus.png" alt="Alipay+" class="h-9 sm:h-11 w-auto max-w-[170px] sm:max-w-[200px] object-contain">
           </div>
 
           <!-- 2. WeChat Pay (PROMINENT FIXED: large, clean, no border/frame) -->
           <div class="flex items-center justify-center h-12 sm:h-14 transition-opacity hover:opacity-85" title="WeChat Pay">
-            <svg viewBox="0 0 170 48" class="h-9 sm:h-11 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WeChat Pay Logo">
-              <circle cx="20" cy="24" r="16" fill="#07C160"/>
-              <ellipse cx="17" cy="22" rx="7" ry="6" fill="#FFFFFF"/>
-              <circle cx="15" cy="21" r="1" fill="#07C160"/>
-              <circle cx="19" cy="21" r="1" fill="#07C160"/>
-              <ellipse cx="23" cy="26" rx="5.5" ry="4.5" fill="#FFFFFF"/>
-              <circle cx="22" cy="25.5" r="0.8" fill="#07C160"/>
-              <circle cx="25" cy="25.5" r="0.8" fill="#07C160"/>
-              <text x="44" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#1E293B">WeChat <tspan font-weight="900" fill="#07C160">Pay</tspan></text>
-            </svg>
+            <img src="./assets/logos/network/wechatpay.svg" alt="WeChat Pay" class="h-9 sm:h-11 w-auto max-w-[170px] sm:max-w-[200px] object-contain">
           </div>
         </div>
 
@@ -384,246 +372,108 @@
             <!-- Track 1: Original Accessible items (10 partners) -->
             <div class="flex items-center shrink-0 gap-6 sm:gap-10 pr-6 sm:pr-10">
 
-            <!-- 3. MB Bank (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="MB Bank">
-              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
-                <g transform="translate(4, 4)">
-                  <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
-                  <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
-                  <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
-                </g>
-                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
-              </svg>
-            </div>
+              <!-- 3. MB Bank (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="MB Bank">
+                <img src="./assets/logos/network/mbbank.png" alt="MB Bank" class="h-8 sm:h-9 w-auto max-w-[130px] object-contain">
+              </div>
 
-            <!-- 4. Techcombank (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="Techcombank">
-              <svg viewBox="0 0 200 48" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
-                <g transform="translate(6, 12)">
-                  <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
-                  <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
-                  <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
-                  <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
-                </g>
-                <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
-                <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
-              </svg>
-            </div>
+              <!-- 4. Techcombank (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="Techcombank">
+                <img src="./assets/logos/network/techcombank.svg" alt="Techcombank" class="h-6 sm:h-7 w-auto max-w-[170px] object-contain">
+              </div>
 
-            <!-- 5. VIB (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VIB">
-              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
-                <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
-                <g transform="translate(66, 6)">
-                  <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
-                  <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
-                  <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
-                </g>
-              </svg>
-            </div>
+              <!-- 5. VIB (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VIB">
+                <img src="./assets/logos/network/vib.png" alt="VIB" class="h-8 sm:h-9 w-auto max-w-[120px] object-contain">
+              </div>
 
-            <!-- 6. VPBank (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VPBank">
-              <svg viewBox="0 0 180 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
-                <g transform="translate(6, 8)">
-                  <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
-                  <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
-                  <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
-                </g>
-                <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
-              </svg>
-            </div>
+              <!-- 6. VPBank (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VPBank">
+                <img src="./assets/logos/network/vpbank.svg" alt="VPBank" class="h-7 sm:h-8 w-auto max-w-[140px] object-contain">
+              </div>
 
-            <!-- 7. PromptPay -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="PromptPay">
-              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
-                <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
-                <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
-                <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
-                <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
-              </svg>
-            </div>
+              <!-- 7. PromptPay -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="PromptPay">
+                <img src="./assets/logos/network/promptpay.png" alt="PromptPay" class="h-7 sm:h-8 w-auto max-w-[150px] object-contain">
+              </div>
 
-            <!-- 8. KHQR -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="KHQR">
-              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
-                <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
-                <g transform="translate(62, 7)">
-                  <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
-                  <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
-                  <circle cx="17" cy="18" r="6" fill="#004A99"/>
-                  <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
-                  <circle cx="17" cy="18" r="2" fill="#004A99"/>
-                </g>
-                <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
-              </svg>
-            </div>
+              <!-- 8. KHQR -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="KHQR">
+                <img src="./assets/logos/network/khqr.png" alt="KHQR" class="h-6 sm:h-7 w-auto max-w-[130px] object-contain">
+              </div>
 
-            <!-- 9. LAPNet -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="LAPNet">
-              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LAPNet Logo">
-                <g transform="translate(4, 6)">
-                  <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
-                  <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
-                  <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
-                  <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
-                </g>
-              </svg>
-            </div>
+              <!-- 9. LAPNet -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="LAPNet">
+                <img src="./assets/logos/network/lapnet.png" alt="LAPNet" class="h-8 sm:h-9 w-auto max-w-[90px] object-contain">
+              </div>
 
-            <!-- 10. NETS -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="NETS">
-              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
-                <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
-              </svg>
-            </div>
+              <!-- 10. NETS -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="NETS">
+                <img src="./assets/logos/network/nets.svg" alt="NETS" class="h-6 sm:h-7 w-auto max-w-[120px] object-contain">
+              </div>
 
-            <!-- 11. GLN -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="GLN">
-              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
-                <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
-                <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
-                <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
-                <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
-              </svg>
-            </div>
+              <!-- 11. GLN -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="GLN">
+                <img src="./assets/logos/network/gln.png" alt="GLN" class="h-8 sm:h-9 w-auto max-w-[90px] object-contain rounded-lg">
+              </div>
 
-            <!-- 12. UnionPay -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="UnionPay 银联">
-              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
-                <g transform="translate(4, 4)">
-                  <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
-                  <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
-                  <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
-                  <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
-                  <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
-                </g>
-                <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
-                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
-              </svg>
-            </div>
+              <!-- 12. UnionPay -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="UnionPay">
+                <img src="./assets/logos/network/unionpay.svg" alt="UnionPay" class="h-7 sm:h-8 w-auto max-w-[110px] object-contain">
+              </div>
             </div>
 
             <!-- Track 2: Seamless Clone (aria-hidden, tabindex -1) -->
             <div class="flex items-center shrink-0 gap-6 sm:gap-10 pr-6 sm:pr-10" aria-hidden="true" tabindex="-1">
-            <!-- 3. MB Bank (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="MB Bank">
-              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
-                <g transform="translate(4, 4)">
-                  <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
-                  <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
-                  <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
-                </g>
-                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
-              </svg>
-            </div>
+              <!-- 3. MB Bank (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="MB Bank">
+                <img src="./assets/logos/network/mbbank.png" alt="MB Bank" class="h-8 sm:h-9 w-auto max-w-[130px] object-contain">
+              </div>
 
-            <!-- 4. Techcombank (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="Techcombank">
-              <svg viewBox="0 0 200 48" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
-                <g transform="translate(6, 12)">
-                  <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
-                  <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
-                  <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
-                  <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
-                </g>
-                <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
-                <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
-              </svg>
-            </div>
+              <!-- 4. Techcombank (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="Techcombank">
+                <img src="./assets/logos/network/techcombank.svg" alt="Techcombank" class="h-6 sm:h-7 w-auto max-w-[170px] object-contain">
+              </div>
 
-            <!-- 5. VIB (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VIB">
-              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
-                <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
-                <g transform="translate(66, 6)">
-                  <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
-                  <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
-                  <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
-                </g>
-              </svg>
-            </div>
+              <!-- 5. VIB (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VIB">
+                <img src="./assets/logos/network/vib.png" alt="VIB" class="h-8 sm:h-9 w-auto max-w-[120px] object-contain">
+              </div>
 
-            <!-- 6. VPBank (Partner Bank) -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VPBank">
-              <svg viewBox="0 0 180 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
-                <g transform="translate(6, 8)">
-                  <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
-                  <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
-                  <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
-                </g>
-                <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
-              </svg>
-            </div>
+              <!-- 6. VPBank (Partner Bank) -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VPBank">
+                <img src="./assets/logos/network/vpbank.svg" alt="VPBank" class="h-7 sm:h-8 w-auto max-w-[140px] object-contain">
+              </div>
 
-            <!-- 7. PromptPay -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="PromptPay">
-              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
-                <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
-                <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
-                <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
-                <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
-              </svg>
-            </div>
+              <!-- 7. PromptPay -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="PromptPay">
+                <img src="./assets/logos/network/promptpay.png" alt="PromptPay" class="h-7 sm:h-8 w-auto max-w-[150px] object-contain">
+              </div>
 
-            <!-- 8. KHQR -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="KHQR">
-              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
-                <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
-                <g transform="translate(62, 7)">
-                  <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
-                  <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
-                  <circle cx="17" cy="18" r="6" fill="#004A99"/>
-                  <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
-                  <circle cx="17" cy="18" r="2" fill="#004A99"/>
-                </g>
-                <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
-              </svg>
-            </div>
+              <!-- 8. KHQR -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="KHQR">
+                <img src="./assets/logos/network/khqr.png" alt="KHQR" class="h-6 sm:h-7 w-auto max-w-[130px] object-contain">
+              </div>
 
-            <!-- 9. LAPNet -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="LAPNet">
-              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LAPNet Logo">
-                <g transform="translate(4, 6)">
-                  <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
-                  <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
-                  <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
-                  <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
-                </g>
-              </svg>
-            </div>
+              <!-- 9. LAPNet -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="LAPNet">
+                <img src="./assets/logos/network/lapnet.png" alt="LAPNet" class="h-8 sm:h-9 w-auto max-w-[90px] object-contain">
+              </div>
 
-            <!-- 10. NETS -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="NETS">
-              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
-                <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
-              </svg>
-            </div>
+              <!-- 10. NETS -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="NETS">
+                <img src="./assets/logos/network/nets.svg" alt="NETS" class="h-6 sm:h-7 w-auto max-w-[120px] object-contain">
+              </div>
 
-            <!-- 11. GLN -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="GLN">
-              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
-                <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
-                <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
-                <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
-                <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
-              </svg>
-            </div>
+              <!-- 11. GLN -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="GLN">
+                <img src="./assets/logos/network/gln.png" alt="GLN" class="h-8 sm:h-9 w-auto max-w-[90px] object-contain rounded-lg">
+              </div>
 
-            <!-- 12. UnionPay -->
-            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="UnionPay 银联">
-              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
-                <g transform="translate(4, 4)">
-                  <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
-                  <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
-                  <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
-                  <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
-                  <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
-                </g>
-                <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
-                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
-              </svg>
-            </div>
+              <!-- 12. UnionPay -->
+              <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="UnionPay">
+                <img src="./assets/logos/network/unionpay.svg" alt="UnionPay" class="h-7 sm:h-8 w-auto max-w-[110px] object-contain">
+              </div>
             </div>
           </div>
         </div>
