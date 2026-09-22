@@ -8,6 +8,7 @@ let activeProductModalKey = 'vietqr-pay';
 const productsData = {
   'vietqr-pay': {
     badge: 'Mã QR quầy thu ngân',
+    badgeFreeKey: 'badgeFree',
     titleKey: 'product1Title',
     benefitKey: 'product1Benefit',
     image: './assets/images/standee-than-tai.png',
@@ -21,6 +22,7 @@ const productsData = {
   },
   'soundbox': {
     badge: 'Thiết bị phát âm thanh',
+    badgeFreeKey: 'badgeFree',
     titleKey: 'product2Title',
     benefitKey: 'product2Benefit',
     image: './assets/images/product-soundbox.png',
@@ -34,6 +36,7 @@ const productsData = {
   },
   'pos-software': {
     badge: 'Phần mềm quản lý bán hàng',
+    badgeFreeKey: 'badgeFree',
     titleKey: 'product3Title',
     benefitKey: 'product3Benefit',
     image: './assets/images/product-pos-app.png',
@@ -47,6 +50,8 @@ const productsData = {
   },
   'smart-pos': {
     badge: 'Thiết bị POS thanh toán',
+    badgeFreeKey: 'badgeFreePOS',
+    hasCondition: true,
     titleKey: 'product4Title',
     benefitKey: 'product4Benefit',
     image: './assets/images/product-smart-pos.png',
@@ -74,10 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const pKey = urlParams.get('open_modal') || 'vietqr-pay';
     setTimeout(() => openProductModal(pKey), 100);
   }
-  if (urlParams.has('scroll_to')) {
+  if (urlParams.has('isolate')) {
+    const isolateId = urlParams.get('isolate');
+    ['products', 'process', 'register', 'network'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && id !== isolateId) {
+        el.style.display = 'none';
+      }
+    });
+    const header = document.querySelector('header');
+    if (header && isolateId !== 'hero') header.style.display = 'none';
+    const target = document.getElementById(isolateId);
+    if (target) target.style.paddingTop = '6rem';
+  } else if (urlParams.has('scroll_to')) {
     const target = document.getElementById(urlParams.get('scroll_to'));
     if (target) {
-      setTimeout(() => target.scrollIntoView({ behavior: 'instant', block: 'start' }), 50);
+      target.scrollIntoView({ behavior: 'instant', block: 'start' });
     }
   }
 });
@@ -224,6 +241,7 @@ function populateProductModal(productKey) {
 
   const modalImg = document.getElementById('modalProductImg');
   const modalBadge = document.getElementById('modalProductBadge');
+  const modalFreeBadge = document.getElementById('modalFreeBadge');
   const modalTitle = document.getElementById('modalProductTitle');
   const modalBenefit = document.getElementById('modalProductBenefit');
   const forWhoText = document.getElementById('modalForWhoText');
@@ -232,12 +250,16 @@ function populateProductModal(productKey) {
   const step2Text = document.getElementById('modalStep2Text');
   const step3Text = document.getElementById('modalStep3Text');
   const roleText = document.getElementById('modalRoleText');
+  const modalPosCondition = document.getElementById('modalPosCondition');
 
   if (modalImg) {
     modalImg.src = data.image;
     modalImg.alt = dict[data.titleKey] || data.titleKey;
   }
   if (modalBadge) modalBadge.textContent = data.badge;
+  if (modalFreeBadge) {
+    modalFreeBadge.textContent = dict[data.badgeFreeKey] || (data.hasCondition ? dict.badgeFreePOS : dict.badgeFree);
+  }
   if (modalTitle) modalTitle.textContent = dict[data.titleKey] || '';
   if (modalBenefit) modalBenefit.textContent = dict[data.benefitKey] || '';
   if (forWhoText) forWhoText.textContent = dict[data.forWhoKey] || '';
@@ -246,6 +268,14 @@ function populateProductModal(productKey) {
   if (step2Text) step2Text.textContent = dict[data.step2Key] || '';
   if (step3Text) step3Text.textContent = dict[data.step3Key] || '';
   if (roleText) roleText.textContent = dict[data.roleKey] || '';
+
+  if (modalPosCondition) {
+    if (data.hasCondition) {
+      modalPosCondition.classList.remove('hidden');
+    } else {
+      modalPosCondition.classList.add('hidden');
+    }
+  }
 }
 
 /**
