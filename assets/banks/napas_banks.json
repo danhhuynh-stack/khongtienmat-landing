@@ -1,0 +1,450 @@
+[
+  {
+    "id": 1,
+    "slug": "vietcombank",
+    "name": "Vietcombank",
+    "fullName": "Ngân hàng TMCP Ngoại thương Việt Nam",
+    "srcItem": 1,
+    "logoPath": "./assets/banks/vietcombank.png"
+  },
+  {
+    "id": 2,
+    "slug": "vietinbank",
+    "name": "VietinBank",
+    "fullName": "Ngân hàng TMCP Công thương Việt Nam",
+    "srcItem": 2,
+    "logoPath": "./assets/banks/vietinbank.png"
+  },
+  {
+    "id": 3,
+    "slug": "bidv",
+    "name": "BIDV",
+    "fullName": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam",
+    "srcItem": 3,
+    "logoPath": "./assets/banks/bidv.png"
+  },
+  {
+    "id": 4,
+    "slug": "agribank",
+    "name": "Agribank",
+    "fullName": "Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam",
+    "srcItem": 4,
+    "logoPath": "./assets/banks/agribank.png"
+  },
+  {
+    "id": 5,
+    "slug": "acb",
+    "name": "ACB",
+    "fullName": "Ngân hàng TMCP Á Châu",
+    "srcItem": 5,
+    "logoPath": "./assets/banks/acb.png"
+  },
+  {
+    "id": 6,
+    "slug": "sacombank",
+    "name": "Sacombank",
+    "fullName": "Ngân hàng TMCP Sài Gòn Thương Tín",
+    "srcItem": 6,
+    "logoPath": "./assets/banks/sacombank.png"
+  },
+  {
+    "id": 7,
+    "slug": "saigonbank",
+    "name": "Saigonbank",
+    "fullName": "Ngân hàng TMCP Sài Gòn Công Thương",
+    "srcItem": 7,
+    "logoPath": "./assets/banks/saigonbank.png"
+  },
+  {
+    "id": 8,
+    "slug": "techcombank",
+    "name": "Techcombank",
+    "fullName": "Ngân hàng TMCP Kỹ thương Việt Nam",
+    "srcItem": 8,
+    "logoPath": "./assets/banks/techcombank.png"
+  },
+  {
+    "id": 9,
+    "slug": "bacabank",
+    "name": "Bac A Bank",
+    "fullName": "Ngân hàng TMCP Bắc Á",
+    "srcItem": 9,
+    "logoPath": "./assets/banks/bacabank.png"
+  },
+  {
+    "id": 10,
+    "slug": "vikki",
+    "name": "Vikki Digital Bank",
+    "fullName": "Ngân hàng số Vikki (HDBank)",
+    "srcItem": 10,
+    "logoPath": "./assets/banks/vikki.png"
+  },
+  {
+    "id": 11,
+    "slug": "hdbank",
+    "name": "HDBank",
+    "fullName": "Ngân hàng TMCP Phát triển TP.HCM",
+    "srcItem": 11,
+    "logoPath": "./assets/banks/hdbank.png"
+  },
+  {
+    "id": 12,
+    "slug": "scb",
+    "name": "SCB",
+    "fullName": "Ngân hàng TMCP Sài Gòn",
+    "srcItem": 12,
+    "logoPath": "./assets/banks/scb.png"
+  },
+  {
+    "id": 13,
+    "slug": "vcbneo",
+    "name": "VCBNeo",
+    "fullName": "Ngân hàng TM TNHH MTV Ngoại thương Công nghệ số",
+    "srcItem": 13,
+    "logoPath": "./assets/banks/vcbneo.png"
+  },
+  {
+    "id": 14,
+    "slug": "shinhan",
+    "name": "Shinhan Bank",
+    "fullName": "Ngân hàng TNHH MTV Shinhan Việt Nam",
+    "srcItem": 14,
+    "logoPath": "./assets/banks/shinhan.png"
+  },
+  {
+    "id": 15,
+    "slug": "vrb",
+    "name": "VRB",
+    "fullName": "Ngân hàng Liên doanh Việt - Nga",
+    "srcItem": 15,
+    "logoPath": "./assets/banks/vrb.png"
+  },
+  {
+    "id": 16,
+    "slug": "bidc",
+    "name": "BIDC",
+    "fullName": "Ngân hàng Đầu tư và Phát triển Campuchia",
+    "srcItem": 16,
+    "logoPath": "./assets/banks/bidc.png"
+  },
+  {
+    "id": 17,
+    "slug": "cimb",
+    "name": "CIMB",
+    "fullName": "Ngân hàng TNHH MTV CIMB Việt Nam",
+    "srcItem": 17,
+    "logoPath": "./assets/banks/cimb.png"
+  },
+  {
+    "id": 18,
+    "slug": "seabank",
+    "name": "SeABank",
+    "fullName": "Ngân hàng TMCP Đông Nam Á",
+    "srcItem": 18,
+    "logoPath": "./assets/banks/seabank.png"
+  },
+  {
+    "id": 19,
+    "slug": "vietabank",
+    "name": "VietABank",
+    "fullName": "Ngân hàng TMCP Việt Á",
+    "srcItem": 19,
+    "logoPath": "./assets/banks/vietabank.png"
+  },
+  {
+    "id": 20,
+    "slug": "abbank",
+    "name": "ABBank",
+    "fullName": "Ngân hàng TMCP An Bình",
+    "srcItem": 20,
+    "logoPath": "./assets/banks/abbank.png"
+  },
+  {
+    "id": 21,
+    "slug": "mbbank",
+    "name": "MB Bank",
+    "fullName": "Ngân hàng TMCP Quân đội",
+    "srcItem": 21,
+    "logoPath": "./assets/banks/mbbank.png"
+  },
+  {
+    "id": 22,
+    "slug": "msb",
+    "name": "MSB",
+    "fullName": "Ngân hàng TMCP Hàng hải Việt Nam",
+    "srcItem": 22,
+    "logoPath": "./assets/banks/msb.png"
+  },
+  {
+    "id": 23,
+    "slug": "vib",
+    "name": "VIB",
+    "fullName": "Ngân hàng TMCP Quốc tế Việt Nam",
+    "srcItem": 23,
+    "logoPath": "./assets/banks/vib.png"
+  },
+  {
+    "id": 24,
+    "slug": "eximbank",
+    "name": "Eximbank",
+    "fullName": "Ngân hàng TMCP Xuất Nhập khẩu Việt Nam",
+    "srcItem": 24,
+    "logoPath": "./assets/banks/eximbank.png"
+  },
+  {
+    "id": 25,
+    "slug": "ocb",
+    "name": "OCB",
+    "fullName": "Ngân hàng TMCP Phương Đông",
+    "srcItem": 25,
+    "logoPath": "./assets/banks/ocb.png"
+  },
+  {
+    "id": 26,
+    "slug": "tpbank",
+    "name": "TPBank",
+    "fullName": "Ngân hàng TMCP Tiên Phong",
+    "srcItem": 26,
+    "logoPath": "./assets/banks/tpbank.png"
+  },
+  {
+    "id": 27,
+    "slug": "mbv",
+    "name": "MBV",
+    "fullName": "Ngân hàng TNHH MTV Việt Nam Hiện Đại",
+    "srcItem": 27,
+    "logoPath": "./assets/banks/mbv.png"
+  },
+  {
+    "id": 28,
+    "slug": "bvbank",
+    "name": "BVBank",
+    "fullName": "Ngân hàng TMCP Bản Việt",
+    "srcItem": 28,
+    "logoPath": "./assets/banks/bvbank.png"
+  },
+  {
+    "id": 29,
+    "slug": "shb",
+    "name": "SHB",
+    "fullName": "Ngân hàng TMCP Sài Gòn - Hà Nội",
+    "srcItem": 29,
+    "logoPath": "./assets/banks/shb.png"
+  },
+  {
+    "id": 30,
+    "slug": "ncb",
+    "name": "NCB",
+    "fullName": "Ngân hàng TMCP Quốc Dân",
+    "srcItem": 30,
+    "logoPath": "./assets/banks/ncb.png"
+  },
+  {
+    "id": 31,
+    "slug": "citibank",
+    "name": "Citibank",
+    "fullName": "Citibank N.A. Việt Nam",
+    "srcItem": 31,
+    "logoPath": "./assets/banks/citibank.png"
+  },
+  {
+    "id": 32,
+    "slug": "kebhana",
+    "name": "KEB Hana Bank",
+    "fullName": "Ngân hàng KEB Hana",
+    "srcItem": 32,
+    "logoPath": "./assets/banks/kebhana.png"
+  },
+  {
+    "id": 34,
+    "slug": "vpbank",
+    "name": "VPBank",
+    "fullName": "Ngân hàng TMCP Việt Nam Thịnh Vượng",
+    "srcItem": 34,
+    "logoPath": "./assets/banks/vpbank.png"
+  },
+  {
+    "id": 35,
+    "slug": "gpbank",
+    "name": "GPBank",
+    "fullName": "Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu",
+    "srcItem": 35,
+    "logoPath": "./assets/banks/gpbank.png"
+  },
+  {
+    "id": 36,
+    "slug": "namabank",
+    "name": "Nam A Bank",
+    "fullName": "Ngân hàng TMCP Nam Á",
+    "srcItem": 36,
+    "logoPath": "./assets/banks/namabank.png"
+  },
+  {
+    "id": 37,
+    "slug": "pgbank",
+    "name": "PGBank",
+    "fullName": "Ngân hàng TMCP Thịnh vượng và Phát triển",
+    "srcItem": 37,
+    "logoPath": "./assets/banks/pgbank.png"
+  },
+  {
+    "id": 38,
+    "slug": "coopbank",
+    "name": "Co-opBank",
+    "fullName": "Ngân hàng Hợp tác xã Việt Nam",
+    "srcItem": 38,
+    "logoPath": "./assets/banks/coopbank.png"
+  },
+  {
+    "id": 39,
+    "slug": "pvcombank",
+    "name": "PVcomBank",
+    "fullName": "Ngân hàng TMCP Đại Chúng Việt Nam",
+    "srcItem": 39,
+    "logoPath": "./assets/banks/pvcombank.png"
+  },
+  {
+    "id": 40,
+    "slug": "publicbank",
+    "name": "Public Bank",
+    "fullName": "Ngân hàng TNHH MTV Public Bank Việt Nam",
+    "srcItem": 40,
+    "logoPath": "./assets/banks/publicbank.png"
+  },
+  {
+    "id": 41,
+    "slug": "lpbank",
+    "name": "LPBank",
+    "fullName": "Ngân hàng TMCP Lộc Phát Việt Nam",
+    "srcItem": 41,
+    "logoPath": "./assets/banks/lpbank.png"
+  },
+  {
+    "id": 42,
+    "slug": "baovietbank",
+    "name": "BaoViet Bank",
+    "fullName": "Ngân hàng TMCP Bảo Việt",
+    "srcItem": 42,
+    "logoPath": "./assets/banks/baovietbank.png"
+  },
+  {
+    "id": 43,
+    "slug": "ivb",
+    "name": "IVB",
+    "fullName": "Ngân hàng TNHH Indovina",
+    "srcItem": 43,
+    "logoPath": "./assets/banks/ivb.png"
+  },
+  {
+    "id": 44,
+    "slug": "kienlongbank",
+    "name": "KienlongBank",
+    "fullName": "Ngân hàng TMCP Kiên Long",
+    "srcItem": 44,
+    "logoPath": "./assets/banks/kienlongbank.png"
+  },
+  {
+    "id": 45,
+    "slug": "vietbank",
+    "name": "Vietbank",
+    "fullName": "Ngân hàng TMCP Việt Nam Thương Tín",
+    "srcItem": 45,
+    "logoPath": "./assets/banks/vietbank.png"
+  },
+  {
+    "id": 46,
+    "slug": "kasikornbank",
+    "name": "Kasikornbank",
+    "fullName": "Ngân hàng Kasikornbank (KBank)",
+    "srcItem": 46,
+    "logoPath": "./assets/banks/kasikornbank.png"
+  },
+  {
+    "id": 48,
+    "slug": "standardchartered",
+    "name": "Standard Chartered",
+    "fullName": "Ngân hàng Standard Chartered Việt Nam",
+    "srcItem": 48,
+    "logoPath": "./assets/banks/standardchartered.png"
+  },
+  {
+    "id": 49,
+    "slug": "hsbc",
+    "name": "HSBC",
+    "fullName": "Ngân hàng TNHH MTV HSBC Việt Nam",
+    "srcItem": 49,
+    "logoPath": "./assets/banks/hsbc.png"
+  },
+  {
+    "id": 50,
+    "slug": "nonghyup",
+    "name": "NongHyup Bank",
+    "fullName": "Ngân hàng NongHyup - Chi nhánh Hà Nội",
+    "srcItem": 50,
+    "logoPath": "./assets/banks/nonghyup.png"
+  },
+  {
+    "id": 51,
+    "slug": "hongleong",
+    "name": "Hong Leong Bank",
+    "fullName": "Ngân hàng Hong Leong Việt Nam",
+    "srcItem": 51,
+    "logoPath": "./assets/banks/hongleong.png"
+  },
+  {
+    "id": 52,
+    "slug": "ibk",
+    "name": "IBK",
+    "fullName": "Industrial Bank of Korea",
+    "srcItem": 52,
+    "logoPath": "./assets/banks/ibk.png"
+  },
+  {
+    "id": 53,
+    "slug": "commonwealth",
+    "name": "Commonwealth Bank",
+    "fullName": "Commonwealth Bank of Australia",
+    "srcItem": 53,
+    "logoPath": "./assets/banks/commonwealth.png"
+  },
+  {
+    "id": 54,
+    "slug": "uob",
+    "name": "UOB",
+    "fullName": "Ngân hàng UOB Việt Nam",
+    "srcItem": 54,
+    "logoPath": "./assets/banks/uob.png"
+  },
+  {
+    "id": 55,
+    "slug": "wooribank",
+    "name": "Woori Bank",
+    "fullName": "Ngân hàng TNHH MTV Woori Việt Nam",
+    "srcItem": 55,
+    "logoPath": "./assets/banks/wooribank.png"
+  },
+  {
+    "id": 56,
+    "slug": "dbs",
+    "name": "DBS",
+    "fullName": "DBS Bank Ltd",
+    "srcItem": 56,
+    "logoPath": "./assets/banks/dbs.png"
+  },
+  {
+    "id": 57,
+    "slug": "sinopac",
+    "name": "Bank SinoPac",
+    "fullName": "Ngân hàng Bank SinoPac",
+    "srcItem": 57,
+    "logoPath": "./assets/banks/sinopac.png"
+  },
+  {
+    "id": 59,
+    "slug": "vbsp",
+    "name": "VBSP",
+    "fullName": "Ngân hàng Chính sách Xã hội Việt Nam",
+    "srcItem": 59,
+    "logoPath": "./assets/banks/vbsp.png"
+  }
+]

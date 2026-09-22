@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLeadForm();
   initScrollEffects();
   initPolicyModal();
+  initMarqueeControls();
 
   // Support direct modal preview or section scroll via URL query
   const urlParams = new URLSearchParams(window.location.search);
@@ -128,7 +129,7 @@ function setLanguage(lang) {
 function applyLanguage(lang) {
   const dict = translations[lang] || translations.vi;
   
-  // Elements with data-i18n
+  // Elements with data-i18n (preserves user form inputs)
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) {
@@ -138,6 +139,26 @@ function applyLanguage(lang) {
         el.textContent = dict[key];
       }
     }
+  });
+
+  // Inputs with data-i18n-placeholder
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(input => {
+    const key = input.getAttribute('data-i18n-placeholder');
+    if (dict[key]) {
+      input.placeholder = dict[key];
+    }
+  });
+
+  // Update marquee control button labels
+  document.querySelectorAll('.btn-marquee-toggle').forEach(btn => {
+    const targetId = btn.getAttribute('data-target');
+    const container = targetId ? document.getElementById(targetId) : btn.closest('.marquee-container');
+    const isPaused = container ? container.classList.contains('is-paused') : false;
+    const textSpan = btn.querySelector('span[data-i18n]');
+    if (textSpan) {
+      textSpan.textContent = isPaused ? (dict.marqueePlay || 'Tiếp tục') : (dict.marqueePause || 'Tạm dừng');
+    }
+    btn.setAttribute('aria-label', isPaused ? (dict.marqueePlay || 'Tiếp tục') : (dict.marqueePause || 'Tạm dừng'));
   });
 
   // Re-render Lucide icons if updated
@@ -210,10 +231,10 @@ function initProductDetailModal() {
       const regSection = document.getElementById('register');
       if (regSection) {
         regSection.scrollIntoView({ behavior: 'smooth' });
-        // Focus on phone input after scroll
+        // Focus on fullName input after scroll
         setTimeout(() => {
-          const phoneInput = document.getElementById('phone');
-          if (phoneInput) phoneInput.focus();
+          const nameInput = document.getElementById('fullName');
+          if (nameInput) nameInput.focus();
         }, 500);
       }
     });
@@ -230,6 +251,12 @@ function openProductModal(productKey) {
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 
+  // Temporarily hide desktop floating Zalo button while modal is open
+  const floatingZalo = document.getElementById('floatingZalo');
+  if (floatingZalo) {
+    floatingZalo.classList.add('opacity-0', 'pointer-events-none');
+  }
+
   if (window.lucide) {
     window.lucide.createIcons();
   }
@@ -241,6 +268,12 @@ function closeProductModal() {
 
   modal.classList.add('hidden');
   document.body.style.overflow = '';
+
+  // Restore desktop floating Zalo button
+  const floatingZalo = document.getElementById('floatingZalo');
+  if (floatingZalo) {
+    floatingZalo.classList.remove('opacity-0', 'pointer-events-none');
+  }
 }
 
 function populateProductModal(productKey) {
@@ -288,19 +321,21 @@ function populateProductModal(productKey) {
 }
 
 /**
- * 3. Minimalist Lead Form Handler (2 fields: phone & storeAddress)
+ * 3. Enhanced Lead Registration Form (5 required fields: productInterest, fullName, phone, storeName, storeAddress)
  */
 function initLeadForm() {
   const form = document.getElementById('leadForm');
   if (!form) return;
 
+  const fullNameInput = document.getElementById('fullName');
   const phoneInput = document.getElementById('phone');
+  const storeNameInput = document.getElementById('storeName');
   const addressInput = document.getElementById('storeAddress');
   const submitBtn = document.getElementById('submitBtn');
   const successAlert = document.getElementById('formSuccessAlert');
 
   // Clear errors on input
-  [phoneInput, addressInput].forEach(input => {
+  [fullNameInput, phoneInput, storeNameInput, addressInput].forEach(input => {
     if (!input) return;
     input.addEventListener('input', () => {
       const errEl = document.getElementById(`err-${input.id}`);
@@ -313,16 +348,30 @@ function initLeadForm() {
     e.preventDefault();
     let hasError = false;
 
-    // Validate Phone (VN phone standard: 10 digits starting with 0)
-    const phoneVal = phoneInput.value.trim().replace(/\s+/g, '');
+    // 1. Validate Full Name (Allow Vietnamese diacritics and letters, min length 2)
+    const fullNameVal = fullNameInput ? fullNameInput.value.trim() : '';
+    if (!fullNameVal || fullNameVal.length < 2) {
+      showError('fullName');
+      hasError = true;
+    }
+
+    // 2. Validate Phone (VN phone standard: 10 digits starting with 0)
+    const phoneVal = phoneInput ? phoneInput.value.trim().replace(/\s+/g, '') : '';
     const phoneRegex = /^0[3|5|7|8|9][0-9]{8}$/;
     if (!phoneVal || !phoneRegex.test(phoneVal)) {
       showError('phone');
       hasError = true;
     }
 
-    // Validate Store Address
-    const addressVal = addressInput.value.trim();
+    // 3. Validate Store Name (min length 2)
+    const storeNameVal = storeNameInput ? storeNameInput.value.trim() : '';
+    if (!storeNameVal || storeNameVal.length < 2) {
+      showError('storeName');
+      hasError = true;
+    }
+
+    // 4. Validate Store Address (min length 3)
+    const addressVal = addressInput ? addressInput.value.trim() : '';
     if (!addressVal || addressVal.length < 3) {
       showError('storeAddress');
       hasError = true;
@@ -330,12 +379,15 @@ function initLeadForm() {
 
     if (hasError) return;
 
-    // Collect data
+    // Collect full 5-field data payload
     const leadData = {
-      phone: phoneVal,
-      storeAddress: addressVal,
-      productInterest: document.getElementById('productInterest') ? document.getElementById('productInterest').value : 'all',
+      id: 'lead_' + Date.now(),
       submittedAt: new Date().toISOString(),
+      productInterest: document.getElementById('productInterest') ? document.getElementById('productInterest').value : 'all',
+      fullName: fullNameVal,
+      phone: phoneVal,
+      storeName: storeNameVal,
+      storeAddress: addressVal,
       lang: currentLang
     };
 
@@ -347,7 +399,7 @@ function initLeadForm() {
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
       </svg>
-      <span>Đang gửi thông tin...</span>
+      <span data-i18n="formSubmitting">${translations[currentLang]?.formSubmitting || 'Đang gửi thông tin...'}</span>
     `;
 
     // Process & store locally in localStorage (guaranteed real receipt)
@@ -356,6 +408,7 @@ function initLeadForm() {
         const existingLeads = JSON.parse(localStorage.getItem('khongtienmat_leads') || '[]');
         existingLeads.push(leadData);
         localStorage.setItem('khongtienmat_leads', JSON.stringify(existingLeads));
+        console.log('[LEAD RECEIVED]', leadData);
       } catch (err) {
         console.error('Local storage save error:', err);
       }
@@ -391,7 +444,39 @@ function showError(fieldId) {
 }
 
 /**
- * 4. Scrolled Navbar High Contrast
+ * 4. Marquee Controls Handler (Play / Pause toggle)
+ */
+function initMarqueeControls() {
+  document.querySelectorAll('.btn-marquee-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const container = targetId ? document.getElementById(targetId) : btn.closest('.marquee-container');
+      if (!container) return;
+
+      const isPaused = container.classList.toggle('is-paused');
+      const icon = btn.querySelector('i');
+      const textSpan = btn.querySelector('span[data-i18n]');
+      const dict = translations[currentLang] || translations.vi;
+
+      if (isPaused) {
+        btn.setAttribute('aria-label', dict.marqueePlay || 'Tiếp tục chuyển động');
+        if (textSpan) textSpan.textContent = dict.marqueePlay || 'Tiếp tục';
+        if (icon) icon.setAttribute('data-lucide', 'play');
+      } else {
+        btn.setAttribute('aria-label', dict.marqueePause || 'Tạm dừng chuyển động');
+        if (textSpan) textSpan.textContent = dict.marqueePause || 'Tạm dừng';
+        if (icon) icon.setAttribute('data-lucide', 'pause');
+      }
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  });
+}
+
+/**
+ * 5. Scrolled Navbar High Contrast
  */
 function initScrollEffects() {
   const navbar = document.getElementById('mainNavbar');
@@ -410,7 +495,7 @@ function initScrollEffects() {
 }
 
 /**
- * 5. Policy Modal Handler
+ * 6. Policy Modal Handler
  */
 function initPolicyModal() {
   const modal = document.getElementById('policyModal');
@@ -432,9 +517,9 @@ function initPolicyModal() {
     } else {
       titleEl.textContent = 'Chính sách bảo mật thông tin';
       bodyEl.innerHTML = `
-        <p>1. <strong>Thu thập thông tin</strong>: Hệ thống chỉ thu thập Số điện thoại và Địa chỉ cửa hàng do người dùng tự nguyện cung cấp phục vụ mục đích liên hệ tư vấn.</p>
-        <p>2. <strong>Cam kết bảo mật</strong>: Nexus Digital tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân, cam kết không chia sẻ hoặc bán lại thông tin của bạn cho bên thứ ba vì mục đích quảng cáo.</p>
-        <p>3. <strong>Yêu cầu chỉnh sửa/xóa</strong>: Quý khách có quyền yêu cầu tra soát hoặc xóa thông tin liên hệ bất cứ lúc nào qua email: operation@nexusdigital.vn.</p>
+        <p>1. <strong>Thu thập thông tin</strong>: Hệ thống chỉ thu thập Họ và tên người liên hệ, Số điện thoại, Tên cơ sở kinh doanh và Địa chỉ cửa hàng do khách hàng tự nguyện cung cấp phục vụ mục đích liên hệ tư vấn giải pháp thanh toán phù hợp.</p>
+        <p>2. <strong>Cam kết bảo mật</strong>: Nexus Digital tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân, cam kết bảo mật thông tin và không chia sẻ hoặc bán lại thông tin của bạn cho bên thứ ba vì mục đích quảng cáo.</p>
+        <p>3. <strong>Yêu cầu chỉnh sửa/xóa</strong>: Quý khách có quyền yêu cầu tra soát, cập nhật hoặc xóa thông tin liên hệ bất cứ lúc nào qua email: operation@nexusdigital.vn.</p>
       `;
     }
     modal.classList.remove('hidden');

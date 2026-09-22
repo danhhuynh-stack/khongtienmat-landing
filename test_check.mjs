@@ -1,7 +1,7 @@
 import { translations } from './translations.js';
 import fs from 'fs';
 
-console.log('=== RUNNING KHONGTIENMAT GO-LIVE TEST SUITE ===');
+console.log('=== RUNNING KHONGTIENMAT TEST SUITE ===');
 
 const html = fs.readFileSync('index.html', 'utf8');
 const appJs = fs.readFileSync('app.js', 'utf8');
@@ -64,8 +64,9 @@ bannedTerms.forEach(term => {
 assert(html.includes('khong</span><span class="nav-brand-suffix text-blue-600">tienmat</span>'), 'Logo semantic grouping "khong" + "tienmat" present');
 assert(!html.includes('khongtien<span class="text-blue-600">mat</span>'), 'Old erroneous logo split "khongtien" + "mat" absent');
 
-// 4. Hero Section Go-Live Requirements
+// 4. Hero Section & Headline Line-Height Requirements
 assert(html.includes('MIỄN PHÍ') && html.includes('text-red-600 font-black'), 'Hero headline highlights "MIỄN PHÍ" in bold red');
+assert(html.includes('leading-[1.28]'), 'Headline line-height is 1.28-1.3 to prevent Vietnamese tone marks touching');
 assert(html.includes('VietQR Pay, loa thông báo, phần mềm bán hàng và máy POS — lựa chọn giải pháp phù hợp cho cửa hàng của bạn.'), 'Hero subtitle updated with concise product overview');
 assert(html.includes('Đăng ký miễn phí'), 'Primary CTA "Đăng ký miễn phí" present in Hero');
 
@@ -80,51 +81,71 @@ assert(html.includes('badgeFreePOS'), 'data-i18n="badgeFreePOS" present for Smar
 assert(html.includes('posConditionNote'), 'data-i18n="posConditionNote" present');
 assert(html.includes('*Có điều kiện ký quỹ và sử dụng.'), 'POS condition note text present on card');
 
-// 6. Check Section "Mạng lưới kết nối" (#network) with 12 Brands
+// 6. Check Section "Mạng lưới kết nối" (#network): Group 1 & Group 2 Marquees
 assert(html.includes('id="network"'), 'Section id="network" present between #products and #process');
-const domesticBanks = ['MB Bank', 'Techcombank', 'VIB', 'VPBank'];
-domesticBanks.forEach(bank => {
-  assert(html.includes(bank), `Domestic bank "${bank}" present in #network`);
+assert(html.includes('id="marquee-intl"'), 'Group 1 international marquee container present');
+assert(html.includes('id="marquee-banks"'), 'Group 2 domestic banks marquee container present');
+
+// Group 1: 12 Brands
+const domesticPartners = ['MB Bank', 'Techcombank', 'VIB', 'VPBank'];
+domesticPartners.forEach(bank => {
+  assert(html.includes(bank), `Group 1 partner bank "${bank}" present`);
 });
 const intlNetworks = ['PromptPay', 'KHQR', 'LAPNet', 'NETS', 'GLN', 'Alipay+', 'UnionPay', 'WeChat Pay'];
 intlNetworks.forEach(net => {
-  assert(html.includes(net), `International payment network "${net}" present in #network`);
+  assert(html.includes(net), `Group 1 international network "${net}" present`);
 });
-// Check Alipay+ specifically (must include + symbol)
-assert(html.includes('Alipay<tspan fill="#1677FF" font-weight="900">+</tspan>') || html.includes('Alipay+'), 'Alipay+ logo explicitly contains "+" symbol');
-// Check WeChat Pay
-assert(html.includes('WeChat') && html.includes('Pay'), 'WeChat Pay logo present');
+// Check Alipay+ and WeChat Pay prominence (1.5-1.8x larger visual size, h-10 to h-12 in h-14 to h-16 container)
+assert(html.includes('h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="Alipay+"'), 'Alipay+ is prominent with large container in Group 1');
+assert(html.includes('h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="WeChat Pay"'), 'WeChat Pay is prominent with large container in Group 1');
 
-// 7. Check Prominent Hotline: 0924.0934.61 (Navbar, Register, Footer, no duplicate in Hero)
+// Group 2: NAPAS Source Link & 56 Banks
+assert(html.includes('https://napas.com.vn/dich-vu-cong-thanh-toan-truc-tuyen-napas-doi-tuong-khac'), 'NAPAS official source link present');
+assert(html.includes('data-i18n="networkGroup2Source"'), 'NAPAS source translation attribute present');
+const napasSampleBanks = ['vietcombank.png', 'vietinbank.png', 'bidv.png', 'agribank.png', 'sacombank.png', 'vikki.png', 'vcbneo.png', 'mbv.png', 'coopbank.png', 'vbsp.png'];
+napasSampleBanks.forEach(b => {
+  assert(html.includes(b), `NAPAS bank "${b}" present in Group 2 marquee`);
+});
+// Excluded finance companies from bank list
+assert(!html.includes('vietcredit.png'), 'Finance company VietCredit excluded from bank list');
+assert(!html.includes('tnex.png') && !html.includes('tnex-finance.png'), 'Finance company TNEX excluded from bank list');
+assert(!html.includes('mirae.png') && !html.includes('mirae-asset.png'), 'Finance company Mirae Asset excluded from bank list');
+
+// 7. Check Marquee Animation & Controls
+assert(html.includes('animate-marquee-intl'), 'International marquee animation class present');
+assert(html.includes('animate-marquee-banks'), 'Banks marquee animation class present');
+assert(html.includes('btn-marquee-toggle'), 'Pause/Play toggle button present');
+assert(appJs.includes('initMarqueeControls'), 'app.js initializes marquee controls');
+assert(html.includes('prefers-reduced-motion'), 'Prefers-reduced-motion accessibility handled in CSS');
+
+// 8. Check Prominent Hotline & Zalo Integration
 assert(html.includes('0924.0934.61'), 'Hotline text 0924.0934.61 present');
 assert(html.includes('tel:0924093461'), 'Clickable tel:0924093461 link present');
-assert(html.includes('nav-hotline'), 'Hotline present in Navbar');
-assert(html.includes('id="register"') && html.includes('0924.0934.61'), 'Hotline present in Register form section');
-assert(html.includes('<footer') && html.includes('0924.0934.61'), 'Hotline present in Footer');
-assert(!html.includes('quickConsult'), 'Redundant Hero hotline under CTA button removed');
+assert(html.includes('https://zalo.me/0924093461'), 'Zalo chat link https://zalo.me/0924093461 present');
+assert(html.includes('id="floatingZalo"'), 'Desktop floating Zalo button present');
+assert(html.includes('zalo.svg'), 'Official Zalo SVG icon present');
 
-// 8. Check Streamlined Layout Requirements
-assert(html.includes('grid-cols-2 lg:grid-cols-4'), 'Products grid is 2x2 on mobile and 4 cols on desktop');
-assert(!html.includes('productsHeading'), 'Redundant section heading in #products removed');
-assert(!html.includes('heroSecondary'), 'Redundant secondary button in Hero removed');
-assert(html.includes('product-clickable'), 'Product card image and title are keyboard & click accessible');
-assert(appJs.includes('.product-clickable'), 'app.js binds clicks & keys to .product-clickable');
-assert(html.includes('Nhận thanh toán qua mã QR.'), 'VietQR Pay 1-sentence benefit present');
-assert(html.includes('Nghe thông báo khi tiền về.'), 'Loa thông báo 1-sentence benefit present');
-assert(html.includes('Quản lý đơn hàng, hàng hóa và doanh thu.'), 'Phần mềm bán hàng 1-sentence benefit present');
-assert(html.includes('Nhận thanh toán bằng thẻ và chạm.'), 'Máy POS 1-sentence benefit present');
-
-// 9. Check Clean Logo Strip (#network) without Box Frames or Active Borders
-assert(!html.includes('border-2 border-blue-400'), 'Alipay+ has no active-state blue border');
-assert(!html.includes('border-2 border-emerald-400'), 'WeChat Pay has no active-state emerald border');
-assert(!html.includes('min-h-[96px]'), 'Individual boxed card frames removed from logo section');
-
-// 10. Check Short 3-Step Process
+// 9. Check Short 3-Step Process (No repeated numbers)
 assert(html.includes('id="process"'), 'Process section id="process" present');
 assert(html.includes('Quy trình đăng ký 3 bước'), '3-Step process title present in HTML');
-assert(html.includes('1. Để lại thông tin'), 'Step 1 title present');
-assert(html.includes('2. Nhận tư vấn'), 'Step 2 title present');
-assert(html.includes('3. Nhận trang bị'), 'Step 3 title present');
+assert(html.includes('data-i18n="step1Title">Để lại thông tin</span>'), 'Step 1 title has NO "1." prefix in HTML');
+assert(html.includes('data-i18n="step2Title">Nhận tư vấn</span>'), 'Step 2 title has NO "2." prefix in HTML');
+assert(html.includes('data-i18n="step3Title">Nhận trang bị</span>'), 'Step 3 title has NO "3." prefix in HTML');
+langs.forEach(lang => {
+  assert(!translations[lang].step1Title.startsWith('1.'), `Language '${lang}' step 1 has no '1.' prefix`);
+  assert(!translations[lang].step2Title.startsWith('2.'), `Language '${lang}' step 2 has no '2.' prefix`);
+  assert(!translations[lang].step3Title.startsWith('3.'), `Language '${lang}' step 3 has no '3.' prefix`);
+});
+
+// 10. Check Enhanced 5-Field Registration Form
+assert(html.includes('id="productInterest"'), 'Form contains productInterest selector (Field 1)');
+assert(html.includes('id="fullName"'), 'Form contains fullName field (Field 2)');
+assert(html.includes('id="phone"'), 'Form contains phone field (Field 3)');
+assert(html.includes('id="storeName"'), 'Form contains storeName field (Field 4)');
+assert(html.includes('id="storeAddress"'), 'Form contains storeAddress field (Field 5)');
+assert(html.includes('grid grid-cols-1 sm:grid-cols-2 gap-4'), 'Desktop 2-column grid layout for short fields present');
+assert(appJs.includes('fullNameVal') && appJs.includes('storeNameVal'), 'app.js validates and collects all 5 fields');
+assert(html.includes('Để lại thông tin liên hệ và cửa hàng, đội ngũ kinh doanh sẽ tư vấn giải pháp phù hợp.'), 'Form introduction text updated');
 
 // 11. Check Product Detail Modal & POS condition toggle
 assert(html.includes('id="productDetailModal"'), 'Product detail modal present in HTML');
@@ -134,17 +155,13 @@ assert(html.includes('id="btnModalRegisterThis"'), '"Đăng ký miễn phí sả
 assert(appJs.includes('modalPosCondition'), 'app.js toggles modalPosCondition based on product');
 assert(appJs.includes('modalFreeBadge'), 'app.js updates modalFreeBadge based on product');
 
-// 12. Check Minimalist 2-Field Form
-assert(html.includes('id="phone"'), 'Form contains phone field');
-assert(html.includes('id="storeAddress"'), 'Form contains storeAddress field');
-assert(html.includes('id="productInterest"'), 'Form contains productInterest selector');
-assert(!html.includes('name="fullName"'), 'Old unnecessary fullName field absent');
-assert(!html.includes('name="email"'), 'Old unnecessary email field absent');
-assert(!html.includes('name="bank"'), 'Old unnecessary bank selector field absent');
-
-// 13. Check Policy Modal
+// 12. Check Policy Modal
 assert(html.includes('id="policyModal"'), 'Policy modal present in HTML');
 assert(appJs.includes('initPolicyModal'), 'Policy modal handler initialized in app.js');
+
+// 13. Check Mobile Sticky Bottom Action Bar
+assert(html.includes('sm:hidden fixed bottom-0'), 'Mobile sticky bottom bar present');
+assert(html.includes('ctaRegisterFree'), 'Register CTA present on mobile sticky bar');
 
 console.log(`\n=== SUMMARY: ${passed} PASSED, ${failed} FAILED ===`);
 if (failed > 0) process.exit(1);

@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>khongtienmat.vn | Giải Pháp Nhận Thanh Toán Toàn Diện Cho Cửa Hàng</title>
-  
-  <!-- SEO & Social Meta -->
-  <meta name="description" content="Giải pháp nhận thanh toán hiện đại cho cửa hàng. Bảng mica VietQR Pay, Loa thông báo tiền về, Phần mềm bán hàng và Máy POS thanh toán. Đăng ký miễn phí.">
-  <meta name="keywords" content="khongtienmat, khong tien mat, vietqr pay, loa thong bao, phan mem ban hang, may pos, thanh toan qr, nexus digital">
-  <meta property="og:title" content="khongtienmat.vn | Giải Pháp Nhận Thanh Toán Cho Cửa Hàng">
-  <meta property="og:description" content="Nhiều hình ảnh, giải pháp trực quan, đăng ký miễn phí nhanh chóng cho chủ điểm bán.">
+  <title>khongtienmat.vn | Bộ Giải Pháp Thanh Toán Miễn Phí Cho Cửa Hàng</title>
+  <meta name="description" content="khongtienmat.vn - Bộ giải pháp thanh toán miễn phí cho cửa hàng: VietQR Pay, loa thông báo, phần mềm bán hàng và máy POS. Hotline: 0924.0934.61">
+  <link rel="canonical" href="https://danhhuynh-stack.github.io/khongtienmat-landing/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='48' font-family='system-ui,sans-serif' font-weight='900' fill='white'>KTM</text></svg>">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:title" content="khongtienmat.vn | Bộ Giải Pháp Thanh Toán Miễn Phí Cho Cửa Hàng">
+  <meta property="og:description" content="VietQR Pay, loa thông báo, phần mềm bán hàng và máy POS — lựa chọn giải pháp phù hợp cho cửa hàng của bạn.">
+  <meta property="og:image" content="./assets/images/standee-than-tai.png">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -20,12 +24,13 @@
         extend: {
           colors: {
             brand: {
-              50: '#f0f7ff',
-              100: '#e0effe',
-              500: '#0284c7',
-              600: '#005baa',
-              700: '#004887',
-              900: '#0c2340'
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
             }
           }
         }
@@ -33,38 +38,19 @@
     }
   </script>
 
-  <!-- Google Fonts & Lucide Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- Custom Styles -->
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 5rem;
-    }
-    html, body {
-      overflow-x: hidden !important;
-      max-width: 100vw;
-      width: 100%;
-      position: relative;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-      color: #0f172a;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    /* Scrolled Navbar High Contrast Dark Mode */
+    /* High contrast navbar states */
     #mainNavbar.scrolled {
-      background-color: rgba(15, 23, 42, 0.96) !important;
-      border-bottom-color: rgba(51, 65, 85, 0.8) !important;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3) !important;
+      background-color: #0f172a !important;
+      border-color: #334155 !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+    }
+    #mainNavbar.scrolled .nav-brand-text {
+      color: #ffffff !important;
     }
     #mainNavbar.scrolled .nav-brand-prefix {
       color: #ffffff !important;
@@ -111,6 +97,43 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    }
+
+    /* Continuous Seamless Horizontal Marquees */
+    @keyframes marquee-scroll {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+    .animate-marquee-intl {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 38s linear infinite;
+    }
+    .animate-marquee-banks {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 125s linear infinite;
+    }
+    .marquee-container:hover .animate-marquee-intl,
+    .marquee-container:hover .animate-marquee-banks,
+    .marquee-container:focus-within .animate-marquee-intl,
+    .marquee-container:focus-within .animate-marquee-banks,
+    .marquee-container.is-paused .animate-marquee-intl,
+    .marquee-container.is-paused .animate-marquee-banks {
+      animation-play-state: paused !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .animate-marquee-intl,
+      .animate-marquee-banks {
+        animation: none !important;
+      }
+      .marquee-container {
+        overflow-x: auto !important;
+      }
     }
   </style>
 </head>
@@ -168,8 +191,8 @@
 
   <!-- ==================== 2. SHORT HERO SECTION ==================== -->
   <header class="pt-20 sm:pt-24 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-    <!-- Main Headline with bold red MIỄN PHÍ -->
-    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-3 [text-wrap:balance]" data-i18n="heroTitle">
+    <!-- Main Headline with bold red MIỄN PHÍ and comfortable line-height to prevent tone diacritics touching -->
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-slate-900 tracking-tight leading-[1.28] sm:leading-[1.25] py-1 mb-3 [text-wrap:balance]" data-i18n="heroTitle">
       <span class="block sm:inline whitespace-nowrap">Bộ giải pháp thanh toán</span> <span class="whitespace-nowrap"><span class="text-red-600 font-black">MIỄN PHÍ</span> cho cửa hàng</span>
     </h1>
     
@@ -306,185 +329,712 @@
     </div>
   </section>
 
-  <!-- ==================== SECTION: MẠNG LƯỚI KẾT NỐI ==================== -->
-  <section id="network" class="scroll-mt-20 py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200/80">
-    <div class="max-w-6xl mx-auto">
+  <!-- ==================== SECTION: MẠNG LƯỚI KẾT NỐI (2 MARQUEES) ==================== -->
+  <section id="network" class="scroll-mt-20 py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200/80 overflow-hidden">
+    <div class="max-w-7xl mx-auto space-y-12">
       
-      <!-- Section Header: Minimalist -->
-      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-10">
-        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight" data-i18n="networkTitle">
-          Mạng lưới kết nối
-        </h2>
-        <p class="text-slate-500 text-xs sm:text-sm mt-1.5" data-i18n="networkSubtitle">
-          Kết nối trực tiếp 4 ngân hàng trong nước và 8 mạng lưới thanh toán quốc tế
-        </p>
-      </div>
-
-      <!-- 1. Domestic Banks (4 Brands: MB, Techcombank, VIB, VPBank) -->
-      <div class="mb-10">
-        <div class="text-center mb-5">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-400" data-i18n="networkDomesticHeading">
-            Ngân hàng nội địa
-          </span>
-        </div>
-        <!-- Symmetrical logo grid: 2 cols on mobile, 4 cols on tablet & desktop -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-5 gap-x-4 sm:gap-8 items-center justify-items-center max-w-3xl mx-auto">
-          
-          <!-- MB Bank -->
-          <div class="flex items-center justify-center h-10 w-full max-w-[130px] transition-opacity hover:opacity-80" title="MB Bank">
-            <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
-              <g transform="translate(4, 4)">
-                <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
-                <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
-                <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
-              </g>
-              <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
-            </svg>
-          </div>
-
-          <!-- Techcombank -->
-          <div class="flex items-center justify-center h-10 w-full max-w-[150px] transition-opacity hover:opacity-80" title="Techcombank">
-            <svg viewBox="0 0 200 48" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
-              <g transform="translate(6, 12)">
-                <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
-                <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
-                <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
-                <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
-              </g>
-              <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
-              <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
-            </svg>
-          </div>
-
-          <!-- VIB -->
-          <div class="flex items-center justify-center h-10 w-full max-w-[130px] transition-opacity hover:opacity-80" title="VIB">
-            <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
-              <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
-              <g transform="translate(66, 6)">
-                <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
-                <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
-                <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
-              </g>
-            </svg>
-          </div>
-
-          <!-- VPBank -->
-          <div class="flex items-center justify-center h-10 w-full max-w-[140px] transition-opacity hover:opacity-80" title="VPBank">
-            <svg viewBox="0 0 180 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
-              <g transform="translate(6, 8)">
-                <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
-                <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
-                <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
-              </g>
-              <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
-            </svg>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- 2. International Payment Networks (8 Brands with Alipay+ & WeChat Pay Prominently Highlighted, No Active Borders) -->
+      <!-- ==================== GROUP 1: MẠNG LƯỚI & ĐỐI TÁC QUỐC TẾ ==================== -->
       <div>
-        <div class="text-center mb-5">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-400" data-i18n="networkInternationalHeading">
-            Mạng lưới & đối tác quốc tế
-          </span>
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 max-w-5xl mx-auto px-2">
+          <div>
+            <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight" data-i18n="networkGroup1Title">
+              Mạng lưới & đối tác quốc tế
+            </h2>
+            <p class="text-slate-500 text-xs sm:text-sm mt-1" data-i18n="networkGroup1Subtitle">
+              4 ngân hàng đối tác và 8 mạng lưới thanh toán
+            </p>
+          </div>
+          <!-- Pause/Play Toggle Button -->
+          <button 
+            type="button" 
+            class="btn-marquee-toggle inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-white text-slate-600 hover:text-slate-900 text-xs font-semibold shadow-sm transition w-fit focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            data-target="marquee-intl" 
+            aria-label="Tạm dừng chuyển động"
+          >
+            <i data-lucide="pause" class="w-3.5 h-3.5 text-slate-500" aria-hidden="true"></i>
+            <span data-i18n="marqueePause">Tạm dừng</span>
+          </button>
         </div>
-        <!-- Symmetrical logo grid: 2 cols on mobile, 4 cols on tablet, 8 cols on desktop -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-y-6 gap-x-4 sm:gap-6 items-center justify-items-center max-w-5xl mx-auto">
-          
-          <!-- 1. PromptPay -->
-          <div class="flex items-center justify-center h-9 w-full max-w-[120px] transition-opacity hover:opacity-80" title="PromptPay">
-            <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
-              <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
-              <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
-              <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
-              <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
-            </svg>
-          </div>
 
-          <!-- 2. KHQR -->
-          <div class="flex items-center justify-center h-9 w-full max-w-[110px] transition-opacity hover:opacity-80" title="KHQR">
-            <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
-              <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
-              <g transform="translate(62, 7)">
-                <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
-                <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
-                <circle cx="17" cy="18" r="6" fill="#004A99"/>
-                <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
-                <circle cx="17" cy="18" r="2" fill="#004A99"/>
-              </g>
-              <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
-            </svg>
-          </div>
+        <!-- Infinite Scrolling Marquee Container for Group 1 -->
+        <div id="marquee-intl" class="marquee-container relative overflow-hidden w-full py-4 border-y border-slate-100">
+          <!-- Gradient edge fade masks -->
+          <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 z-10 bg-gradient-to-r from-white to-transparent"></div>
+          <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 z-10 bg-gradient-to-l from-white to-transparent"></div>
 
-          <!-- 3. LAPNet -->
-          <div class="flex items-center justify-center h-9 w-full max-w-[120px] transition-opacity hover:opacity-80" title="LAPNet">
-            <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LAPNet Logo">
-              <g transform="translate(4, 6)">
-                <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
-                <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
-                <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
-                <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
-              </g>
-            </svg>
-          </div>
+          <!-- Track containing Track 1 + Track 2 for seamless infinite looping -->
+          <div class="animate-marquee-intl flex items-center">
+            <!-- Track 1: Original Accessible items -->
+            <div class="flex items-center shrink-0 gap-6 sm:gap-10 pr-6 sm:pr-10">
+            <!-- 1. Alipay+ (PROMINENT: 1.5-1.8x larger visual size, first item) -->
+            <div class="flex items-center justify-center shrink-0 h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="Alipay+">
+              <svg viewBox="0 0 160 48" class="h-10 sm:h-12 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alipay+ Logo">
+                <circle cx="18" cy="24" r="16" fill="#1677FF"/>
+                <path d="M11 17H25M18 14V20M10 22H26M13 22C13 25.5 12 28.5 9 31M17 23C19 26.5 22.5 29.5 26 31" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="42" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#1E293B">Alipay<tspan fill="#1677FF" font-weight="900">+</tspan></text>
+              </svg>
+            </div>
 
-          <!-- 4. NETS -->
-          <div class="flex items-center justify-center h-9 w-full max-w-[110px] transition-opacity hover:opacity-80" title="NETS">
-            <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
-              <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
-            </svg>
-          </div>
+            <!-- 2. WeChat Pay (PROMINENT: 1.5-1.8x larger visual size, second item) -->
+            <div class="flex items-center justify-center shrink-0 h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="WeChat Pay">
+              <svg viewBox="0 0 170 48" class="h-10 sm:h-12 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WeChat Pay Logo">
+                <circle cx="20" cy="24" r="16" fill="#07C160"/>
+                <ellipse cx="17" cy="22" rx="7" ry="6" fill="#FFFFFF"/>
+                <circle cx="15" cy="21" r="1" fill="#07C160"/>
+                <circle cx="19" cy="21" r="1" fill="#07C160"/>
+                <ellipse cx="23" cy="26" rx="5.5" ry="4.5" fill="#FFFFFF"/>
+                <circle cx="22" cy="25.5" r="0.8" fill="#07C160"/>
+                <circle cx="25" cy="25.5" r="0.8" fill="#07C160"/>
+                <text x="44" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#1E293B">WeChat <tspan font-weight="900" fill="#07C160">Pay</tspan></text>
+              </svg>
+            </div>
 
-          <!-- 5. GLN -->
-          <div class="flex items-center justify-center h-9 w-full max-w-[110px] transition-opacity hover:opacity-80" title="GLN">
-            <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
-              <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
-              <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
-              <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
-              <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
-            </svg>
-          </div>
+            <!-- 3. MB Bank (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="MB Bank">
+              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
+                <g transform="translate(4, 4)">
+                  <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
+                  <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
+                  <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
+                </g>
+                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
+              </svg>
+            </div>
 
-          <!-- 6. Alipay+ (PROMINENT: Moderately larger by ~15-20%, clean on white background without active border) -->
-          <div class="flex items-center justify-center h-10 w-full max-w-[135px] transition-opacity hover:opacity-80" title="Alipay+">
-            <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alipay+ Logo">
-              <circle cx="18" cy="24" r="16" fill="#1677FF"/>
-              <path d="M11 17H25M18 14V20M10 22H26M13 22C13 25.5 12 28.5 9 31M17 23C19 26.5 22.5 29.5 26 31" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="42" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#1E293B">Alipay<tspan fill="#1677FF" font-weight="900">+</tspan></text>
-            </svg>
-          </div>
+            <!-- 4. Techcombank (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="Techcombank">
+              <svg viewBox="0 0 200 48" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
+                <g transform="translate(6, 12)">
+                  <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
+                  <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
+                  <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
+                  <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
+                </g>
+                <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
+                <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
+              </svg>
+            </div>
 
-          <!-- 7. UnionPay -->
-          <div class="flex items-center justify-center h-9 w-full max-w-[120px] transition-opacity hover:opacity-80" title="UnionPay 银联">
-            <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
-              <g transform="translate(4, 4)">
-                <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
-                <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
-                <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
-                <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
-                <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
-              </g>
-              <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
-              <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
-            </svg>
-          </div>
+            <!-- 5. VIB (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VIB">
+              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
+                <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
+                <g transform="translate(66, 6)">
+                  <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
+                  <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
+                  <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
+                </g>
+              </svg>
+            </div>
 
-          <!-- 8. WeChat Pay (PROMINENT: Moderately larger by ~15-20%, clean on white background without active border) -->
-          <div class="flex items-center justify-center h-10 w-full max-w-[145px] transition-opacity hover:opacity-80" title="WeChat Pay">
-            <svg viewBox="0 0 170 48" class="h-7 sm:h-8 w-auto max-w-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WeChat Pay Logo">
-              <circle cx="20" cy="24" r="16" fill="#07C160"/>
-              <ellipse cx="17" cy="22" rx="7" ry="6" fill="#FFFFFF"/>
-              <circle cx="15" cy="21" r="1" fill="#07C160"/>
-              <circle cx="19" cy="21" r="1" fill="#07C160"/>
-              <ellipse cx="23" cy="26" rx="5.5" ry="4.5" fill="#FFFFFF"/>
-              <circle cx="22" cy="25.5" r="0.8" fill="#07C160"/>
-              <circle cx="25" cy="25.5" r="0.8" fill="#07C160"/>
-              <text x="44" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#1E293B">WeChat <tspan font-weight="900" fill="#07C160">Pay</tspan></text>
-            </svg>
-          </div>
+            <!-- 6. VPBank (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VPBank">
+              <svg viewBox="0 0 180 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
+                <g transform="translate(6, 8)">
+                  <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
+                  <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
+                  <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
+                </g>
+                <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
+              </svg>
+            </div>
 
+            <!-- 7. PromptPay -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="PromptPay">
+              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
+                <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
+                <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
+                <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
+                <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
+              </svg>
+            </div>
+
+            <!-- 8. KHQR -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="KHQR">
+              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
+                <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
+                <g transform="translate(62, 7)">
+                  <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
+                  <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
+                  <circle cx="17" cy="18" r="6" fill="#004A99"/>
+                  <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
+                  <circle cx="17" cy="18" r="2" fill="#004A99"/>
+                </g>
+                <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
+              </svg>
+            </div>
+
+            <!-- 9. LAPNet -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="LAPNet">
+              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LAPNet Logo">
+                <g transform="translate(4, 6)">
+                  <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
+                  <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
+                  <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
+                  <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 10. NETS -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="NETS">
+              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
+                <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
+              </svg>
+            </div>
+
+            <!-- 11. GLN -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="GLN">
+              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
+                <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
+                <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
+                <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
+                <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
+              </svg>
+            </div>
+
+            <!-- 12. UnionPay -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="UnionPay 银联">
+              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
+                <g transform="translate(4, 4)">
+                  <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
+                  <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
+                  <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
+                  <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
+                  <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
+                </g>
+                <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
+                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
+              </svg>
+            </div>
+            </div>
+
+            <!-- Track 2: Seamless Clone (aria-hidden) -->
+            <div class="flex items-center shrink-0 gap-6 sm:gap-10 pr-6 sm:pr-10" aria-hidden="true">
+            <!-- 1. Alipay+ (PROMINENT: 1.5-1.8x larger visual size, first item) -->
+            <div class="flex items-center justify-center shrink-0 h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="Alipay+">
+              <svg viewBox="0 0 160 48" class="h-10 sm:h-12 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alipay+ Logo">
+                <circle cx="18" cy="24" r="16" fill="#1677FF"/>
+                <path d="M11 17H25M18 14V20M10 22H26M13 22C13 25.5 12 28.5 9 31M17 23C19 26.5 22.5 29.5 26 31" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="42" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#1E293B">Alipay<tspan fill="#1677FF" font-weight="900">+</tspan></text>
+              </svg>
+            </div>
+
+            <!-- 2. WeChat Pay (PROMINENT: 1.5-1.8x larger visual size, second item) -->
+            <div class="flex items-center justify-center shrink-0 h-14 sm:h-16 px-4 sm:px-6 transition-opacity hover:opacity-85" title="WeChat Pay">
+              <svg viewBox="0 0 170 48" class="h-10 sm:h-12 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="WeChat Pay Logo">
+                <circle cx="20" cy="24" r="16" fill="#07C160"/>
+                <ellipse cx="17" cy="22" rx="7" ry="6" fill="#FFFFFF"/>
+                <circle cx="15" cy="21" r="1" fill="#07C160"/>
+                <circle cx="19" cy="21" r="1" fill="#07C160"/>
+                <ellipse cx="23" cy="26" rx="5.5" ry="4.5" fill="#FFFFFF"/>
+                <circle cx="22" cy="25.5" r="0.8" fill="#07C160"/>
+                <circle cx="25" cy="25.5" r="0.8" fill="#07C160"/>
+                <text x="44" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#1E293B">WeChat <tspan font-weight="900" fill="#07C160">Pay</tspan></text>
+              </svg>
+            </div>
+
+            <!-- 3. MB Bank (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="MB Bank">
+              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MB Bank Logo">
+                <g transform="translate(4, 4)">
+                  <path d="M20 2L24.8 13.8L37.2 14.5L27.6 22.4L30.8 34.6L20 27.8L9.2 34.6L12.4 22.4L2.8 14.5L15.2 13.8L20 2Z" fill="#E30613"/>
+                  <path d="M20 2V27.8L27.6 22.4L37.2 14.5L24.8 13.8L20 2Z" fill="#C40510" opacity="0.3"/>
+                  <path d="M20 27.8L9.2 34.6L12.4 22.4L20 27.8Z" fill="#A0040D" opacity="0.2"/>
+                </g>
+                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#002B66" letter-spacing="-0.5">MB</text>
+              </svg>
+            </div>
+
+            <!-- 4. Techcombank (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="Techcombank">
+              <svg viewBox="0 0 200 48" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Techcombank Logo">
+                <g transform="translate(6, 12)">
+                  <polygon points="12,0 24,12 12,24 0,12" fill="#E30613"/>
+                  <polygon points="28,0 40,12 28,24 16,12" fill="#E30613"/>
+                  <polygon points="28,5 35,12 28,19 21,12" fill="#FFFFFF"/>
+                  <polygon points="28,8 32,12 28,16 24,12" fill="#E30613"/>
+                </g>
+                <text x="56" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#E30613" letter-spacing="0.5">TECHCOM</text>
+                <text x="144" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="0.5">BANK</text>
+              </svg>
+            </div>
+
+            <!-- 5. VIB (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VIB">
+              <svg viewBox="0 0 160 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIB Logo">
+                <text x="10" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#003870" letter-spacing="1">VIB</text>
+                <g transform="translate(66, 6)">
+                  <path d="M2 14C3 9 7 4 12 2C10 6 9 10 9 14Z" fill="#F7941D"/>
+                  <path d="M12 14C14 7 19 3 24 2C22 7 20 11 19 14Z" fill="#F7941D"/>
+                  <path d="M22 14C25 8 30 5 35 4C32 9 29 12 28 14Z" fill="#F7941D"/>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 6. VPBank (Partner Bank) -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="VPBank">
+              <svg viewBox="0 0 180 48" class="h-7 sm:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VPBank Logo">
+                <g transform="translate(6, 8)">
+                  <path d="M16 2C19 8 23 12 28 14C23 16 19 20 16 26C13 20 9 16 4 14C9 12 13 8 16 2Z" fill="#ED1C24"/>
+                  <path d="M16 6C18 10 21 12 24 14C21 16 18 18 16 22C14 18 11 16 8 14C11 12 14 10 16 6Z" fill="#C40510"/>
+                  <circle cx="16" cy="14" r="2.5" fill="#FFFFFF"/>
+                </g>
+                <text x="44" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#009639" letter-spacing="-0.2">VP<tspan font-weight="600">Bank</tspan></text>
+              </svg>
+            </div>
+
+            <!-- 7. PromptPay -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="PromptPay">
+              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PromptPay Logo">
+                <rect x="1.5" y="1.5" width="137" height="41" rx="6" stroke="#002D62" stroke-width="2.5" fill="#FFFFFF"/>
+                <text x="88" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="800" fill="#002D62" letter-spacing="0.5">CROSS BORDER</text>
+                <text x="10" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Prompt</text>
+                <text x="82" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" fill="#002D62" letter-spacing="-0.5">Pay</text>
+              </svg>
+            </div>
+
+            <!-- 8. KHQR -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="KHQR">
+              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KHQR Logo">
+                <text x="4" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">KH</text>
+                <g transform="translate(62, 7)">
+                  <ellipse cx="17" cy="18" rx="14" ry="16" fill="none" stroke="#E21A22" stroke-width="5.5"/>
+                  <line x1="22" y1="23" x2="31" y2="33" stroke="#E21A22" stroke-width="5.5" stroke-linecap="round"/>
+                  <circle cx="17" cy="18" r="6" fill="#004A99"/>
+                  <circle cx="17" cy="18" r="4" fill="#FFFFFF"/>
+                  <circle cx="17" cy="18" r="2" fill="#004A99"/>
+                </g>
+                <text x="99" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E21A22" letter-spacing="1">R</text>
+              </svg>
+            </div>
+
+            <!-- 9. LAPNet -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="LAPNet">
+              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LAPNet Logo">
+                <g transform="translate(4, 6)">
+                  <rect x="0" y="2" width="30" height="28" rx="5" fill="#005BAA"/>
+                  <text x="5" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">La</text>
+                  <text x="34" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#E21A22">P</text>
+                  <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#002B66">Net</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 10. NETS -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="NETS">
+              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NETS Logo">
+                <text x="6" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#E30613" letter-spacing="1">NETS</text>
+              </svg>
+            </div>
+
+            <!-- 11. GLN -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="GLN">
+              <svg viewBox="0 0 130 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="GLN Logo">
+                <circle cx="20" cy="22" r="16" fill="#0B1E42"/>
+                <path d="M26 18H20V22H24V25C23 27 20 28 17 27C14 26 12 23 12 20C12 16 15 13 19 13C21 13 23 14 24 15L27 12C25 10 22 9 19 9C13 9 8 14 8 20C8 26 13 31 19 31C24 31 28 27 28 22V18Z" fill="#FFFFFF"/>
+                <circle cx="21" cy="16" r="2" fill="#00C4B4"/>
+                <text x="44" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#0B1E42" letter-spacing="1">GLN</text>
+              </svg>
+            </div>
+
+            <!-- 12. UnionPay -->
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-3 sm:px-5 transition-opacity hover:opacity-80" title="UnionPay 银联">
+              <svg viewBox="0 0 140 44" class="h-6 sm:h-7 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="UnionPay Logo">
+                <g transform="translate(4, 4)">
+                  <rect x="2" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#DF1B24"/>
+                  <rect x="14" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#003C71"/>
+                  <rect x="26" y="2" width="16" height="32" rx="4" transform="skewX(-12)" fill="#007A3E"/>
+                  <text x="2" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="900" font-style="italic" fill="#FFFFFF">UnionPay</text>
+                  <text x="10" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF">银联</text>
+                </g>
+                <text x="56" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="900" fill="#003C71">UnionPay</text>
+                <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#DF1B24">银联</text>
+              </svg>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== GROUP 2: NGÂN HÀNG NỘI ĐỊA LIÊN KẾT (56 NAPAS BANKS) ==================== -->
+      <div>
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 max-w-5xl mx-auto px-2">
+          <div>
+            <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight" data-i18n="networkGroup2Title">
+              Ngân hàng nội địa liên kết
+            </h2>
+            <p class="text-slate-500 text-xs sm:text-sm mt-1">
+              <span data-i18n="sourcePrefix">Nguồn:</span> 
+              <a href="https://napas.com.vn/dich-vu-cong-thanh-toan-truc-tuyen-napas-doi-tuong-khac" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-700" data-i18n="networkGroup2Source">
+                Danh sách ngân hàng tham gia cổng thanh toán NAPAS
+              </a>
+            </p>
+          </div>
+          <!-- Pause/Play Toggle Button -->
+          <button 
+            type="button" 
+            class="btn-marquee-toggle inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-white text-slate-600 hover:text-slate-900 text-xs font-semibold shadow-sm transition w-fit focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            data-target="marquee-banks" 
+            aria-label="Tạm dừng chuyển động"
+          >
+            <i data-lucide="pause" class="w-3.5 h-3.5 text-slate-500" aria-hidden="true"></i>
+            <span data-i18n="marqueePause">Tạm dừng</span>
+          </button>
+        </div>
+
+        <!-- Infinite Scrolling Marquee Container for Group 2 (56 banks) -->
+        <div id="marquee-banks" class="marquee-container relative overflow-hidden w-full py-4 border-y border-slate-100">
+          <!-- Gradient edge fade masks -->
+          <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 z-10 bg-gradient-to-r from-white to-transparent"></div>
+          <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 z-10 bg-gradient-to-l from-white to-transparent"></div>
+
+          <!-- Track containing Track 1 + Track 2 for seamless infinite looping -->
+          <div class="animate-marquee-banks flex items-center">
+            <!-- Track 1: Original Accessible 56 Banks -->
+            <div class="flex items-center shrink-0 gap-4 sm:gap-6 pr-4 sm:pr-6">
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Ngoại thương Việt Nam">
+              <img src="./assets/banks/vietcombank.png" alt="Vietcombank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Công thương Việt Nam">
+              <img src="./assets/banks/vietinbank.png" alt="VietinBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Đầu tư và Phát triển Việt Nam">
+              <img src="./assets/banks/bidv.png" alt="BIDV" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam">
+              <img src="./assets/banks/agribank.png" alt="Agribank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Á Châu">
+              <img src="./assets/banks/acb.png" alt="ACB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn Thương Tín">
+              <img src="./assets/banks/sacombank.png" alt="Sacombank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn Công Thương">
+              <img src="./assets/banks/saigonbank.png" alt="Saigonbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Kỹ thương Việt Nam">
+              <img src="./assets/banks/techcombank.png" alt="Techcombank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Bắc Á">
+              <img src="./assets/banks/bacabank.png" alt="Bac A Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng số Vikki (HDBank)">
+              <img src="./assets/banks/vikki.png" alt="Vikki Digital Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Phát triển TP.HCM">
+              <img src="./assets/banks/hdbank.png" alt="HDBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn">
+              <img src="./assets/banks/scb.png" alt="SCB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TM TNHH MTV Ngoại thương Công nghệ số">
+              <img src="./assets/banks/vcbneo.png" alt="VCBNeo" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Shinhan Việt Nam">
+              <img src="./assets/banks/shinhan.png" alt="Shinhan Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Liên doanh Việt - Nga">
+              <img src="./assets/banks/vrb.png" alt="VRB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Đầu tư và Phát triển Campuchia">
+              <img src="./assets/banks/bidc.png" alt="BIDC" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV CIMB Việt Nam">
+              <img src="./assets/banks/cimb.png" alt="CIMB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Đông Nam Á">
+              <img src="./assets/banks/seabank.png" alt="SeABank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Việt Á">
+              <img src="./assets/banks/vietabank.png" alt="VietABank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP An Bình">
+              <img src="./assets/banks/abbank.png" alt="ABBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Quân đội">
+              <img src="./assets/banks/mbbank.png" alt="MB Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Hàng hải Việt Nam">
+              <img src="./assets/banks/msb.png" alt="MSB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Quốc tế Việt Nam">
+              <img src="./assets/banks/vib.png" alt="VIB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Xuất Nhập khẩu Việt Nam">
+              <img src="./assets/banks/eximbank.png" alt="Eximbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Phương Đông">
+              <img src="./assets/banks/ocb.png" alt="OCB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Tiên Phong">
+              <img src="./assets/banks/tpbank.png" alt="TPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Việt Nam Hiện Đại">
+              <img src="./assets/banks/mbv.png" alt="MBV" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Bản Việt">
+              <img src="./assets/banks/bvbank.png" alt="BVBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn - Hà Nội">
+              <img src="./assets/banks/shb.png" alt="SHB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Quốc Dân">
+              <img src="./assets/banks/ncb.png" alt="NCB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Citibank N.A. Việt Nam">
+              <img src="./assets/banks/citibank.png" alt="Citibank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng KEB Hana">
+              <img src="./assets/banks/kebhana.png" alt="KEB Hana Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Việt Nam Thịnh Vượng">
+              <img src="./assets/banks/vpbank.png" alt="VPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu">
+              <img src="./assets/banks/gpbank.png" alt="GPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Nam Á">
+              <img src="./assets/banks/namabank.png" alt="Nam A Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Thịnh vượng và Phát triển">
+              <img src="./assets/banks/pgbank.png" alt="PGBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Hợp tác xã Việt Nam">
+              <img src="./assets/banks/coopbank.png" alt="Co-opBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Đại Chúng Việt Nam">
+              <img src="./assets/banks/pvcombank.png" alt="PVcomBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Public Bank Việt Nam">
+              <img src="./assets/banks/publicbank.png" alt="Public Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Lộc Phát Việt Nam">
+              <img src="./assets/banks/lpbank.png" alt="LPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Bảo Việt">
+              <img src="./assets/banks/baovietbank.png" alt="BaoViet Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH Indovina">
+              <img src="./assets/banks/ivb.png" alt="IVB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Kiên Long">
+              <img src="./assets/banks/kienlongbank.png" alt="KienlongBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Việt Nam Thương Tín">
+              <img src="./assets/banks/vietbank.png" alt="Vietbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Kasikornbank (KBank)">
+              <img src="./assets/banks/kasikornbank.png" alt="Kasikornbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Standard Chartered Việt Nam">
+              <img src="./assets/banks/standardchartered.png" alt="Standard Chartered" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV HSBC Việt Nam">
+              <img src="./assets/banks/hsbc.png" alt="HSBC" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng NongHyup - Chi nhánh Hà Nội">
+              <img src="./assets/banks/nonghyup.png" alt="NongHyup Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Hong Leong Việt Nam">
+              <img src="./assets/banks/hongleong.png" alt="Hong Leong Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Industrial Bank of Korea">
+              <img src="./assets/banks/ibk.png" alt="IBK" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Commonwealth Bank of Australia">
+              <img src="./assets/banks/commonwealth.png" alt="Commonwealth Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng UOB Việt Nam">
+              <img src="./assets/banks/uob.png" alt="UOB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Woori Việt Nam">
+              <img src="./assets/banks/wooribank.png" alt="Woori Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="DBS Bank Ltd">
+              <img src="./assets/banks/dbs.png" alt="DBS" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Bank SinoPac">
+              <img src="./assets/banks/sinopac.png" alt="Bank SinoPac" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Chính sách Xã hội Việt Nam">
+              <img src="./assets/banks/vbsp.png" alt="VBSP" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            </div>
+
+            <!-- Track 2: Seamless Clone (aria-hidden) -->
+            <div class="flex items-center shrink-0 gap-4 sm:gap-6 pr-4 sm:pr-6" aria-hidden="true">
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Ngoại thương Việt Nam">
+              <img src="./assets/banks/vietcombank.png" alt="Vietcombank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Công thương Việt Nam">
+              <img src="./assets/banks/vietinbank.png" alt="VietinBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Đầu tư và Phát triển Việt Nam">
+              <img src="./assets/banks/bidv.png" alt="BIDV" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam">
+              <img src="./assets/banks/agribank.png" alt="Agribank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Á Châu">
+              <img src="./assets/banks/acb.png" alt="ACB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn Thương Tín">
+              <img src="./assets/banks/sacombank.png" alt="Sacombank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn Công Thương">
+              <img src="./assets/banks/saigonbank.png" alt="Saigonbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Kỹ thương Việt Nam">
+              <img src="./assets/banks/techcombank.png" alt="Techcombank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Bắc Á">
+              <img src="./assets/banks/bacabank.png" alt="Bac A Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng số Vikki (HDBank)">
+              <img src="./assets/banks/vikki.png" alt="Vikki Digital Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Phát triển TP.HCM">
+              <img src="./assets/banks/hdbank.png" alt="HDBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn">
+              <img src="./assets/banks/scb.png" alt="SCB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TM TNHH MTV Ngoại thương Công nghệ số">
+              <img src="./assets/banks/vcbneo.png" alt="VCBNeo" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Shinhan Việt Nam">
+              <img src="./assets/banks/shinhan.png" alt="Shinhan Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Liên doanh Việt - Nga">
+              <img src="./assets/banks/vrb.png" alt="VRB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Đầu tư và Phát triển Campuchia">
+              <img src="./assets/banks/bidc.png" alt="BIDC" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV CIMB Việt Nam">
+              <img src="./assets/banks/cimb.png" alt="CIMB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Đông Nam Á">
+              <img src="./assets/banks/seabank.png" alt="SeABank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Việt Á">
+              <img src="./assets/banks/vietabank.png" alt="VietABank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP An Bình">
+              <img src="./assets/banks/abbank.png" alt="ABBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Quân đội">
+              <img src="./assets/banks/mbbank.png" alt="MB Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Hàng hải Việt Nam">
+              <img src="./assets/banks/msb.png" alt="MSB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Quốc tế Việt Nam">
+              <img src="./assets/banks/vib.png" alt="VIB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Xuất Nhập khẩu Việt Nam">
+              <img src="./assets/banks/eximbank.png" alt="Eximbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Phương Đông">
+              <img src="./assets/banks/ocb.png" alt="OCB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Tiên Phong">
+              <img src="./assets/banks/tpbank.png" alt="TPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Việt Nam Hiện Đại">
+              <img src="./assets/banks/mbv.png" alt="MBV" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Bản Việt">
+              <img src="./assets/banks/bvbank.png" alt="BVBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Sài Gòn - Hà Nội">
+              <img src="./assets/banks/shb.png" alt="SHB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Quốc Dân">
+              <img src="./assets/banks/ncb.png" alt="NCB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Citibank N.A. Việt Nam">
+              <img src="./assets/banks/citibank.png" alt="Citibank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng KEB Hana">
+              <img src="./assets/banks/kebhana.png" alt="KEB Hana Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Việt Nam Thịnh Vượng">
+              <img src="./assets/banks/vpbank.png" alt="VPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu">
+              <img src="./assets/banks/gpbank.png" alt="GPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Nam Á">
+              <img src="./assets/banks/namabank.png" alt="Nam A Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Thịnh vượng và Phát triển">
+              <img src="./assets/banks/pgbank.png" alt="PGBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Hợp tác xã Việt Nam">
+              <img src="./assets/banks/coopbank.png" alt="Co-opBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Đại Chúng Việt Nam">
+              <img src="./assets/banks/pvcombank.png" alt="PVcomBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Public Bank Việt Nam">
+              <img src="./assets/banks/publicbank.png" alt="Public Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Lộc Phát Việt Nam">
+              <img src="./assets/banks/lpbank.png" alt="LPBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Bảo Việt">
+              <img src="./assets/banks/baovietbank.png" alt="BaoViet Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH Indovina">
+              <img src="./assets/banks/ivb.png" alt="IVB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Kiên Long">
+              <img src="./assets/banks/kienlongbank.png" alt="KienlongBank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TMCP Việt Nam Thương Tín">
+              <img src="./assets/banks/vietbank.png" alt="Vietbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Kasikornbank (KBank)">
+              <img src="./assets/banks/kasikornbank.png" alt="Kasikornbank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Standard Chartered Việt Nam">
+              <img src="./assets/banks/standardchartered.png" alt="Standard Chartered" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV HSBC Việt Nam">
+              <img src="./assets/banks/hsbc.png" alt="HSBC" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng NongHyup - Chi nhánh Hà Nội">
+              <img src="./assets/banks/nonghyup.png" alt="NongHyup Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Hong Leong Việt Nam">
+              <img src="./assets/banks/hongleong.png" alt="Hong Leong Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Industrial Bank of Korea">
+              <img src="./assets/banks/ibk.png" alt="IBK" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Commonwealth Bank of Australia">
+              <img src="./assets/banks/commonwealth.png" alt="Commonwealth Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng UOB Việt Nam">
+              <img src="./assets/banks/uob.png" alt="UOB" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng TNHH MTV Woori Việt Nam">
+              <img src="./assets/banks/wooribank.png" alt="Woori Bank" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="DBS Bank Ltd">
+              <img src="./assets/banks/dbs.png" alt="DBS" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Bank SinoPac">
+              <img src="./assets/banks/sinopac.png" alt="Bank SinoPac" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            <div class="flex items-center justify-center shrink-0 h-10 sm:h-12 px-2 sm:px-3 transition-opacity hover:opacity-80" title="Ngân hàng Chính sách Xã hội Việt Nam">
+              <img src="./assets/banks/vbsp.png" alt="VBSP" class="max-h-6 sm:max-h-7 max-w-[110px] w-auto h-auto object-contain" loading="lazy">
+            </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -503,7 +1053,7 @@
         </p>
       </div>
 
-      <!-- 3-Step Inline Timeline: Single row on desktop with arrows, stacked on mobile -->
+      <!-- 3-Step Inline Timeline: Single row on desktop with arrows, stacked on mobile (No repeated numbers) -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
         
         <!-- Step 1 -->
@@ -511,7 +1061,7 @@
           <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 font-black text-sm flex items-center justify-center shrink-0">
             1
           </div>
-          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step1Title">1. Để lại thông tin</span>
+          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step1Title">Để lại thông tin</span>
         </div>
 
         <!-- Arrow 1 (Desktop only) -->
@@ -524,7 +1074,7 @@
           <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 font-black text-sm flex items-center justify-center shrink-0">
             2
           </div>
-          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step2Title">2. Nhận tư vấn</span>
+          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step2Title">Nhận tư vấn</span>
         </div>
 
         <!-- Arrow 2 (Desktop only) -->
@@ -537,14 +1087,14 @@
           <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 font-black text-sm flex items-center justify-center shrink-0">
             3
           </div>
-          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step3Title">3. Nhận trang bị</span>
+          <span class="text-xs sm:text-sm font-bold text-slate-800" data-i18n="step3Title">Nhận trang bị</span>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ==================== 5. MINIMALIST 2-FIELD REGISTRATION FORM ==================== -->
+  <!-- ==================== 5. ENHANCED 5-FIELD REGISTRATION FORM ==================== -->
   <section id="register" class="scroll-mt-20 py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
     <div class="fintech-card rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl bg-white">
       
@@ -553,18 +1103,27 @@
           Đăng ký tư vấn miễn phí
         </h2>
         <p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed" data-i18n="registerExplain">
-          Để lại số điện thoại và địa chỉ cửa hàng, đội ngũ kinh doanh sẽ liên hệ tư vấn.
+          Để lại thông tin liên hệ và cửa hàng, đội ngũ kinh doanh sẽ tư vấn giải pháp phù hợp.
         </p>
-        <div class="mt-2 text-xs sm:text-sm text-slate-500 flex items-center justify-center gap-1.5">
-          <i data-lucide="phone-call" class="w-4 h-4 text-red-600" aria-hidden="true"></i>
-          <span><span data-i18n="hotlineLabel">Hotline:</span> <a href="tel:0924093461" class="font-bold text-blue-600 hover:text-blue-700 hover:underline">0924.0934.61</a></span>
+        
+        <!-- Contact quick access: Hotline & Chat Zalo -->
+        <div class="mt-3 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-500">
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="phone-call" class="w-4 h-4 text-red-600" aria-hidden="true"></i>
+            <span><span data-i18n="hotlineLabel">Hotline:</span> <a href="tel:0924093461" class="font-bold text-blue-600 hover:text-blue-700 hover:underline">0924.0934.61</a></span>
+          </div>
+          <span class="text-slate-300">•</span>
+          <div class="flex items-center gap-1.5">
+            <img src="./assets/logos/zalo.svg" alt="Zalo" class="w-4 h-4 shrink-0">
+            <a href="https://zalo.me/0924093461" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0068FF] hover:underline">Chat Zalo: 0924.0934.61</a>
+          </div>
         </div>
       </div>
 
-      <!-- Registration Form -->
-      <form id="leadForm" novalidate class="space-y-5">
+      <!-- Registration Form: 5 required fields -->
+      <form id="leadForm" novalidate class="space-y-4 sm:space-y-5">
         
-        <!-- Product of Interest Selection -->
+        <!-- 1. Product of Interest Selection -->
         <div>
           <label for="productInterest" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldProductInterest">
             Sản phẩm bạn đang quan tâm
@@ -580,28 +1139,70 @@
           </div>
         </div>
 
-        <!-- Field 1: Phone -->
+        <!-- 2-Column Grid on Desktop for Short Inputs: Full Name & Phone -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- 2. Full Name -->
+          <div>
+            <label for="fullName" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldFullName">
+              Họ và tên *
+            </label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              required 
+              placeholder="Ví dụ: Nguyễn Văn An" 
+              data-i18n-placeholder="placeholderFullName"
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 transition outline-none"
+            >
+            <p id="err-fullName" class="hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1" data-i18n="formErrorFullName">
+              Vui lòng nhập họ và tên.
+            </p>
+          </div>
+
+          <!-- 3. Phone -->
+          <div>
+            <label for="phone" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldPhone">
+              Số điện thoại liên hệ *
+            </label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              required 
+              placeholder="Ví dụ: 0912 345 678" 
+              data-i18n-placeholder="placeholderPhone"
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 transition outline-none"
+            >
+            <p id="err-phone" class="hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1" data-i18n="formErrorPhone">
+              Vui lòng nhập số điện thoại hợp lệ (10 chữ số).
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Store / Business Name -->
         <div>
-          <label for="phone" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldPhone">
-            Số điện thoại liên hệ *
+          <label for="storeName" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldStoreName">
+            Tên cửa hàng / Nhà hàng / Đơn vị kinh doanh *
           </label>
           <input 
-            type="tel" 
-            id="phone" 
-            name="phone" 
+            type="text" 
+            id="storeName" 
+            name="storeName" 
             required 
-            placeholder="Ví dụ: 0912 345 678" 
+            placeholder="Ví dụ: Cà phê An Nhiên" 
+            data-i18n-placeholder="placeholderStoreName"
             class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 transition outline-none"
           >
-          <p id="err-phone" class="hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1" data-i18n="formErrorPhone">
-            Vui lòng nhập số điện thoại hợp lệ (10 chữ số).
+          <p id="err-storeName" class="hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1" data-i18n="formErrorStoreName">
+            Vui lòng nhập tên cửa hàng / đơn vị kinh doanh.
           </p>
         </div>
 
-        <!-- Field 2: Store Address -->
+        <!-- 5. Business Address -->
         <div>
           <label for="storeAddress" class="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5" data-i18n="fieldAddress">
-            Địa chỉ cửa hàng *
+            Địa chỉ kinh doanh *
           </label>
           <input 
             type="text" 
@@ -609,10 +1210,11 @@
             name="storeAddress" 
             required 
             placeholder="Ví dụ: 123 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM" 
+            data-i18n-placeholder="placeholderAddress"
             class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 text-sm text-slate-900 transition outline-none"
           >
           <p id="err-storeAddress" class="hidden text-xs text-red-600 font-medium mt-1.5 flex items-center gap-1" data-i18n="formErrorAddress">
-            Vui lòng nhập địa chỉ cửa hàng.
+            Vui lòng nhập địa chỉ kinh doanh.
           </p>
         </div>
 
@@ -658,7 +1260,7 @@
         </div>
         <div class="text-center sm:text-left">
           <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
-            <div id="modalProductBadge" class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">
+            <div id="modalProductBadge" class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider" data-i18n="checkoutEquipment">
               Trang bị quầy thu ngân
             </div>
             <span id="modalFreeBadge" class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200 text-xs font-black" data-i18n="badgeFree">
@@ -762,18 +1364,45 @@
     </div>
   </div>
 
-  <!-- ==================== 8. MOBILE STICKY BOTTOM REGISTER BAR ==================== -->
-  <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-3 flex items-center justify-between gap-3 shadow-lg">
-    <div class="text-xs text-slate-600 font-medium">
-      Trang bị quầy thu ngân
-    </div>
-    <a href="#register" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition">
+  <!-- ==================== 8. MOBILE STICKY BOTTOM ACTION BAR (Zalo + Register) ==================== -->
+  <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3.5 py-2.5 flex items-center justify-between gap-2.5 shadow-lg">
+    <!-- Chat Zalo Mobile Action -->
+    <a 
+      href="https://zalo.me/0924093461" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#0068FF] hover:bg-[#0052cc] text-white font-bold text-xs shadow transition active:scale-95 shrink-0"
+      aria-label="Chat Zalo với tư vấn viên"
+    >
+      <img src="./assets/logos/zalo.svg" alt="Zalo" class="w-4 h-4 shrink-0">
+      <span data-i18n="zaloChat">Chat Zalo</span>
+    </a>
+
+    <!-- Register Free CTA Mobile Action -->
+    <a 
+      href="#register" 
+      class="inline-flex items-center justify-center gap-1.5 flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow transition active:scale-95"
+    >
       <span data-i18n="ctaRegisterFree">Đăng ký miễn phí</span>
       <i data-lucide="arrow-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
     </a>
   </div>
 
-  <!-- ==================== 9. COMPACT FOOTER ==================== -->
+  <!-- ==================== 9. FLOATING ZALO BUTTON (DESKTOP) ==================== -->
+  <aside id="floatingZalo" class="hidden sm:block fixed bottom-6 right-6 z-30 transition-transform duration-300 hover:scale-105" aria-label="Kênh hỗ trợ qua Zalo">
+    <a 
+      href="https://zalo.me/0924093461" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#0068FF] hover:bg-[#0052cc] text-white font-bold text-sm shadow-xl border border-blue-400/40 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+      aria-label="Chat Zalo với tư vấn viên: 0924.0934.61"
+    >
+      <img src="./assets/logos/zalo.svg" alt="Zalo" class="w-6 h-6 shrink-0 filter drop-shadow">
+      <span data-i18n="zaloChat">Chat Zalo</span>
+    </a>
+  </aside>
+
+  <!-- ==================== 10. COMPACT FOOTER ==================== -->
   <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800 text-sm">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
       <div>
@@ -783,10 +1412,19 @@
         <p class="text-xs text-slate-400 mt-1" data-i18n="footerDev">Đơn vị phát triển: CÔNG TY CỔ PHẦN NEXUS DIGITAL</p>
         <p class="text-xs text-slate-500" data-i18n="footerAddress">35 Đường số 3, Phường Tân Mỹ, Quận 7, TP. Hồ Chí Minh</p>
         <p class="text-xs text-slate-500" data-i18n="footerEmail">Email hỗ trợ: operation@nexusdigital.vn</p>
-        <p class="text-xs text-slate-400 mt-1.5 flex items-center justify-center md:justify-start gap-1.5">
-          <i data-lucide="phone-call" class="w-3.5 h-3.5 text-blue-400 shrink-0" aria-hidden="true"></i>
-          <span><span data-i18n="hotlineLabel">Hotline:</span> <a href="tel:0924093461" class="font-bold text-white hover:text-blue-400 transition">0924.0934.61</a></span>
-        </p>
+        
+        <!-- Dual Contact: Hotline & Chat Zalo in Footer -->
+        <div class="text-xs text-slate-400 mt-2 flex flex-wrap items-center justify-center md:justify-start gap-3">
+          <p class="flex items-center gap-1.5">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5 text-blue-400 shrink-0" aria-hidden="true"></i>
+            <span><span data-i18n="hotlineLabel">Hotline:</span> <a href="tel:0924093461" class="font-bold text-white hover:text-blue-400 transition">0924.0934.61</a></span>
+          </p>
+          <span class="text-slate-700 hidden sm:inline">•</span>
+          <p class="flex items-center gap-1.5">
+            <img src="./assets/logos/zalo.svg" alt="Zalo" class="w-3.5 h-3.5 shrink-0">
+            <a href="https://zalo.me/0924093461" target="_blank" rel="noopener noreferrer" class="font-bold text-blue-400 hover:text-white transition">Chat Zalo: 0924.0934.61</a>
+          </p>
+        </div>
       </div>
 
       <div class="space-y-2">
