@@ -150,8 +150,23 @@ otherIntlNetworks.forEach(net => {
   assert(marqueeIntlHtml.includes(net), `Group 1 marquee contains "${net}"`);
 });
 
-// Group 2: 56 Banks with enhanced sizing
+// Group 1 Optical Sizing & Uniform Slot assertions
+assert(marqueeIntlHtml.includes('w-[130px] sm:w-[150px] h-12 sm:h-14'), 'Group 1 uses uniform slot containers (w-[130px] sm:w-[150px] h-12 sm:h-14)');
+assert(marqueeIntlHtml.includes('lapnet.png" alt="LAPNet" class="h-10 sm:h-12'), 'LAPNet circular emblem optical size enhanced to h-10 sm:h-12');
+assert(marqueeIntlHtml.includes('gln.png" alt="GLN" class="h-9.5 sm:h-11'), 'GLN square emblem optical size enhanced to h-9.5 sm:h-11');
+assert(marqueeIntlHtml.includes('unionpay.svg" alt="UnionPay" class="h-8.5 sm:h-10'), 'UnionPay badge optical size enhanced to h-8.5 sm:h-10');
+assert(marqueeIntlHtml.includes('vpbank.svg" alt="VPBank" class="h-5 sm:h-5.5'), 'VPBank optical size calibrated down to h-5 sm:h-5.5');
+assert(marqueeIntlHtml.includes('khqr.png" alt="KHQR" class="h-4.5 sm:h-5'), 'KHQR optical size calibrated down to h-4.5 sm:h-5');
+assert(marqueeIntlHtml.includes('nets.svg" alt="NETS" class="h-4.5 sm:h-5.5'), 'NETS optical size calibrated down to h-4.5 sm:h-5.5');
+
+// Group 2: 56 Banks with enhanced sizing & Uniform Slots
+const marqueeBanksHtml = html.substring(html.indexOf('id="marquee-banks"'), html.indexOf('id="process"'));
+assert(marqueeBanksHtml.includes('w-[130px] sm:w-[150px] h-12 sm:h-14'), 'Group 2 uses uniform slot containers (w-[130px] sm:w-[150px] h-12 sm:h-14)');
 assert(html.includes('max-h-8 sm:max-h-9 max-w-[130px] sm:max-w-[150px]'), 'Bank logos use enhanced sizing for mobile legibility');
+assert(marqueeBanksHtml.includes('sacombank.png" alt="Sacombank" class="max-h-5 sm:max-h-5.5'), 'Sacombank optical size calibrated down to max-h-5 sm:max-h-5.5');
+assert(marqueeBanksHtml.includes('techcombank.png" alt="Techcombank" class="max-h-8 sm:max-h-9 max-w-[130px] sm:max-w-[150px] w-auto h-auto object-contain transform scale-[1.5]'), 'Techcombank optical size boosted with scale-[1.5]');
+assert(marqueeBanksHtml.includes('bacabank.png" alt="Bac A Bank" class="max-h-8 sm:max-h-9 max-w-[130px] sm:max-w-[150px] w-auto h-auto object-contain transform scale-[1.3]'), 'Bac A Bank optical size boosted with scale-[1.3]');
+
 const napasSampleBanks = ['vietcombank.png', 'vietinbank.png', 'bidv.png', 'agribank.png', 'sacombank.png', 'vikki.png', 'vcbneo.png', 'mbv.png', 'coopbank.png', 'vbsp.png'];
 napasSampleBanks.forEach(b => {
   assert(html.includes(b), `NAPAS bank "${b}" present in Group 2 marquee`);

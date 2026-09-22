@@ -97,6 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
       target.scrollIntoView({ behavior: 'instant', block: 'start' });
     }
   }
+
+  // Support marquee inspection offsets
+  if (urlParams.has('intlDelay')) {
+    const el = document.querySelector('.animate-marquee-intl');
+    if (el) el.style.animationDelay = urlParams.get('intlDelay');
+  }
+  if (urlParams.has('banksDelay')) {
+    const el = document.querySelector('.animate-marquee-banks');
+    if (el) el.style.animationDelay = urlParams.get('banksDelay');
+  }
 });
 
 /**
