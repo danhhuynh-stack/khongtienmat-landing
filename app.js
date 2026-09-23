@@ -73,11 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollEffects();
   initPolicyModal();
 
-  // Support direct modal preview or section scroll via URL query
+  // Support direct modal preview, language switch, or section scroll via URL query
   const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('lang')) {
+    setLanguage(urlParams.get('lang'));
+  }
   if (urlParams.has('open_modal')) {
     const pKey = urlParams.get('open_modal') || 'vietqr-pay';
-    setTimeout(() => openProductModal(pKey), 100);
+    openProductModal(pKey);
   }
   if (urlParams.has('isolate')) {
     const isolateId = urlParams.get('isolate');

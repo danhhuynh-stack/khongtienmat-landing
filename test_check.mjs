@@ -219,7 +219,24 @@ assert(html.includes('id="btnModalRegisterThis"'), '"Đăng ký miễn phí sả
 assert(appJs.includes('modalPosCondition'), 'app.js toggles modalPosCondition based on product');
 assert(appJs.includes('modalFreeBadge'), 'app.js updates modalFreeBadge based on product');
 
-// 12. Check Policy Modal
+// 12. Check VietQR Pay Step 2 Copy (No dynamic QR parenthetical in all languages)
+assert(
+  html.includes('id="modalStep2Text"') &&
+  html.includes('2. Khách nhập số tiền và xác nhận chuyển khoản.') &&
+  !html.includes('quét QR động'),
+  'HTML fallback modalStep2Text has concise Step 2 without dynamic QR mention'
+);
+assert(translations.vi.p1Step2 === '2. Khách nhập số tiền và xác nhận chuyển khoản.', 'Vietnamese p1Step2 is exactly "2. Khách nhập số tiền và xác nhận chuyển khoản."');
+assert(translations.en.p1Step2 === '2. Customer enters amount and confirms transfer.', 'English p1Step2 is exactly "2. Customer enters amount and confirms transfer."');
+assert(translations.zh.p1Step2 === '2. 顾客输入金额并确认转账。', 'Chinese p1Step2 is exactly "2. 顾客输入金额并确认转账。"');
+assert(translations.ko.p1Step2 === '2. 금액을 입력하고 이체를 확인합니다.', 'Korean p1Step2 is exactly "2. 금액을 입력하고 이체를 확인합니다."');
+assert(translations.th.p1Step2 === '2. ลูกค้าระบุจำนวนเงิน และยืนยันการโอนเงิน', 'Thai p1Step2 is exactly "2. ลูกค้าระบุจำนวนเงิน และยืนยันการโอนเงิน"');
+langs.forEach(lang => {
+  const text = translations[lang].p1Step2.toLowerCase();
+  assert(!text.includes('dynamic') && !text.includes('động') && !text.includes('동적') && !text.includes('动态'), `Language '${lang}' p1Step2 has no dynamic QR mention`);
+});
+
+// 13. Check Policy Modal
 assert(html.includes('id="policyModal"'), 'Policy modal present in HTML');
 assert(appJs.includes('initPolicyModal'), 'Policy modal handler initialized in app.js');
 
