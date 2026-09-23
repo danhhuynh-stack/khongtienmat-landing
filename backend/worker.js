@@ -143,8 +143,12 @@ export default {
     // Log PII-masked message
     console.log(`[LEAD INTAKE] ID: ${leadId} | Phone: ${maskPhone(cleanPhone)} | Store: ${storeName}`);
 
-    // Check if Google Sheets credentials are configured
-    const hasGoogleCreds = env && env.GOOGLE_SHEET_ID && env.GOOGLE_SERVICE_ACCOUNT_EMAIL && env.GOOGLE_PRIVATE_KEY;
+    // Check Google Sheets integration method:
+    // Method A: Google Apps Script Web App (No Service Account Key needed, enterprise-safe for org policies)
+    // Method B: Google Cloud Service Account JWT RS256
+    const hasAppsScript = env && env.GOOGLE_APPS_SCRIPT_URL;
+    const hasServiceAccount = env && env.GOOGLE_SHEET_ID && env.GOOGLE_SERVICE_ACCOUNT_EMAIL && env.GOOGLE_PRIVATE_KEY;
+    const hasGoogleStorage = hasAppsScript || hasServiceAccount;
 
     let telegramStatus = 'Chưa cấu hình';
     let telegramError = '';
@@ -152,7 +156,7 @@ export default {
     let zaloError = '';
 
     // 7. Write to Google Sheets (Mandatory Step 1)
-    if (hasGoogleCreds) {
+    if (hasGoogleStorage) {
       try {
         const sheetTab = env.GOOGLE_SHEET_TAB || 'Leads';
         const rowData = [
@@ -170,7 +174,26 @@ export default {
           ''          // Initial error notes
         ];
 
-        const appendResult = await appendToGoogleSheet(env, sheetTab, rowData);
+        let appendResult;
+        if (hasAppsScript) {
+          appendResult = await appendViaAppsScript(env.GOOGLE_APPS_SCRIPT_URL, {
+            lead_id: leadId,
+            created_at: createdAt,
+            product,
+            full_name: fullName,
+            phone: cleanPhone,
+            store_name: storeName,
+            store_address: storeAddress,
+            language,
+            source,
+            url: pageUrl,
+            tab: sheetTab,
+            row: rowData
+          });
+        } else {
+          appendResult = await appendToGoogleSheet(env, sheetTab, rowData);
+        }
+
         if (!appendResult || !appendResult.success) {
           throw new Error(appendResult?.error || 'SHEETS_APPEND_FAILED');
         }
@@ -435,6 +458,28 @@ async function appendToGoogleSheet(env, tabName, rowValues) {
   if (!res.ok) {
     const err = await res.text();
     return { success: false, error: `Google Sheets API Error ${res.status}: ${err}` };
+  }
+  return { success: true };
+}
+
+/**
+ * Append to Google Sheet via Google Apps Script Web App
+ * Ideal for organizations blocking Service Account Keys (iam.disableServiceAccountKeyCreation)
+ */
+async function appendViaAppsScript(scriptUrl, payload) {
+  const res = await fetch(scriptUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    redirect: 'follow'
+  });
+  if (!res.ok) {
+    const err = await res.text().catch(() => '');
+    return { success: false, error: `Apps Script HTTP ${res.status}: ${err}` };
+  }
+  const data = await res.json().catch(() => ({ success: true }));
+  if (data && data.success === false) {
+    return { success: false, error: data.error || 'APPS_SCRIPT_FAILED' };
   }
   return { success: true };
 }
