@@ -146,7 +146,9 @@ export default {
     // Check if Google Sheets credentials are configured
     const hasGoogleCreds = env && env.GOOGLE_SHEET_ID && env.GOOGLE_SERVICE_ACCOUNT_EMAIL && env.GOOGLE_PRIVATE_KEY;
 
-    let zaloStatus = 'Chưa gửi';
+    let telegramStatus = 'Chưa cấu hình';
+    let telegramError = '';
+    let zaloStatus = 'Chưa cấu hình';
     let zaloError = '';
 
     // 7. Write to Google Sheets (Mandatory Step 1)
@@ -164,7 +166,7 @@ export default {
           language,
           source,
           pageUrl,
-          'Đang chờ', // Initial Zalo status
+          'Đang chờ', // Initial notification status
           ''          // Initial error notes
         ];
 
@@ -174,7 +176,7 @@ export default {
         }
       } catch (err) {
         console.error(`[GOOGLE SHEETS ERROR] Failed writing lead ${leadId}:`, err.message);
-        // CRITICAL REQUIREMENT: If Google Sheets fails, DO NOT send Zalo, return error to avoid un-reconciled lead
+        // CRITICAL REQUIREMENT: If Google Sheets fails, DO NOT send notifications, return error to avoid un-reconciled lead
         return jsonResponse({
           success: false,
           code: 'SHEETS_WRITE_FAILED',
@@ -185,7 +187,54 @@ export default {
       console.log(`[DEV MODE] Google Sheets credentials not configured. Lead ${leadId} simulated.`);
     }
 
-    // 8. Send Notification to Zalo Chatbot (Step 2 - Only after Google Sheets succeeded)
+    // 8. Send Notifications (Telegram & Zalo) - Only after Google Sheets succeeded
+    // A. Telegram Bot Notification (Tức thì về điện thoại / máy tính)
+    const tgToken = env?.TELEGRAM_BOT_TOKEN;
+    const tgChatId = env?.TELEGRAM_CHAT_ID;
+    if (tgToken && tgChatId) {
+      try {
+        const tgText = [
+          `🔔 <b>LEAD MỚI TỪ KHONGTIENMAT.VN</b>`,
+          `━━━━━━━━━━━━━━━━━━━━`,
+          `🆔 <b>Mã lead:</b> <code>${leadId}</code>`,
+          `📦 <b>Sản phẩm:</b> ${escapeHtml(product)}`,
+          `👤 <b>Khách hàng:</b> ${escapeHtml(fullName)}`,
+          `📞 <b>Điện thoại:</b> <a href="tel:${cleanPhone}">${cleanPhone}</a>`,
+          `🏪 <b>Đơn vị:</b> ${escapeHtml(storeName)}`,
+          `📍 <b>Địa chỉ:</b> ${escapeHtml(storeAddress)}`,
+          `🌐 <b>Ngôn ngữ:</b> ${language.toUpperCase()}`,
+          `⏱ <b>Thời gian:</b> ${createdAt}`,
+          `━━━━━━━━━━━━━━━━━━━━`,
+          `👉 <i>Vui lòng liên hệ khách sớm để được hỗ trợ tốt nhất!</i>`
+        ].join('\n');
+
+        const tgResponse = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: tgChatId,
+            text: tgText,
+            parse_mode: 'HTML',
+            disable_web_page_preview: true
+          })
+        });
+
+        const tgData = await tgResponse.json().catch(() => ({}));
+        if (tgResponse.ok && tgData.ok) {
+          telegramStatus = 'Đã gửi';
+        } else {
+          telegramStatus = 'Lỗi';
+          telegramError = tgData.description || `HTTP_${tgResponse.status}`;
+          console.warn(`[TELEGRAM WARN] Lead ${leadId}:`, telegramError);
+        }
+      } catch (tgErr) {
+        telegramStatus = 'Lỗi';
+        telegramError = tgErr.message ? tgErr.message.slice(0, 30) : 'NETWORK_ERROR';
+        console.warn(`[TELEGRAM ERROR] Lead ${leadId}:`, tgErr.message);
+      }
+    }
+
+    // B. Zalo Chatbot Webhook (Dành cho Zalo OA / Zalo Bot doanh nghiệp)
     const zaloWebhookUrl = env?.ZALO_CHATBOT_WEBHOOK_URL;
     if (zaloWebhookUrl) {
       try {
@@ -237,13 +286,18 @@ export default {
         zaloError = zErr.message ? zErr.message.slice(0, 30) : 'NETWORK_ERROR';
         console.warn(`[ZALO WEBHOOK ERROR] Lead ${leadId}:`, zErr.message);
       }
+    }
 
-      // If Google Sheets is active, update the Zalo Status in Google Sheets asynchronously
-      if (hasGoogleCreds && ctx && ctx.waitUntil) {
-        ctx.waitUntil(updateGoogleSheetZaloStatus(env, leadId, zaloStatus, zaloError));
-      }
-    } else {
-      zaloStatus = 'Chưa cấu hình';
+    // Notification summary logging
+    const statusParts = [];
+    if (telegramStatus !== 'Chưa cấu hình') statusParts.push(`Telegram: ${telegramStatus}`);
+    if (zaloStatus !== 'Chưa cấu hình') statusParts.push(`Zalo: ${zaloStatus}`);
+    const notificationSummary = statusParts.length > 0 ? statusParts.join(' | ') : 'Chưa cấu hình';
+    console.log(`[NOTIFICATION DISPATCH] Lead ${leadId} -> ${notificationSummary}`);
+
+    // If Google Sheets is active, update status asynchronously if needed
+    if (hasGoogleCreds && ctx && ctx.waitUntil) {
+      ctx.waitUntil(updateGoogleSheetNotificationStatus(env, leadId, notificationSummary, telegramError || zaloError));
     }
 
     // 9. Return Success Response to Website
@@ -385,9 +439,23 @@ async function appendToGoogleSheet(env, tabName, rowValues) {
   return { success: true };
 }
 
-async function updateGoogleSheetZaloStatus(env, leadId, status, errorNote) {
-  // Optional background task to reconcile row status
-  console.log(`[RECONCILE] Lead ${leadId}: Zalo Status -> ${status} (${errorNote || 'OK'})`);
+async function updateGoogleSheetNotificationStatus(env, leadId, status, errorNote) {
+  // Background task to reconcile row status
+  console.log(`[RECONCILE] Lead ${leadId}: Notification Status -> ${status} (${errorNote || 'OK'})`);
+}
+
+// Backward compatibility alias
+const updateGoogleSheetZaloStatus = updateGoogleSheetNotificationStatus;
+
+/**
+ * Escape HTML special chars for Telegram HTML parse mode
+ */
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 /**

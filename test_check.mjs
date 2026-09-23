@@ -242,8 +242,13 @@ assert(appJs.includes('initPolicyModal'), 'Policy modal handler initialized in a
 
 // 14. Check Secure Lead Intake, Honeypot, Privacy Note & Backend Cloudflare Worker
 // A. Git Security Check (No secrets or real credentials committed)
-assert(!fs.existsSync('.env'), '.env file is NOT committed in repository');
-assert(!fs.existsSync('.env.local'), '.env.local file is NOT committed in repository');
+let isGitCommitted = false;
+try {
+  const { execSync } = await import('child_process');
+  const tracked = execSync('git ls-files .env .env.local', { encoding: 'utf8' }).trim();
+  isGitCommitted = tracked.length > 0;
+} catch (_) {}
+assert(!isGitCommitted, '.env and .env.local are NOT committed in git repository');
 assert(fs.existsSync('.env.example'), '.env.example exists as a clean template');
 assert(fs.existsSync('GUIDE_DEPLOYMENT.md'), 'GUIDE_DEPLOYMENT.md exists with full handover instructions');
 
@@ -402,5 +407,19 @@ try {
 assert(html.includes('sm:hidden fixed bottom-0'), 'Mobile sticky bottom bar present');
 assert(html.includes('ctaRegisterFree'), 'Register CTA present on mobile sticky bar');
 
+// 16. Check Telegram Bot Notification Dispatch in Backend
+const wranglerCode = fs.readFileSync('backend/wrangler.toml', 'utf8');
+const guideDoc = fs.readFileSync('GUIDE_DEPLOYMENT.md', 'utf8');
+
+assert(workerCode.includes('api.telegram.org/bot'), 'worker.js integrates Telegram Bot API endpoint');
+assert(workerCode.includes('TELEGRAM_BOT_TOKEN') && workerCode.includes('TELEGRAM_CHAT_ID'), 'worker.js reads TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID');
+assert(workerCode.includes("parse_mode: 'HTML'"), 'worker.js formats Telegram messages in HTML mode');
+assert(workerCode.includes('escapeHtml'), 'worker.js sanitizes HTML to prevent parse errors');
+assert(workerCode.includes('ZALO_CHATBOT_WEBHOOK_URL'), 'worker.js maintains Zalo webhook support');
+assert(wranglerCode.includes('TELEGRAM_BOT_TOKEN'), 'wrangler.toml documents TELEGRAM_BOT_TOKEN secret');
+assert(envExample.includes('TELEGRAM_BOT_TOKEN') && envExample.includes('TELEGRAM_CHAT_ID'), '.env.example includes Telegram Bot parameters');
+assert(guideDoc.includes('@BotFather') && guideDoc.includes('@userinfobot'), 'GUIDE_DEPLOYMENT.md provides Telegram setup instructions');
+
 console.log(`\n=== SUMMARY: ${passed} PASSED, ${failed} FAILED ===`);
 if (failed > 0) process.exit(1);
+

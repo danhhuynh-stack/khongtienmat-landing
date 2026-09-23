@@ -6,9 +6,16 @@ compatibility_date = "2024-09-23"
 [vars]
 GOOGLE_SHEET_TAB = "Leads"
 
-# Secrets should be added via:
-# npx wrangler secret put GOOGLE_SHEET_ID
-# npx wrangler secret put GOOGLE_SERVICE_ACCOUNT_EMAIL
-# npx wrangler secret put GOOGLE_PRIVATE_KEY
-# npx wrangler secret put ZALO_CHATBOT_WEBHOOK_URL
-# npx wrangler secret put ZALO_CHATBOT_API_TOKEN
+# Secrets should be added via CLI:
+# 1. Google Sheets Integration:
+#    npx wrangler secret put GOOGLE_SHEET_ID
+#    npx wrangler secret put GOOGLE_SERVICE_ACCOUNT_EMAIL
+#    npx wrangler secret put GOOGLE_PRIVATE_KEY
+#
+# 2. Telegram Bot Integration (Khuyên dùng - Nhận tin nhắn tức thì về điện thoại):
+#    npx wrangler secret put TELEGRAM_BOT_TOKEN
+#    npx wrangler secret put TELEGRAM_CHAT_ID
+#
+# 3. Zalo Chatbot Webhook (Nếu sử dụng Zalo OA doanh nghiệp):
+#    npx wrangler secret put ZALO_CHATBOT_WEBHOOK_URL
+#    npx wrangler secret put ZALO_CHATBOT_API_TOKEN

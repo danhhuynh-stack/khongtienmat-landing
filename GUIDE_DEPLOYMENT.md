@@ -58,21 +58,33 @@
 
 ---
 
-## 4. Bước 3: Cấu Hình Webhook Chatbot Zalo
+## 4. Bước 3: Cấu Hình Kênh Nhận Thông Báo (Telegram Bot & Zalo)
 
-Hệ thống hỗ trợ gửi thông báo tới bất kỳ nền tảng Chatbot Zalo nào hỗ trợ Webhook HTTPS (FPT.AI, Hana Chatbot, Haravan, Botbanhang, hoặc Zalo Official Account):
+Hệ thống hỗ trợ 2 kênh nhận thông báo tự động ngay khi khách điền form thành công:
 
-- **Format tin nhắn gửi đi tự động**:
-  ```text
-  🔔 Lead mới từ khongtienmat.vn
-  Mã lead: KTM-20260923-8A2F
-  Sản phẩm: VietQR Pay (Bảng mica để bàn)
-  Khách hàng: Nguyễn Văn An
-  SĐT: 0912345678
-  Cửa hàng: Cà phê An Nhiên
-  Địa chỉ: 123 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM
-  Thời gian: 2026-09-23 10:30:00
-  ```
+### Kênh A: Telegram Bot (Khuyên dùng - Miễn phí 100%, nhận "ting ting" về điện thoại tức thì)
+> **Ưu điểm vượt trội**: Không yêu cầu giấy phép doanh nghiệp hay Zalo OA, cài đặt 30 giây, hỗ trợ bấm trực tiếp vào số điện thoại để gọi khách ngay từ màn hình tin nhắn Telegram.
+
+1. **Lấy `TELEGRAM_BOT_TOKEN`**:
+   - Mở ứng dụng Telegram trên điện thoại hoặc máy tính, gõ tìm **`@BotFather`** (bot chính chủ Telegram có tích xanh).
+   - Gõ lệnh `/newbot` và làm theo hướng dẫn:
+     - Nhập tên hiển thị: ví dụ `KTM Leads Alert`
+     - Nhập username của bot: ví dụ `ktm_leads_alert_bot` (phải kết thúc bằng chữ `bot`).
+   - BotFather sẽ cấp cho bạn một chuỗi Token dạng: `1234567890:ABCdefGhIJKlmNoPQRsTUVwxyZ`.
+   - **Quan trọng**: Bấm vào đường link bot mà BotFather gửi (dạng `t.me/ktm_leads_alert_bot`), sau đó bấm nút **Start** để cho phép bot gửi tin nhắn cho bạn.
+
+2. **Lấy `TELEGRAM_CHAT_ID`**:
+   - Trên Telegram, tìm bot **`@userinfobot`**.
+   - Bấm `/start` $\rightarrow$ Bot sẽ trả về thông tin cá nhân của bạn, trong đó có dòng:
+     `Id: 123456789`
+   - Dãy số `123456789` chính là `TELEGRAM_CHAT_ID`.
+   *(Nếu muốn thông báo vào nhóm chat gồm nhiều nhân viên kinh doanh: Thêm bot vừa tạo vào nhóm chat, cấp quyền admin và lấy Chat ID của nhóm).*
+
+---
+
+### Kênh B: Zalo Chatbot Webhook (Dành cho Zalo OA Doanh nghiệp)
+*(Dành cho các doanh nghiệp sử dụng Zalo Official Account kết nối nền tảng chatbot như FPT.AI, Hana Chatbot, Haravan, Botbanhang)*
+
 - **Chuẩn bị 2 thông tin**:
   - `ZALO_CHATBOT_WEBHOOK_URL`: Đường link webhook nhận lead của chatbot.
   - `ZALO_CHATBOT_API_TOKEN`: Mã bí mật Bearer Token (nếu nền tảng có yêu cầu).
@@ -89,21 +101,19 @@ Hệ thống hỗ trợ gửi thông báo tới bất kỳ nền tảng Chatbot 
    ```bash
    npx wrangler login
    ```
-3. Nạp các biến bảo mật (Secrets) vào Cloudflare Worker (không bao giờ lộ ra ngoài):
+3. Nạp các biến bảo mật (Secrets) vào Cloudflare Worker (không bao giờ lộ ra ngoài Git/Frontend):
    ```bash
-   # 1. Nhập Google Sheet ID
+   # 1. Google Sheets Integration
    npx wrangler secret put GOOGLE_SHEET_ID
-
-   # 2. Nhập Email của Service Account
    npx wrangler secret put GOOGLE_SERVICE_ACCOUNT_EMAIL
-
-   # 3. Nhập Private Key (mở file JSON tải từ Google, copy toàn bộ chuỗi private_key bao gồm cả -----BEGIN PRIVATE KEY-----)
    npx wrangler secret put GOOGLE_PRIVATE_KEY
 
-   # 4. Nhập Webhook Chatbot Zalo
-   npx wrangler secret put ZALO_CHATBOT_WEBHOOK_URL
+   # 2. Telegram Bot Integration (Nhận tin nhắn ting-ting về điện thoại)
+   npx wrangler secret put TELEGRAM_BOT_TOKEN
+   npx wrangler secret put TELEGRAM_CHAT_ID
 
-   # 5. Nhập Token Chatbot Zalo (nếu có)
+   # 3. Zalo Chatbot Webhook (Nếu sử dụng Zalo OA)
+   npx wrangler secret put ZALO_CHATBOT_WEBHOOK_URL
    npx wrangler secret put ZALO_CHATBOT_API_TOKEN
    ```
 4. Triển khai lên mạng lưới Cloudflare toàn cầu:
