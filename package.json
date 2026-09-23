@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node serve.js",
-    "test": "node test_check.mjs"
+    "test": "node test_check.mjs",
+    "generate:excel": "node generate_excel.mjs"
   }
 }

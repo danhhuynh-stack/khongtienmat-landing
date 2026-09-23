@@ -290,7 +290,32 @@ assert(workerCode.includes('https://sheets.googleapis.com/v4/spreadsheets/'), 'W
 assert(workerCode.includes('🔔 Lead mới từ khongtienmat.vn'), 'Worker formats Zalo notification according to required template');
 assert(workerCode.includes('SHEETS_WRITE_FAILED'), 'Worker returns SHEETS_WRITE_FAILED error if Google Sheets write fails without sending Zalo');
 
-// E. Local Dev Endpoint HTTP Functional Tests
+// E. Professional Excel Workbook Template Verification
+assert(fs.existsSync('KhongTienMat_Leads_Template.xlsx'), 'KhongTienMat_Leads_Template.xlsx exists');
+assert(fs.statSync('KhongTienMat_Leads_Template.xlsx').size > 5000, 'Excel template has valid size');
+
+const { default: ExcelJS } = await import('exceljs');
+const testWb = new ExcelJS.Workbook();
+await testWb.xlsx.readFile('KhongTienMat_Leads_Template.xlsx');
+const sheetNames = testWb.worksheets.map(s => s.name);
+assert(sheetNames.includes('Leads'), 'Excel workbook contains tab named "Leads"');
+assert(sheetNames.includes('Hướng Dẫn Tích Hợp'), 'Excel workbook contains tab named "Hướng Dẫn Tích Hợp"');
+
+const leadsWs = testWb.getWorksheet('Leads');
+const expected12Cols = [
+  'Lead ID', 'Thời gian', 'Sản phẩm quan tâm', 'Họ và tên',
+  'Số điện thoại', 'Tên đơn vị kinh doanh', 'Địa chỉ kinh doanh',
+  'Ngôn ngữ', 'Nguồn', 'URL', 'Trạng thái gửi Zalo', 'Ghi chú lỗi'
+];
+const actualRow1 = leadsWs.getRow(1).values.filter(Boolean);
+assert(actualRow1.length === 12, `Tab Leads has exactly 12 columns (found: ${actualRow1.length})`);
+expected12Cols.forEach((col, idx) => {
+  assert(actualRow1[idx] === col, `Column ${idx + 1} is exactly "${col}"`);
+});
+assert(leadsWs.views && leadsWs.views[0]?.ySplit === 1, 'Tab Leads has frozen top row');
+assert(Boolean(leadsWs.autoFilter), 'Tab Leads has autoFilter enabled');
+
+// F. Local Dev Endpoint HTTP Functional Tests
 try {
   // Test 1: Valid submission
   const validRes = await fetch('http://127.0.0.1:3000/api/leads', {
