@@ -319,8 +319,10 @@ export default {
     console.log(`[NOTIFICATION DISPATCH] Lead ${leadId} -> ${notificationSummary}`);
 
     // If Google Sheets is active, update status asynchronously if needed
-    if (hasGoogleCreds && ctx && ctx.waitUntil) {
-      ctx.waitUntil(updateGoogleSheetNotificationStatus(env, leadId, notificationSummary, telegramError || zaloError));
+    if (hasGoogleStorage && ctx && ctx.waitUntil) {
+      try {
+        ctx.waitUntil(updateGoogleSheetNotificationStatus(env, leadId, notificationSummary, telegramError || zaloError));
+      } catch (_) {}
     }
 
     // 9. Return Success Response to Website
