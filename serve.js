@@ -20,10 +20,80 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let reqPath = req.url.split('?')[0];
-  if (reqPath === '/') reqPath = '/index.html';
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || '127.0.0.1:3000'}`);
+  const reqPath = parsedUrl.pathname;
 
-  const filePath = path.join(__dirname, reqPath);
+  // CORS headers
+  const origin = req.headers['origin'] || '*';
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Max-Age': '86400'
+  };
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, corsHeaders);
+    res.end();
+    return;
+  }
+
+  // Local /api/leads mock endpoint for offline testing & dev verification
+  if (reqPath === '/api/leads' && req.method === 'POST') {
+    let bodyData = '';
+    req.on('data', chunk => { bodyData += chunk; });
+    req.on('end', () => {
+      try {
+        const body = JSON.parse(bodyData || '{}');
+
+        // Check simulated error parameter for test verification
+        if (parsedUrl.searchParams.has('simulate_error')) {
+          res.writeHead(500, { 'Content-Type': 'application/json', ...corsHeaders });
+          res.end(JSON.stringify({ success: false, code: 'SHEETS_WRITE_FAILED', message: 'Simulated server error' }));
+          return;
+        }
+
+        // Honeypot trap: if filled by bot, return silent dummy success
+        if (body.website_hp && body.website_hp.trim().length > 0) {
+          res.writeHead(200, { 'Content-Type': 'application/json', ...corsHeaders });
+          res.end(JSON.stringify({ success: true, lead_id: body.lead_id || 'BOT-DROP', message: 'OK' }));
+          return;
+        }
+
+        // Validation
+        const phoneRegex = /^(?:0|\+84)(?:3|5|7|8|9)[0-9]{8}$/;
+        if (!body.full_name || !body.phone || !body.store_name || !body.store_address) {
+          res.writeHead(400, { 'Content-Type': 'application/json', ...corsHeaders });
+          res.end(JSON.stringify({ success: false, code: 'MISSING_FIELDS', message: 'Missing required fields' }));
+          return;
+        }
+
+        if (!phoneRegex.test(body.phone.trim().replace(/\s+/g, ''))) {
+          res.writeHead(400, { 'Content-Type': 'application/json', ...corsHeaders });
+          res.end(JSON.stringify({ success: false, code: 'INVALID_PHONE', message: 'Invalid phone format' }));
+          return;
+        }
+
+        // Return clean success
+        res.writeHead(200, { 'Content-Type': 'application/json', ...corsHeaders });
+        res.end(JSON.stringify({
+          success: true,
+          lead_id: body.lead_id || `KTM-${Date.now()}`,
+          message: 'Đăng ký thành công. Đội ngũ tư vấn sẽ liên hệ với bạn sớm.'
+        }));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json', ...corsHeaders });
+        res.end(JSON.stringify({ success: false, code: 'INVALID_JSON', message: err.message }));
+      }
+    });
+    return;
+  }
+
+  // Static file serving
+  let targetPath = reqPath;
+  if (targetPath === '/') targetPath = '/index.html';
+
+  const filePath = path.join(__dirname, targetPath);
   const ext = path.extname(filePath).toLowerCase();
   const contentType = mimeTypes[ext] || 'application/octet-stream';
 
@@ -37,7 +107,7 @@ const server = http.createServer((req, res) => {
         res.end(`Server Error: ${err.code}`);
       }
     } else {
-      res.writeHead(200, { 'Content-Type': contentType });
+      res.writeHead(200, { 'Content-Type': contentType, ...corsHeaders });
       res.end(content);
     }
   });

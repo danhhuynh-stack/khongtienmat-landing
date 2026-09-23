@@ -1022,7 +1022,13 @@
           </p>
         </div>
 
-        <!-- Submit Button -->
+        <!-- Anti-spam Honeypot field (hidden from humans, traps bots) -->
+        <div class="hidden" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
+          <label for="website_hp">Leave this field blank</label>
+          <input type="text" name="website_hp" id="website_hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- Submit Button & Privacy Note -->
         <div class="pt-2">
           <button 
             type="submit" 
@@ -1032,14 +1038,26 @@
             <span data-i18n="submitRegisterBtn">Đăng ký miễn phí ngay</span>
             <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
           </button>
+          <p class="text-center text-xs text-slate-500 mt-2.5" data-i18n="formPrivacyNote">
+            Thông tin của bạn chỉ được sử dụng để liên hệ tư vấn giải pháp thanh toán.
+          </p>
         </div>
 
         <!-- Success Alert (Hidden by default) -->
         <div id="formSuccessAlert" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-start gap-3">
           <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true"></i>
           <div>
-            <div class="font-bold" data-i18n="formSuccess">Đã tiếp nhận thông tin thành công! Đội ngũ kinh doanh sẽ sớm liên hệ tư vấn cho bạn.</div>
-            <div class="text-xs text-emerald-700 mt-0.5">Chúng tôi cam kết bảo mật thông tin liên hệ của cửa hàng.</div>
+            <div class="font-bold" data-i18n="formSuccess">Đăng ký thành công. Đội ngũ tư vấn sẽ liên hệ với bạn sớm.</div>
+            <div class="text-xs text-emerald-700 mt-0.5" id="formSuccessLeadId"></div>
+          </div>
+        </div>
+
+        <!-- Error Alert (Hidden by default) -->
+        <div id="formErrorAlert" class="hidden p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm flex items-start gap-3">
+          <i data-lucide="alert-circle" class="w-5 h-5 text-red-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+          <div>
+            <div class="font-bold" data-i18n="formError">Chưa thể gửi thông tin. Vui lòng thử lại hoặc liên hệ Hotline: 0924.0934.61.</div>
+            <div class="text-xs text-red-700 mt-0.5 hidden" id="formErrorDetail"></div>
           </div>
         </div>
 

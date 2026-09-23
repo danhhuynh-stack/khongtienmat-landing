@@ -101,14 +101,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Support marquee inspection offsets
-  if (urlParams.has('intlDelay')) {
-    const el = document.querySelector('.animate-marquee-intl');
-    if (el) el.style.animationDelay = urlParams.get('intlDelay');
-  }
-  if (urlParams.has('banksDelay')) {
-    const el = document.querySelector('.animate-marquee-banks');
-    if (el) el.style.animationDelay = urlParams.get('banksDelay');
+  // Support form alert state visual inspection
+  if (urlParams.has('preview_state')) {
+    const state = urlParams.get('preview_state');
+    if (state === 'success') {
+      const el = document.getElementById('formSuccessAlert');
+      if (el) el.classList.remove('hidden');
+      const leadIdEl = document.getElementById('formSuccessLeadId');
+      if (leadIdEl) leadIdEl.textContent = 'Mã đối soát: KTM-20260923-8A2F';
+    } else if (state === 'error') {
+      const el = document.getElementById('formErrorAlert');
+      if (el) el.classList.remove('hidden');
+    }
   }
 });
 
@@ -322,8 +326,11 @@ function populateProductModal(productKey) {
   }
 }
 
+// Configurable Backend Endpoint (Fallback to /api/leads if not specified)
+const API_ENDPOINT = window.KTM_API_ENDPOINT || '/api/leads';
+
 /**
- * 3. Enhanced Lead Registration Form (5 required fields: productInterest, fullName, phone, storeName, storeAddress)
+ * 3. Enhanced Lead Registration Form (5 required fields + Honeypot + Secure Backend API)
  */
 function initLeadForm() {
   const form = document.getElementById('leadForm');
@@ -333,8 +340,11 @@ function initLeadForm() {
   const phoneInput = document.getElementById('phone');
   const storeNameInput = document.getElementById('storeName');
   const addressInput = document.getElementById('storeAddress');
+  const honeypotInput = document.getElementById('website_hp');
   const submitBtn = document.getElementById('submitBtn');
   const successAlert = document.getElementById('formSuccessAlert');
+  const errorAlert = document.getElementById('formErrorAlert');
+  const successLeadId = document.getElementById('formSuccessLeadId');
 
   // Clear errors on input
   [fullNameInput, phoneInput, storeNameInput, addressInput].forEach(input => {
@@ -346,9 +356,13 @@ function initLeadForm() {
     });
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let hasError = false;
+
+    // Hide previous alerts
+    if (successAlert) successAlert.classList.add('hidden');
+    if (errorAlert) errorAlert.classList.add('hidden');
 
     // 1. Validate Full Name (Allow Vietnamese diacritics and letters, min length 2)
     const fullNameVal = fullNameInput ? fullNameInput.value.trim() : '';
@@ -359,7 +373,7 @@ function initLeadForm() {
 
     // 2. Validate Phone (VN phone standard: 10 digits starting with 0)
     const phoneVal = phoneInput ? phoneInput.value.trim().replace(/\s+/g, '') : '';
-    const phoneRegex = /^0[3|5|7|8|9][0-9]{8}$/;
+    const phoneRegex = /^(?:0|\+84)(?:3|5|7|8|9)[0-9]{8}$/;
     if (!phoneVal || !phoneRegex.test(phoneVal)) {
       showError('phone');
       hasError = true;
@@ -381,55 +395,123 @@ function initLeadForm() {
 
     if (hasError) return;
 
-    // Collect full 5-field data payload
-    const leadData = {
-      id: 'lead_' + Date.now(),
-      submittedAt: new Date().toISOString(),
-      productInterest: document.getElementById('productInterest') ? document.getElementById('productInterest').value : 'all',
-      fullName: fullNameVal,
+    // Generate unique Lead ID (e.g. KTM-20260923-8A2F)
+    const randomHex = Math.random().toString(36).substring(2, 6).toUpperCase();
+    const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const leadId = `KTM-${dateStr}-${randomHex}`;
+
+    // Format registration time in Asia/Ho_Chi_Minh (YYYY-MM-DD HH:mm:ss)
+    const now = new Date();
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
+    const parts = formatter.formatToParts(now);
+    const getPart = (type) => parts.find(p => p.type === type)?.value || '';
+    const createdAt = `${getPart('year')}-${getPart('month')}-${getPart('day')} ${getPart('hour')}:${getPart('minute')}:${getPart('second')}`;
+
+    // Map product selection to human-readable Vietnamese name
+    const productNames = {
+      'all': 'Trọn bộ giải pháp (Được tư vấn tất cả)',
+      'vietqr-pay': 'VietQR Pay (Bảng mica để bàn)',
+      'soundbox': 'Loa thông báo giao dịch',
+      'pos-software': 'Phần mềm bán hàng',
+      'smart-pos': 'Máy POS thanh toán'
+    };
+    const productVal = document.getElementById('productInterest') ? document.getElementById('productInterest').value : 'all';
+    const productLabel = productNames[productVal] || productVal;
+
+    // Construct 10-field payload + honeypot
+    const leadPayload = {
+      lead_id: leadId,
+      created_at: createdAt,
+      product: productLabel,
+      full_name: fullNameVal,
       phone: phoneVal,
-      storeName: storeNameVal,
-      storeAddress: addressVal,
-      lang: currentLang
+      store_name: storeNameVal,
+      store_address: addressVal,
+      language: currentLang,
+      source: 'khongtienmat.vn',
+      url: window.location.href,
+      website_hp: honeypotInput ? honeypotInput.value : ''
     };
 
-    // Show submitting state
-    const originalBtnText = submitBtn.innerHTML;
+    // Show submitting state on button
+    const originalBtnContent = submitBtn.innerHTML;
     submitBtn.disabled = true;
+    const submittingText = translations[currentLang]?.formSubmitting || 'Đang gửi...';
     submitBtn.innerHTML = `
       <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
       </svg>
-      <span data-i18n="formSubmitting">${translations[currentLang]?.formSubmitting || 'Đang gửi thông tin...'}</span>
+      <span>${submittingText}</span>
     `;
 
-    // Process & store locally in localStorage (guaranteed real receipt)
-    setTimeout(() => {
-      try {
-        const existingLeads = JSON.parse(localStorage.getItem('khongtienmat_leads') || '[]');
-        existingLeads.push(leadData);
-        localStorage.setItem('khongtienmat_leads', JSON.stringify(existingLeads));
-        console.log('[LEAD RECEIVED]', leadData);
-      } catch (err) {
-        console.error('Local storage save error:', err);
-      }
+    // 15-second network timeout controller
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
 
-      // Display success message
-      if (successAlert) {
-        successAlert.classList.remove('hidden');
-        successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(leadPayload),
+        signal: controller.signal
+      });
 
-      // Reset form
-      form.reset();
+      clearTimeout(timeoutId);
+
+      const result = await response.json().catch(() => ({ success: false, code: 'INVALID_JSON' }));
+
+      if (response.ok && result.success) {
+        // Success: Google Sheets confirmed saved
+        if (successAlert) {
+          successAlert.classList.remove('hidden');
+          if (successLeadId) {
+            successLeadId.textContent = `Mã đối soát: ${result.lead_id || leadId}`;
+          }
+          successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Reset form
+        form.reset();
+
+        // Local storage backup
+        try {
+          const existingLeads = JSON.parse(localStorage.getItem('khongtienmat_leads') || '[]');
+          existingLeads.push(leadPayload);
+          localStorage.setItem('khongtienmat_leads', JSON.stringify(existingLeads));
+        } catch (_) {}
+      } else {
+        throw new Error(result.code || 'SERVER_ERROR');
+      }
+    } catch (err) {
+      clearTimeout(timeoutId);
+      console.warn('[LEAD SUBMIT]', err.name === 'AbortError' ? 'TIMEOUT' : 'FAILED');
+
+      // Display friendly error alert without technical details
+      if (errorAlert) {
+        errorAlert.classList.remove('hidden');
+        errorAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      // Form fields are preserved so customer doesn't have to retype
+    } finally {
+      // Restore submit button
       submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnText;
-
+      submitBtn.innerHTML = originalBtnContent;
       if (window.lucide) {
         window.lucide.createIcons();
       }
-    }, 600);
+    }
   });
 }
 

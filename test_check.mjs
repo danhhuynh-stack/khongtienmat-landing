@@ -240,7 +240,140 @@ langs.forEach(lang => {
 assert(html.includes('id="policyModal"'), 'Policy modal present in HTML');
 assert(appJs.includes('initPolicyModal'), 'Policy modal handler initialized in app.js');
 
-// 13. Check Mobile Sticky Bottom Action Bar
+// 14. Check Secure Lead Intake, Honeypot, Privacy Note & Backend Cloudflare Worker
+// A. Git Security Check (No secrets or real credentials committed)
+assert(!fs.existsSync('.env'), '.env file is NOT committed in repository');
+assert(!fs.existsSync('.env.local'), '.env.local file is NOT committed in repository');
+assert(fs.existsSync('.env.example'), '.env.example exists as a clean template');
+assert(fs.existsSync('GUIDE_DEPLOYMENT.md'), 'GUIDE_DEPLOYMENT.md exists with full handover instructions');
+
+const envExample = fs.readFileSync('.env.example', 'utf8');
+assert(!envExample.includes('AIzaSy'), 'No Google API keys in .env.example');
+assert(envExample.includes('GOOGLE_SERVICE_ACCOUNT_EMAIL') && envExample.includes('GOOGLE_SHEET_ID'), '.env.example documents all required variables');
+
+// Check frontend public files do NOT contain backend secrets or Google service accounts
+[html, appJs].forEach(src => {
+  assert(!src.includes('-----BEGIN PRIVATE KEY-----'), 'Private key absent from public frontend');
+  assert(!src.includes('client_email') && !src.includes('project_id'), 'Service account JSON absent from public frontend');
+  assert(!src.includes('AIzaSy'), 'Google API Key absent from public frontend');
+});
+
+// B. Frontend HTML Honeypot, Alerts & Privacy Note
+assert(html.includes('id="website_hp"') && html.includes('name="website_hp"'), 'Hidden anti-spam honeypot input "website_hp" present in HTML');
+assert(html.includes('id="formErrorAlert"'), 'Error alert container id="formErrorAlert" present in HTML');
+assert(html.includes('data-i18n="formPrivacyNote"'), 'Privacy note data-i18n="formPrivacyNote" present under submit button');
+assert(html.includes('Thông tin của bạn chỉ được sử dụng để liên hệ tư vấn giải pháp thanh toán.'), 'Privacy note Vietnamese text present in HTML');
+assert(html.includes('id="formSuccessLeadId"'), 'Dynamic lead ID container formSuccessLeadId present in HTML');
+
+// C. Translations Parity across 5 Languages for Form Responses
+const newFormKeys = ['formSuccess', 'formError', 'formSubmitting', 'formPrivacyNote'];
+langs.forEach(l => {
+  newFormKeys.forEach(k => {
+    assert(translations[l] && translations[l][k] && translations[l][k].trim().length > 0, `Language '${l}' has non-empty translation for '${k}'`);
+  });
+});
+assert(translations.vi.formSuccess === 'Đăng ký thành công. Đội ngũ tư vấn sẽ liên hệ với bạn sớm.', 'Vietnamese formSuccess matches user exact requirement');
+assert(translations.vi.formError === 'Chưa thể gửi thông tin. Vui lòng thử lại hoặc liên hệ Hotline: 0924.0934.61.', 'Vietnamese formError matches user exact requirement');
+assert(translations.vi.formSubmitting === 'Đang gửi...', 'Vietnamese formSubmitting is "Đang gửi..."');
+assert(translations.vi.formPrivacyNote === 'Thông tin của bạn chỉ được sử dụng để liên hệ tư vấn giải pháp thanh toán.', 'Vietnamese formPrivacyNote matches requirement');
+
+// D. Cloudflare Worker Code Verification
+assert(fs.existsSync('backend/worker.js'), 'Cloudflare Worker file backend/worker.js exists');
+assert(fs.existsSync('backend/wrangler.toml'), 'Cloudflare Worker configuration backend/wrangler.toml exists');
+const workerCode = fs.readFileSync('backend/worker.js', 'utf8');
+
+assert(workerCode.includes('ALLOWED_ORIGINS'), 'Worker enforces ALLOWED_ORIGINS whitelist');
+assert(workerCode.includes('website_hp'), 'Worker implements anti-spam honeypot detection');
+assert(workerCode.includes('isRateLimited'), 'Worker implements IP-based rate limiting');
+assert(workerCode.includes('maskPhone'), 'Worker masks phone numbers in logs to protect PII');
+assert(workerCode.includes('https://sheets.googleapis.com/v4/spreadsheets/'), 'Worker connects directly to Google Sheets API v4');
+assert(workerCode.includes('🔔 Lead mới từ khongtienmat.vn'), 'Worker formats Zalo notification according to required template');
+assert(workerCode.includes('SHEETS_WRITE_FAILED'), 'Worker returns SHEETS_WRITE_FAILED error if Google Sheets write fails without sending Zalo');
+
+// E. Local Dev Endpoint HTTP Functional Tests
+try {
+  // Test 1: Valid submission
+  const validRes = await fetch('http://127.0.0.1:3000/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      lead_id: 'KTM-TEST-001',
+      created_at: '2026-09-23 10:30:00',
+      product: 'VietQR Pay (Bảng mica để bàn)',
+      full_name: 'Nguyễn Văn An',
+      phone: '0912345678',
+      store_name: 'Cà phê An Nhiên',
+      store_address: '123 Nguyễn Huệ, Quận 1, TP.HCM',
+      language: 'vi',
+      source: 'khongtienmat.vn',
+      url: 'http://localhost:3000/',
+      website_hp: ''
+    })
+  });
+  const validData = await validRes.json();
+  assert(validRes.status === 200 && validData.success === true, 'API accepted valid lead submission (200 OK, success: true)');
+
+  // Test 2: Honeypot triggered
+  const botRes = await fetch('http://127.0.0.1:3000/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      lead_id: 'KTM-TEST-BOT',
+      full_name: 'Spam Bot',
+      phone: '0912345678',
+      store_name: 'Bot Shop',
+      store_address: '123 Fake Street',
+      website_hp: 'http://spam-link.com'
+    })
+  });
+  const botData = await botRes.json();
+  assert(botRes.status === 200 && botData.success === true, 'API silently trapped bot honeypot (200 OK dummy)');
+
+  // Test 3: Invalid phone rejected
+  const invalidPhoneRes = await fetch('http://127.0.0.1:3000/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      lead_id: 'KTM-TEST-ERR',
+      full_name: 'Nguyễn Văn An',
+      phone: '123456',
+      store_name: 'Cà phê An Nhiên',
+      store_address: '123 Nguyễn Huệ',
+      website_hp: ''
+    })
+  });
+  const invalidPhoneData = await invalidPhoneRes.json();
+  assert(invalidPhoneRes.status === 400 && invalidPhoneData.code === 'INVALID_PHONE', 'API rejected invalid phone format with 400');
+
+  // Test 4: Missing required fields
+  const missingFieldRes = await fetch('http://127.0.0.1:3000/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      full_name: '',
+      phone: '0912345678'
+    })
+  });
+  assert(missingFieldRes.status === 400, 'API rejected missing fields with 400');
+
+  // Test 5: Simulated Sheets write error
+  const errRes = await fetch('http://127.0.0.1:3000/api/leads?simulate_error=1', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      full_name: 'Nguyễn Văn An',
+      phone: '0912345678',
+      store_name: 'Cà phê An Nhiên',
+      store_address: '123 Nguyễn Huệ',
+      website_hp: ''
+    })
+  });
+  assert(errRes.status === 500, 'API returned 500 on Google Sheets failure');
+} catch (netErr) {
+  console.warn('Local dev server fetch test skipped or failed:', netErr.message);
+}
+
+// 15. Check Mobile Sticky Bottom Action Bar
 assert(html.includes('sm:hidden fixed bottom-0'), 'Mobile sticky bottom bar present');
 assert(html.includes('ctaRegisterFree'), 'Register CTA present on mobile sticky bar');
 

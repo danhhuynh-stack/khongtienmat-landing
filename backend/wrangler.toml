@@ -1,0 +1,14 @@
+name = "khongtienmat-leads-api"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+# Environment Variables (Non-sensitive)
+[vars]
+GOOGLE_SHEET_TAB = "Leads"
+
+# Secrets should be added via:
+# npx wrangler secret put GOOGLE_SHEET_ID
+# npx wrangler secret put GOOGLE_SERVICE_ACCOUNT_EMAIL
+# npx wrangler secret put GOOGLE_PRIVATE_KEY
+# npx wrangler secret put ZALO_CHATBOT_WEBHOOK_URL
+# npx wrangler secret put ZALO_CHATBOT_API_TOKEN
