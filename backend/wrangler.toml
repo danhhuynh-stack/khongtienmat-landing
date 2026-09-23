@@ -6,13 +6,17 @@ compatibility_date = "2024-09-23"
 [vars]
 GOOGLE_SHEET_TAB = "Leads"
 
-# Secrets should be added via CLI:
+# Secrets should be added via CLI or Cloudflare Dashboard:
 # 1. Google Sheets Integration:
+#    Cách A (Khuyên dùng - Google Apps Script Web App):
+#    npx wrangler secret put GOOGLE_APPS_SCRIPT_URL
+#
+#    Cách B (Google Service Account):
 #    npx wrangler secret put GOOGLE_SHEET_ID
 #    npx wrangler secret put GOOGLE_SERVICE_ACCOUNT_EMAIL
 #    npx wrangler secret put GOOGLE_PRIVATE_KEY
 #
-# 2. Telegram Bot Integration (Khuyên dùng - Nhận tin nhắn tức thì về điện thoại):
+# 2. Telegram Bot Integration (Nhận tin nhắn tức thì về điện thoại):
 #    npx wrangler secret put TELEGRAM_BOT_TOKEN
 #    npx wrangler secret put TELEGRAM_CHAT_ID
 #

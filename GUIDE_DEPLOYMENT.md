@@ -44,17 +44,42 @@
 
 ---
 
-## 3. Bước 2: Tạo Google Service Account (Tối Thiểu Quyền Hạn)
+## 3. Bước 2: Kết Nối Google Sheets
 
+Hệ thống hỗ trợ 2 phương thức kết nối an toàn:
+
+### Cách A: Google Apps Script Web App (Khuyên dùng nhất — Siêu nhanh, an toàn tuyệt đối)
+> **Ưu điểm**: Hoàn toàn không cần tạo Service Account, không cần tải bất kỳ file JSON nào, và không bao giờ bị chặn bởi chính sách bảo mật doanh nghiệp (`iam.disableServiceAccountKeyCreation`).
+
+1. Trên bảng tính Google Sheet ở Bước 1, bấm menu **Tiện ích mở rộng (Extensions)** $\rightarrow$ **Apps Script**.
+2. Dán đoạn mã sau vào:
+   ```javascript
+   function doPost(e) {
+     try {
+       var data = JSON.parse(e.postData.contents);
+       var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(data.tab || "Leads");
+       if (!sheet) sheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet(data.tab || "Leads");
+       sheet.appendRow(data.row);
+       return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
+     } catch (err) {
+       return ContentService.createTextOutput(JSON.stringify({ success: false, error: err.toString() })).setMimeType(ContentService.MimeType.JSON);
+     }
+   }
+   ```
+3. Bấm **Triển khai (Deploy)** $\rightarrow$ **Tùy chọn triển khai mới (New deployment)** $\rightarrow$ Chọn **Ứng dụng web (Web app)**:
+   - Thực thi dưới dạng: **Tôi (Me)**
+   - Ai có quyền truy cập: **Bất kỳ ai (Anyone)**
+4. Bấm **Triển khai** $\rightarrow$ Cấp quyền Google $\rightarrow$ Copy **URL của ứng dụng web** (dạng `https://script.google.com/macros/s/.../exec`).
+5. Đặt biến bí mật: `GOOGLE_APPS_SCRIPT_URL`.
+
+---
+
+### Cách B: Google Cloud Service Account (Dành cho tài khoản GCP cá nhân)
 1. Truy cập [Google Cloud Console](https://console.cloud.google.com/).
-2. Chọn dự án Google Cloud hiện có hoặc tạo mới.
-3. Bật **Google Sheets API** trong menu *APIs & Services > Library*.
-4. Vào *IAM & Admin > Service Accounts* $\rightarrow$ Chọn **Create Service Account**:
-   - Đặt tên: `ktm-leads-collector`.
-   - Nhấn *Create and Continue* (không cần gán quyền cấp dự án).
-5. Nhấp vào Service Account vừa tạo $\rightarrow$ Tab **Keys** $\rightarrow$ **Add Key** $\rightarrow$ **Create new key** $\rightarrow$ Chọn định dạng **JSON**.
-6. Tải file JSON về máy tính và lưu trữ an toàn (tuyệt đối không đưa file này lên Git).
-7. Mở Google Sheet ở Bước 1 $\rightarrow$ Nhấn **Chia sẻ (Share)** $\rightarrow$ Dán email của Service Account (dạng `ktm-leads-collector@<project>.iam.gserviceaccount.com`) với quyền **Người chỉnh sửa (Editor)**.
+2. Bật **Google Sheets API**.
+3. Tạo Service Account: `ktm-leads-collector` và tải file khóa JSON.
+4. Mở Google Sheet $\rightarrow$ Chia sẻ cho email của Service Account quyền **Editor**.
+5. Cấu hình các biến: `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`.
 
 ---
 
