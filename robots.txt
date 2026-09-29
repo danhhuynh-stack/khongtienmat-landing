@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://khongtienmat.vn/sitemap.xml

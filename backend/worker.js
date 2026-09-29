@@ -18,6 +18,8 @@ const ALLOWED_ORIGINS = [
   'https://danhhuynh-stack.github.io',
   'https://khongtienmat.vn',
   'https://www.khongtienmat.vn',
+  'http://khongtienmat.vn',
+  'http://www.khongtienmat.vn',
   'http://localhost:3000',
   'http://127.0.0.1:3000'
 ];
@@ -30,8 +32,16 @@ const RATE_LIMIT_MAX_REQUESTS = 5;
 export default {
   async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '';
-    const isAllowedOrigin = ALLOWED_ORIGINS.includes(origin) || (!origin && request.headers.get('Sec-Fetch-Site') === 'same-origin');
-    const allowOriginHeader = isAllowedOrigin ? origin : ALLOWED_ORIGINS[0];
+    let isAllowedOrigin = ALLOWED_ORIGINS.includes(origin) || (!origin && request.headers.get('Sec-Fetch-Site') === 'same-origin');
+    if (!isAllowedOrigin && origin) {
+      try {
+        const u = new URL(origin);
+        if (u.hostname === 'khongtienmat.vn' || u.hostname.endsWith('.khongtienmat.vn')) {
+          isAllowedOrigin = true;
+        }
+      } catch (_) {}
+    }
+    const allowOriginHeader = isAllowedOrigin ? (origin || 'https://khongtienmat.vn') : ALLOWED_ORIGINS[0];
 
     const corsHeaders = {
       'Access-Control-Allow-Origin': allowOriginHeader,
