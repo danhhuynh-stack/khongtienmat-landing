@@ -1,4 +1,4 @@
-import { translations } from './translations.js';
+import { translations } from './translations.js?v=2.1.0';
 
 // Global state
 let currentLang = localStorage.getItem('khongtienmat_lang') || 'vi';
