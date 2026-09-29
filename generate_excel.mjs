@@ -7,8 +7,8 @@ const __dirname = path.dirname(__filename);
 
 async function generateProfessionalWorkbook() {
   const workbook = new ExcelJS.Workbook();
-  workbook.creator = 'Nexus Digital / khongtienmat.vn';
-  workbook.lastModifiedBy = 'Nexus Digital Operation Team';
+  workbook.creator = 'Fieldman / khongtienmat.vn';
+  workbook.lastModifiedBy = 'Fieldman Operation Team';
   workbook.created = new Date();
   workbook.modified = new Date();
 

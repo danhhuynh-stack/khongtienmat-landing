@@ -69,8 +69,7 @@ Dự án là Single Page Web tĩnh tối ưu cao, có thể đưa lên bất k�
 
 ---
 
-## 🏛️ Đơn Vị Bảo Trợ & Phát Triển
-* **CÔNG TY CỔ PHẦN THANH TOÁN QUỐC GIA VIỆT NAM (NAPAS)**
-* **CÔNG TY CỔ PHẦN NEXUS DIGITAL**
-* Hotline vận hành: 1900 xxxx (24/7)
-* Email: operation@nexusdigital.vn
+## 🏛️ Đơn Vị Phát Triển & Vận Hành
+* **FIELDMAN**
+* Hotline & Zalo: `0924.0934.61`
+* Email: `operation@fieldman.vn`

@@ -565,15 +565,15 @@ function initPolicyModal() {
       titleEl.textContent = 'Điều khoản dịch vụ khongtienmat.vn';
       bodyEl.innerHTML = `
         <p>1. <strong>Mục đích</strong>: khongtienmat.vn cung cấp thông tin và giải pháp nhận thanh toán không dùng tiền mặt (VietQR Pay, Loa thông báo, Phần mềm bán hàng, Máy POS) cho các cửa hàng và điểm bán lẻ tại Việt Nam.</p>
-        <p>2. <strong>Tư vấn miễn phí</strong>: Đăng ký tư vấn trên website hoàn toàn miễn phí. Đội ngũ kinh doanh của Nexus Digital sẽ liên hệ trực tiếp để khảo sát và đề xuất gói trang bị phù hợp.</p>
+        <p>2. <strong>Tư vấn miễn phí</strong>: Đăng ký tư vấn trên website hoàn toàn miễn phí. Đội ngũ kinh doanh của Fieldman sẽ liên hệ trực tiếp để khảo sát và đề xuất gói trang bị phù hợp.</p>
         <p>3. <strong>Văn bản chính thức</strong>: Hợp đồng hợp tác và biểu phí cụ thể sẽ được ký kết chính thức bằng văn bản hoặc hợp đồng điện tử theo quy định của pháp luật trước khi bàn giao thiết bị.</p>
       `;
     } else {
       titleEl.textContent = 'Chính sách bảo mật thông tin';
       bodyEl.innerHTML = `
         <p>1. <strong>Thu thập thông tin</strong>: Hệ thống chỉ thu thập Họ và tên người liên hệ, Số điện thoại, Tên cơ sở kinh doanh và Địa chỉ cửa hàng do khách hàng tự nguyện cung cấp phục vụ mục đích liên hệ tư vấn giải pháp thanh toán phù hợp.</p>
-        <p>2. <strong>Cam kết bảo mật</strong>: Nexus Digital tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân, cam kết bảo mật thông tin và không chia sẻ hoặc bán lại thông tin của bạn cho bên thứ ba vì mục đích quảng cáo.</p>
-        <p>3. <strong>Yêu cầu chỉnh sửa/xóa</strong>: Quý khách có quyền yêu cầu tra soát, cập nhật hoặc xóa thông tin liên hệ bất cứ lúc nào qua email: operation@nexusdigital.vn.</p>
+        <p>2. <strong>Cam kết bảo mật</strong>: Fieldman tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân, cam kết bảo mật thông tin và không chia sẻ hoặc bán lại thông tin của bạn cho bên thứ ba vì mục đích quảng cáo.</p>
+        <p>3. <strong>Yêu cầu chỉnh sửa/xóa</strong>: Quý khách có quyền yêu cầu tra soát, cập nhật hoặc xóa thông tin liên hệ bất cứ lúc nào qua email: operation@fieldman.vn.</p>
       `;
     }
     modal.classList.remove('hidden');
